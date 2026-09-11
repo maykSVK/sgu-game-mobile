@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/sgu-game-mobile/sw.js', { scope: '/sgu-game-mobile/' })})}
