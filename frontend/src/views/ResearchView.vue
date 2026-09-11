@@ -18,7 +18,7 @@
 
     <!-- Tree View -->
     <div v-else class="flex-1 overflow-auto bg-sgu-navy/50 rounded-lg border border-white/10 relative" id="tree-container">
-      <div class="relative w-[600px] h-[1000px] mx-auto p-4">
+      <div class="relative w-[360px] h-[900px] mx-auto p-2">
         
         <!-- SVG lines -->
         <svg class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 1;">
@@ -26,7 +26,7 @@
             <line v-for="depKey in node.dependsOn" :key="key+'-'+depKey"
                   :x1="getNodeX(depKey)" :y1="getNodeY(depKey)"
                   :x2="getNodeX(key)" :y2="getNodeY(key)"
-                  stroke="#4a6a8c" stroke-width="3" />
+                  stroke="#4a6a8c" stroke-width="2" />
           </template>
         </svg>
 
@@ -37,17 +37,17 @@
              @click="selectNode(key)">
           
           <div :class="[
-            'w-16 h-16 rounded-full border-4 flex items-center justify-center shadow-lg transition-colors',
+            'w-12 h-12 rounded-full border-[3px] flex items-center justify-center shadow-lg transition-colors',
             isResearched(key) ? 'bg-white border-white text-black' : 
             canResearch(key) ? 'bg-sgu-navy border-sgu-accent text-sgu-accent' : 
             'bg-sgu-dark border-gray-600 text-gray-500'
           ]">
-             <div v-if="isResearched(key)" class="text-2xl font-bold">✓</div>
-             <div v-else-if="isResearching(key)" class="text-xl animate-pulse">⏳</div>
-             <div v-else-if="canResearch(key)" class="text-2xl">!</div>
-             <div v-else class="text-xl opacity-30">!</div>
+             <div v-if="isResearched(key)" class="text-xl font-bold">✓</div>
+             <div v-else-if="isResearching(key)" class="text-lg animate-pulse">⏳</div>
+             <div v-else-if="canResearch(key)" class="text-xl">!</div>
+             <div v-else class="text-lg opacity-30">!</div>
           </div>
-          <div class="mt-2 text-xs text-center w-24 -ml-4 leading-tight font-bold text-shadow"
+          <div class="mt-1 text-[10px] text-center w-20 -ml-4 leading-tight font-bold text-shadow"
                :class="isResearched(key) ? 'text-white' : 'text-gray-400'">
             {{ node.name }}
           </div>
@@ -136,10 +136,10 @@ const error = ref(null)
 const selectedNodeKey = ref(null)
 
 // Rozloženie mriežky
-const GRID_SIZE_X = 100;
-const GRID_SIZE_Y = 110;
-const OFFSET_X = 50;
-const OFFSET_Y = 60;
+const GRID_SIZE_X = 70;
+const GRID_SIZE_Y = 85;
+const OFFSET_X = 40;
+const OFFSET_Y = 50;
 
 // Hardcoded strom výskumov (zodpovedá presne CSS triedam a screenshotu)
 const nodesMap = {
