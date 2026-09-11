@@ -62,12 +62,31 @@ onMounted(() => refresh())
 .stats-container img { max-width: 100%; height: auto; }
 .stats-container .text-center { text-align: center; }
 .stats-container .text-right { text-align: right; }
-.stats-container .stats-img { width: 100%; height: 120px; background-size: cover; background-position: center; border-radius: 8px; }
-.stats-container .infobox-standard { margin-bottom: 1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; }
-.stats-container .infobox-standard-title { background: rgba(0,0,0,0.5); padding: 8px; font-weight: bold; text-align: center; }
-.stats-container .infobox-standard-body { padding: 8px; }
-.stats-container .stats-stargate { background-image: url('https://www.sgu-game.cz/img/stats/stargate.jpg'); }
-.stats-container .stats-overview { background-image: url('https://www.sgu-game.cz/img/stats/overview.jpg'); }
-.stats-container .stats-results { background-image: url('https://www.sgu-game.cz/img/stats/results.jpg'); }
-.stats-container .stats-veterans { background-image: url('https://www.sgu-game.cz/img/stats/veterans.jpg'); }
+
+/* Kompaktné menu štatistík bez veľkých obrázkov */
+.stats-container .infobox-standard { 
+  margin-bottom: 0.5rem; 
+  background: rgba(30, 58, 138, 0.3); /* bg-blue-900/30 */
+  border: 1px solid rgba(59, 130, 246, 0.3); /* border-blue-500/30 */
+  border-radius: 8px; 
+  position: relative;
+}
+.stats-container .infobox-standard-title { 
+  padding: 12px; 
+  font-weight: bold; 
+  text-align: center; 
+  color: #93c5fd; /* text-blue-300 */
+}
+.stats-container .infobox-standard-body { 
+  position: absolute; 
+  inset: 0; 
+}
+.stats-container .infobox-standard-body a { 
+  display: block; 
+  width: 100%; 
+  height: 100%; 
+}
+.stats-container .stats-img { 
+  display: none; 
+}
 </style>
