@@ -1,6 +1,5 @@
 # Závislosti
 node_modules/
-package-lock.json
 
 # Zostavené frontend súbory
 frontend/dist/
