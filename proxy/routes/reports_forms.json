@@ -1,0 +1,5 @@
+[
+  "<form method=\"post\">\n                    <input type=\"submit\" name=\"mark_all_as_read\" class=\"btn-bevel btn-bevel-sm table-button-resizer\" value=\"Označit vše jako přečtené\">\n                </form>",
+  "<form name=\"pagination-previous\" method=\"get\">\n            <input type=\"hidden\" name=\"from\" value=\"-25\">\n            <input type=\"hidden\" name=\"to\" value=\"0\">\n            <input type=\"submit\" class=\"btn-bevel btn-bevel-sm\" value=\"<< předešlých 25\">\n        </form>",
+  "<form name=\"pagination-next\" method=\"get\">\n            <input type=\"hidden\" name=\"from\" value=\"25\">\n            <input type=\"hidden\" name=\"to\" value=\"50\">\n            <input type=\"submit\" class=\"btn-bevel btn-bevel-sm\" value=\"dalších 25 >>\">\n        </form>"
+]

@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
+  base: '/sgu-game-mobile/',
   plugins: [
     vue(),
     VitePWA({
@@ -26,7 +27,7 @@ export default defineConfig({
     proxy: {
       // Všetky /api volania presmeruj na proxy server
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'http://127.0.0.1:3000',
         changeOrigin: true,
       },
     },

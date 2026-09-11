@@ -1,0 +1,70 @@
+{
+  "resources": {
+    "attack-power": "Útočná síla 24.2",
+    "shields": "Štíty 112%",
+    "speed": "Rychlost [?] 1 ly = 162s",
+    "science": "Výzkum 43%",
+    "progress": "43%",
+    "progress-bar": "43%",
+    "gates-in-range": "Posádka 102",
+    "food": "Jídlo 50.00/100",
+    "water": "Voda 80.60/100",
+    "limestone": "Vápenec 80.60/100",
+    "credits": "Kredity 265",
+    "research-points": "Výzkumné body 10.00",
+    "renown": "Sláva 550",
+    "fragments": "Fragmenty 0/10",
+    "happiness": "Spokojenost Kladná [?]",
+    "success": "Kladná [?]"
+  },
+  "stats": {
+    "attack-power": "Útočná síla 24.2",
+    "shields": "Štíty 112%",
+    "speed": "Rychlost [?] 1 ly = 162s",
+    "science": "Výzkum 43%",
+    "gates-in-range": "Posádka 102"
+  },
+  "quests": [
+    "Quest Log [0/3]",
+    "Na některých planetách se nacházejí NPC postavy, které nabízejí Questy. Jejich plněním získáváte odměny!"
+  ],
+  "alerts": [
+    "11.09. 2026 19:33 Destiny se vrátila z expedice! Více informací v reportu bitvy.",
+    "11.09. 2026 19:33 Na nadávno navštívené planetě jsme nenalezli žádný artefakt.",
+    "11.09. 2026 19:21 Byli jsme napadeni v Aréně! Více informací v bitevním reportu.",
+    "11.09. 2026 18:51 Byli jsme napadeni v Aréně! Více informací v bitevním reportu.",
+    "11.09. 2026 16:29 Započalo hledání artefaktu na planetě. Tým podá hlášení po návratu (17:29).",
+    "11.09. 2026 15:01 Destiny se vrátila z expedice! Více informací v reportu bitvy.",
+    "11.09. 2026 13:01 Destiny se vrátila z expedice! Více informací v reportu bitvy."
+  ],
+  "infoboxes": [
+    {
+      "title": "Notifikace",
+      "len": 1234
+    },
+    {
+      "title": "Výstrahy a hlášení            [?]\n            [x]",
+      "len": 3364
+    },
+    {
+      "title": "Rozkazy pro Destiny [?]",
+      "len": 1873
+    },
+    {
+      "title": "Přehled denních příjmů a výdajů [?]",
+      "len": 1514
+    },
+    {
+      "title": "Detaily denního příjmu kreditů",
+      "len": 895
+    },
+    {
+      "title": "Detaily denního příjmu výzkumných bodů",
+      "len": 990
+    },
+    {
+      "title": "Herní chat",
+      "len": 6980
+    }
+  ]
+}

@@ -7,6 +7,7 @@ const universeRoutes = require('./routes/universe.routes');
 const arenaRoutes = require('./routes/arena.routes');
 const statsRoutes = require('./routes/stats.routes');
 const ajaxRoutes = require('./routes/ajax.routes');
+const reportsRoutes = require('./routes/reports.routes');
 
 const app = express();
 const PORT = 3000;
@@ -24,6 +25,7 @@ app.use('/api/universe', universeRoutes);
 app.use('/api/arena', arenaRoutes);
 app.use('/api/stats', statsRoutes);
 app.use('/api/ajax', ajaxRoutes);
+app.use('/api/reports', reportsRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

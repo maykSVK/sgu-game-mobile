@@ -22,61 +22,86 @@
 
     <template v-else-if="data">
       <!-- Profil Hráča -->
-      <div v-if="data.player?.username" class="card bg-gradient-to-r from-sgu-navy to-sgu-blue mb-4 flex items-center gap-4">
-        <div class="w-12 h-12 rounded-full bg-sgu-dark border-2 border-sgu-accent flex items-center justify-center text-xl">
-          👨‍🚀
+      <div v-if="data.player?.username" class="card bg-gradient-to-r from-sgu-navy to-sgu-blue mb-4 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-sgu-dark border-2 border-sgu-accent flex items-center justify-center text-xl">
+            👨‍🚀
+          </div>
+          <div>
+            <h2 class="text-lg font-bold text-white">{{ data.player.username }}</h2>
+            <p class="text-xs text-sgu-accent uppercase tracking-wide">{{ data.player.rankClass?.replace('rank-standard', '').replace(/-/g, ' ') || 'Hráč' }}</p>
+          </div>
         </div>
-        <div>
-          <h2 class="text-lg font-bold text-white">{{ data.player.username }}</h2>
-          <p class="text-xs text-sgu-accent uppercase tracking-wide">{{ data.player.rankClass?.replace('rank-standard', '').replace(/-/g, ' ') || 'Hráč' }}</p>
+        <div class="text-right text-xs">
+          <div class="text-sgu-gold font-bold">{{ data.resources?.renown || '' }}</div>
+          <div class="text-green-400">{{ data.resources?.happiness?.replace('Spokojenost', '') || '' }}</div>
         </div>
       </div>
 
       <!-- Suroviny (Resource Bar) -->
       <div v-if="Object.keys(data.resources || {}).length > 0" class="grid grid-cols-2 gap-2 mb-6">
-        <div v-for="(val, key) in data.resources" :key="key" class="bg-sgu-navy border border-white/5 rounded-lg p-3 flex flex-col">
-          <span class="text-[10px] text-sgu-text/50 uppercase tracking-wider mb-1">{{ key }}</span>
-          <span class="font-mono text-sgu-gold font-bold">{{ val }}</span>
+        <div v-for="(val, key) in data.resources" :key="key" v-show="!['renown', 'happiness', 'success', 'progress', 'progress-bar'].includes(key)" class="bg-sgu-navy border border-white/5 rounded-lg p-2 flex flex-col">
+          <span class="text-[10px] text-sgu-text/50 uppercase tracking-wider mb-1 truncate">{{ key }}</span>
+          <span class="font-mono text-sgu-gold text-sm truncate" v-html="val.replace(/^[a-zA-ZáčďéěíňóřšťúůýžÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ ]+ /, '')"></span>
         </div>
       </div>
 
-      <!-- Notifikácie / novinky -->
-      <div v-if="data.news?.length" class="mb-4 space-y-2">
-        <div v-for="n in data.news" :key="n.type"
-             class="card border-sgu-accent/50 bg-sgu-accent/10 flex items-center gap-3">
-          <span class="text-xl">{{ n.type === 'battle_report' ? '⚔️' : '🏛️' }}</span>
-          <span class="text-sgu-accent font-semibold text-sm">{{ n.label }}</span>
+      <!-- Štatistiky -->
+      <div v-if="Object.keys(data.stats || {}).length > 0" class="mb-6">
+        <h2 class="text-xs uppercase tracking-wider text-sgu-text/50 mb-2 pl-1">Štatistiky Lode</h2>
+        <div class="grid grid-cols-2 gap-2">
+           <div v-for="(val, key) in data.stats" :key="key" class="card bg-sgu-dark border-white/10 p-2">
+              <span class="text-[10px] text-sgu-text/50 uppercase block mb-1">{{ key.replace(/-/g, ' ') }}</span>
+              <span class="text-sm font-semibold truncate block" :title="val">{{ val.replace(/^[a-zA-ZáčďéěíňóřšťúůýžÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ ]+ /, '') }}</span>
+           </div>
         </div>
       </div>
 
-      <!-- Upozornenia -->
+      <!-- Udalosti a Notifikácie -->
       <div v-if="data.alerts?.length" class="mb-6">
-        <h2 class="text-xs uppercase tracking-wider text-sgu-text/50 mb-2 pl-1">Upozornenia</h2>
+        <div class="flex items-center justify-between mb-2 pl-1">
+          <h2 class="text-xs uppercase tracking-wider text-sgu-text/50">Hlásenia a Výstrahy</h2>
+          <router-link to="/reports" 
+            :class="['text-[10px] px-2 py-1 rounded border uppercase tracking-wider', 
+                     data.hasNewReport ? 'bg-red-600/50 text-red-100 border-red-500 animate-pulse font-bold' : 'bg-blue-600/30 text-blue-300 border-blue-500/30']">
+            {{ data.hasNewReport ? '🚨 Nový Report!' : 'Reporty' }}
+          </router-link>
+        </div>
         <div class="space-y-2">
           <div v-for="(alert, i) in data.alerts" :key="i"
-               class="card text-sm text-yellow-300 border-yellow-500/30 bg-yellow-900/10">
+               class="card text-sm border-sgu-accent/30 bg-sgu-accent/10">
             {{ alert }}
           </div>
         </div>
       </div>
 
-      <!-- Countdown timery -->
-      <div v-if="data.timers?.length" class="mb-4">
-        <h2 class="text-xs uppercase tracking-wider text-sgu-text/50 mb-2 pl-1">Aktívne procesy</h2>
-        <div class="space-y-2">
-          <div v-for="timer in data.timers" :key="timer.label" class="card flex justify-between items-center border-sgu-accent/20 bg-sgu-accent/5">
-            <span class="text-sm font-medium">{{ timer.label }}</span>
-            <span class="text-sgu-accent font-mono text-sm bg-sgu-dark px-2 py-1 rounded">{{ timer.current }}</span>
+      <!-- Questy -->
+      <div v-if="data.quests?.length" class="mb-6">
+        <h2 class="text-xs uppercase tracking-wider text-sgu-text/50 mb-2 pl-1">Quest Log</h2>
+        <div class="card border-blue-500/30 bg-blue-900/20">
+          <p v-for="(q, i) in data.quests" :key="i" class="text-sm mb-1 last:mb-0" :class="{'font-bold text-blue-300': i===0, 'text-sgu-text/80': i>0}">{{ q }}</p>
+        </div>
+      </div>
+
+      <!-- Ostatné infoboxy -->
+      <div v-if="data.infoboxes?.length" class="mb-6 space-y-3">
+        <h2 class="text-xs uppercase tracking-wider text-sgu-text/50 mb-2 pl-1">Ďalšie informácie</h2>
+        <div v-for="box in data.infoboxes" :key="box.title" class="card bg-sgu-navy border-white/10">
+           <h3 class="font-bold text-sm text-sgu-accent mb-2">{{ box.title.replace(/\\[\\?\\]|\\[x\\]/g, '').trim() }}</h3>
+           <p class="text-xs text-sgu-text/80 leading-relaxed">{{ box.content }}{{ box.content.length === 300 ? '...' : '' }}</p>
+        </div>
+      </div>
+
+      <!-- Chat -->
+      <div v-if="data.chat?.length" class="mb-6">
+        <h2 class="text-xs uppercase tracking-wider text-sgu-text/50 mb-2 pl-1">Herný Chat (Posledné správy)</h2>
+        <div class="card bg-black/40 border-white/10 max-h-48 overflow-y-auto space-y-2">
+          <div v-for="(msg, i) in data.chat" :key="i" class="text-xs">
+            <span class="text-sgu-text/60">></span> {{ msg }}
           </div>
         </div>
       </div>
-      
-      <!-- Ak nič nie je k dispozícii -->
-      <div v-if="!data.alerts?.length && !data.timers?.length && !data.news?.length"
-           class="card text-center py-8 text-sgu-text/40">
-        <div class="text-4xl mb-2">✅</div>
-        <p>Žiadne upozornenia</p>
-      </div>
+
     </template>
   </div>
 </template>

@@ -38,6 +38,12 @@
         />
       </div>
 
+      <!-- Remember me -->
+      <div class="flex items-center gap-2 mt-2 mb-4">
+        <input type="checkbox" id="rememberMe" v-model="rememberMe" class="w-4 h-4 rounded bg-sgu-navy border-white/20 text-sgu-accent focus:ring-sgu-accent" />
+        <label for="rememberMe" class="text-sm text-sgu-text/80 cursor-pointer select-none">Zapamätať údaje na zariadení</label>
+      </div>
+
       <!-- Error -->
       <div v-if="auth.error" class="bg-red-900/40 border border-red-500/50 rounded-lg px-4 py-3 text-red-300 text-sm">
         {{ auth.error }}
@@ -59,7 +65,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
 
@@ -67,9 +73,29 @@ const auth = useAuthStore()
 const router = useRouter()
 const username = ref('')
 const password = ref('')
+const rememberMe = ref(false)
+
+onMounted(() => {
+  const savedUser = localStorage.getItem('sgu_saved_username')
+  const savedPass = localStorage.getItem('sgu_saved_password')
+  if (savedUser && savedPass) {
+    username.value = savedUser
+    password.value = savedPass
+    rememberMe.value = true
+  }
+})
 
 async function handleLogin() {
   const ok = await auth.login(username.value, password.value)
-  if (ok) router.push('/')
+  if (ok) {
+    if (rememberMe.value) {
+      localStorage.setItem('sgu_saved_username', username.value)
+      localStorage.setItem('sgu_saved_password', password.value)
+    } else {
+      localStorage.removeItem('sgu_saved_username')
+      localStorage.removeItem('sgu_saved_password')
+    }
+    router.push('/')
+  }
 }
 </script>

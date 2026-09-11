@@ -1,0 +1,2131 @@
+{
+  "divs": [
+    {
+      "cls": "left-side pl-3",
+      "len": 993
+    },
+    {
+      "cls": "universe-submenu display-none",
+      "len": 250
+    },
+    {
+      "cls": "submenu-item",
+      "len": 12
+    },
+    {
+      "cls": "submenu-item",
+      "len": 5
+    },
+    {
+      "cls": "submenu-item",
+      "len": 8
+    },
+    {
+      "cls": "submenu-item",
+      "len": 16
+    },
+    {
+      "cls": "submenu-item",
+      "len": 14
+    },
+    {
+      "cls": "submenu-item",
+      "len": 15
+    },
+    {
+      "cls": "submenu-item",
+      "len": 5
+    },
+    {
+      "cls": "submenu-item",
+      "len": 10
+    },
+    {
+      "cls": "submenu-item",
+      "len": 5
+    },
+    {
+      "cls": "submenu-item",
+      "len": 10
+    },
+    {
+      "cls": "submenu-item",
+      "len": 20
+    },
+    {
+      "cls": "station-submenu display-none",
+      "len": 113
+    },
+    {
+      "cls": "submenu-item",
+      "len": 25
+    },
+    {
+      "cls": "submenu-item",
+      "len": 11
+    },
+    {
+      "cls": "submenu-item",
+      "len": 21
+    },
+    {
+      "cls": "submenu-item",
+      "len": 15
+    },
+    {
+      "cls": "upgrade-submenu display-none",
+      "len": 186
+    },
+    {
+      "cls": "submenu-item",
+      "len": 16
+    },
+    {
+      "cls": "submenu-item",
+      "len": 17
+    },
+    {
+      "cls": "submenu-item",
+      "len": 10
+    },
+    {
+      "cls": "submenu-item",
+      "len": 9
+    },
+    {
+      "cls": "submenu-item",
+      "len": 6
+    },
+    {
+      "cls": "submenu-item",
+      "len": 5
+    },
+    {
+      "cls": "submenu-item",
+      "len": 14
+    },
+    {
+      "cls": "submenu-item",
+      "len": 18
+    },
+    {
+      "cls": "communication-submenu display-none",
+      "len": 124
+    },
+    {
+      "cls": "submenu-item",
+      "len": 6
+    },
+    {
+      "cls": "submenu-item",
+      "len": 23
+    },
+    {
+      "cls": "submenu-item",
+      "len": 14
+    },
+    {
+      "cls": "submenu-item",
+      "len": 15
+    },
+    {
+      "cls": "submenu-item",
+      "len": 14
+    },
+    {
+      "cls": "main-container",
+      "len": 21976
+    },
+    {
+      "cls": "side-menu",
+      "len": 3239
+    },
+    {
+      "cls": "scrollbar",
+      "len": 3239
+    },
+    {
+      "cls": "rank-standard technical-sergeant sgu-tooltip inline v-a-m",
+      "len": 0
+    },
+    {
+      "id": "panelTabPlayer",
+      "len": 2680
+    },
+    {
+      "cls": "pt-2 pb-2",
+      "len": 0
+    },
+    {
+      "cls": "panel-resources",
+      "len": 687
+    },
+    {
+      "cls": "attack-power",
+      "len": 40
+    },
+    {
+      "cls": "shields",
+      "len": 34
+    },
+    {
+      "cls": "speed",
+      "len": 48
+    },
+    {
+      "cls": "science",
+      "len": 96
+    },
+    {
+      "cls": "progress",
+      "len": 3
+    },
+    {
+      "cls": "progress-bar",
+      "len": 3
+    },
+    {
+      "cls": "gates-in-range",
+      "len": 40
+    },
+    {
+      "cls": "gates-in-range",
+      "len": 35
+    },
+    {
+      "cls": "pt-2 pb-2",
+      "len": 0
+    },
+    {
+      "cls": "panel-resources",
+      "len": 1030
+    },
+    {
+      "cls": "food",
+      "len": 39
+    },
+    {
+      "cls": "water",
+      "len": 38
+    },
+    {
+      "cls": "limestone",
+      "len": 41
+    },
+    {
+      "cls": "credits",
+      "len": 35
+    },
+    {
+      "cls": "research-points",
+      "len": 43
+    },
+    {
+      "cls": "renown",
+      "len": 33
+    },
+    {
+      "cls": "fragments",
+      "len": 67
+    },
+    {
+      "cls": "happiness",
+      "len": 75
+    },
+    {
+      "cls": "success",
+      "len": 10
+    },
+    {
+      "cls": "pt-2 pb-2",
+      "len": 0
+    },
+    {
+      "cls": "pt-2 pb-2",
+      "len": 0
+    },
+    {
+      "id": "panelTabQuestLog",
+      "len": 182
+    },
+    {
+      "cls": "pt-2 pb-2",
+      "len": 0
+    },
+    {
+      "cls": "content-container",
+      "len": 11383
+    },
+    {
+      "cls": "inline",
+      "len": 6
+    },
+    {
+      "cls": "inline",
+      "len": 1
+    },
+    {
+      "cls": "inline",
+      "len": 9
+    },
+    {
+      "cls": "inline",
+      "len": 1
+    },
+    {
+      "cls": "inline",
+      "len": 7
+    },
+    {
+      "cls": "inline",
+      "len": 1
+    },
+    {
+      "cls": "inline",
+      "len": 17
+    },
+    {
+      "cls": "inline",
+      "len": 1
+    },
+    {
+      "cls": "inline",
+      "len": 8
+    },
+    {
+      "cls": "inline",
+      "len": 1
+    },
+    {
+      "cls": "inline",
+      "len": 13
+    },
+    {
+      "cls": "infobox-standard",
+      "len": 1234
+    },
+    {
+      "cls": "infobox-standard-title",
+      "len": 10
+    },
+    {
+      "cls": "infobox-standard-body",
+      "len": 1006
+    },
+    {
+      "cls": "scrollbar",
+      "len": 1006
+    },
+    {
+      "cls": "infobox-standard",
+      "len": 3364
+    },
+    {
+      "cls": "infobox-standard-title",
+      "len": 49
+    },
+    {
+      "cls": "infobox-standard-body",
+      "len": 3043
+    },
+    {
+      "cls": "scrollbar",
+      "len": 3043
+    },
+    {
+      "id": "alerts",
+      "len": 3043
+    },
+    {
+      "cls": "crew-alert",
+      "len": 182
+    },
+    {
+      "cls": "sgu-tooltip cursor-pointer crew-alert-text",
+      "len": 0
+    },
+    {
+      "cls": "crew-alert",
+      "len": 180
+    },
+    {
+      "cls": "sgu-tooltip cursor-pointer crew-alert-text",
+      "len": 0
+    },
+    {
+      "cls": "crew-alert",
+      "len": 182
+    },
+    {
+      "cls": "sgu-tooltip cursor-pointer crew-alert-text",
+      "len": 0
+    },
+    {
+      "cls": "crew-alert",
+      "len": 182
+    },
+    {
+      "cls": "sgu-tooltip cursor-pointer crew-alert-text",
+      "len": 0
+    },
+    {
+      "cls": "crew-alert",
+      "len": 195
+    },
+    {
+      "cls": "sgu-tooltip cursor-pointer crew-alert-text",
+      "len": 0
+    },
+    {
+      "cls": "crew-alert",
+      "len": 182
+    },
+    {
+      "cls": "sgu-tooltip cursor-pointer crew-alert-text",
+      "len": 0
+    },
+    {
+      "cls": "crew-alert",
+      "len": 182
+    },
+    {
+      "cls": "sgu-tooltip cursor-pointer crew-alert-text",
+      "len": 0
+    },
+    {
+      "cls": "infobox-standard",
+      "len": 1873
+    },
+    {
+      "cls": "infobox-standard-title",
+      "len": 23
+    },
+    {
+      "cls": "infobox-standard-body",
+      "len": 1734
+    },
+    {
+      "cls": "scrollbar",
+      "len": 1734
+    },
+    {
+      "cls": "infobox-standard",
+      "len": 1514
+    },
+    {
+      "cls": "infobox-standard-title",
+      "len": 35
+    },
+    {
+      "cls": "infobox-standard-body",
+      "len": 1364
+    },
+    {
+      "cls": "scrollbar",
+      "len": 1364
+    },
+    {
+      "cls": "infobox-standard",
+      "len": 895
+    },
+    {
+      "cls": "infobox-standard-title",
+      "len": 30
+    },
+    {
+      "cls": "infobox-standard-body",
+      "len": 720
+    },
+    {
+      "cls": "scrollbar",
+      "len": 720
+    },
+    {
+      "cls": "infobox-standard",
+      "len": 990
+    },
+    {
+      "cls": "infobox-standard-title",
+      "len": 38
+    },
+    {
+      "cls": "infobox-standard-body",
+      "len": 807
+    },
+    {
+      "cls": "scrollbar",
+      "len": 807
+    },
+    {
+      "cls": "premium-shop",
+      "len": 15
+    },
+    {
+      "cls": "facebook-badge",
+      "len": 8
+    },
+    {
+      "cls": "discord-badge",
+      "len": 7
+    },
+    {
+      "cls": "infobox-standard chat-box active",
+      "len": 6980
+    },
+    {
+      "cls": "infobox-standard-title",
+      "len": 10
+    },
+    {
+      "cls": "cursor-pointer",
+      "len": 10
+    },
+    {
+      "cls": "infobox-standard-body",
+      "len": 6906
+    },
+    {
+      "id": "chat-messages-container",
+      "cls": "scrollbar",
+      "len": 6530
+    },
+    {
+      "cls": "message",
+      "len": 55
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 45
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 77
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 84
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 49
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 53
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 109
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 36
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 35
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 44
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 64
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 88
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 39
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 83
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 18
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 61
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 14
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 50
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 71
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 40
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 33
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 56
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 69
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 52
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 151
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 77
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 76
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 56
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 94
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 60
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 62
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 91
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 42
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 55
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 59
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 33
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 32
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 45
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 33
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 38
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 24
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 34
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 24
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 11
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 36
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 18
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 36
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 11
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 42
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 28
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 30
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 65
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 48
+    },
+    {
+      "cls": "rank-standard inline second-lieutenant ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 22
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 29
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 53
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 27
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 87
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 118
+    },
+    {
+      "cls": "rank-standard inline second-lieutenant ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 62
+    },
+    {
+      "cls": "rank-standard inline airman-first-class ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 108
+    },
+    {
+      "cls": "rank-standard inline second-lieutenant ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 29
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 28
+    },
+    {
+      "cls": "rank-standard inline second-lieutenant ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 60
+    },
+    {
+      "cls": "rank-standard inline second-lieutenant ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 21
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 16
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 31
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 152
+    },
+    {
+      "cls": "rank-standard inline senior-airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 20
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 17
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 75
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 47
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 271
+    },
+    {
+      "cls": "rank-standard inline senior-airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 162
+    },
+    {
+      "cls": "rank-standard inline senior-airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 48
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 161
+    },
+    {
+      "cls": "rank-standard inline second-lieutenant ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 81
+    },
+    {
+      "cls": "rank-standard inline second-lieutenant ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 29
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 147
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 31
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 57
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 94
+    },
+    {
+      "cls": "rank-standard inline second-lieutenant ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 73
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 11
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 89
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 253
+    },
+    {
+      "cls": "rank-standard inline second-lieutenant ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 79
+    },
+    {
+      "cls": "rank-standard inline second-lieutenant ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 98
+    },
+    {
+      "cls": "rank-standard inline technical-sergeant ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 85
+    },
+    {
+      "cls": "rank-standard inline technical-sergeant ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 40
+    },
+    {
+      "cls": "rank-standard inline senior-airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 96
+    },
+    {
+      "cls": "rank-standard inline technical-sergeant ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 152
+    },
+    {
+      "cls": "rank-standard inline senior-airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 29
+    },
+    {
+      "cls": "rank-standard inline second-lieutenant ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 55
+    },
+    {
+      "cls": "rank-standard inline technical-sergeant ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 132
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 46
+    },
+    {
+      "cls": "rank-standard inline airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 121
+    },
+    {
+      "cls": "rank-standard inline first-lieutenant ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 120
+    },
+    {
+      "cls": "rank-standard inline senior-airman ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 60
+    },
+    {
+      "cls": "rank-standard inline airman-first-class ",
+      "len": 0
+    },
+    {
+      "cls": "message",
+      "len": 46
+    },
+    {
+      "cls": "rank-standard inline second-lieutenant ",
+      "len": 0
+    },
+    {
+      "id": "chat-smiles-window",
+      "len": 278
+    },
+    {
+      "cls": "inline cursor-pointer sgu-tooltip",
+      "len": 0
+    },
+    {
+      "cls": "inline cursor-pointer sgu-tooltip",
+      "len": 0
+    },
+    {
+      "cls": "inline cursor-pointer sgu-tooltip",
+      "len": 0
+    },
+    {
+      "cls": "inline cursor-pointer sgu-tooltip",
+      "len": 0
+    },
+    {
+      "cls": "inline cursor-pointer sgu-tooltip",
+      "len": 0
+    },
+    {
+      "cls": "inline cursor-pointer sgu-tooltip",
+      "len": 0
+    },
+    {
+      "cls": "inline cursor-pointer sgu-tooltip",
+      "len": 0
+    },
+    {
+      "cls": "inline cursor-pointer sgu-tooltip",
+      "len": 0
+    },
+    {
+      "cls": "inline cursor-pointer sgu-tooltip",
+      "len": 0
+    },
+    {
+      "cls": "inline cursor-pointer sgu-tooltip",
+      "len": 0
+    },
+    {
+      "cls": "inline cursor-pointer sgu-tooltip",
+      "len": 0
+    },
+    {
+      "cls": "inline cursor-pointer sgu-tooltip",
+      "len": 0
+    },
+    {
+      "cls": "inline cursor-pointer sgu-tooltip",
+      "len": 0
+    },
+    {
+      "cls": "inline cursor-pointer sgu-tooltip",
+      "len": 0
+    },
+    {
+      "cls": "inline cursor-pointer sgu-tooltip",
+      "len": 0
+    },
+    {
+      "cls": "inline cursor-pointer sgu-tooltip",
+      "len": 0
+    },
+    {
+      "cls": "inline cursor-pointer sgu-tooltip",
+      "len": 0
+    },
+    {
+      "cls": "inline cursor-pointer sgu-tooltip",
+      "len": 0
+    },
+    {
+      "cls": "inline cursor-pointer sgu-tooltip",
+      "len": 0
+    },
+    {
+      "cls": "inline cursor-pointer sgu-tooltip",
+      "len": 0
+    },
+    {
+      "id": "lightboxOverlay",
+      "cls": "lightboxOverlay",
+      "len": 0
+    },
+    {
+      "id": "lightbox",
+      "cls": "lightbox",
+      "len": 0
+    },
+    {
+      "cls": "lb-outerContainer",
+      "len": 0
+    },
+    {
+      "cls": "lb-container",
+      "len": 0
+    },
+    {
+      "cls": "lb-nav",
+      "len": 0
+    },
+    {
+      "cls": "lb-loader",
+      "len": 0
+    },
+    {
+      "cls": "lb-dataContainer",
+      "len": 0
+    },
+    {
+      "cls": "lb-data",
+      "len": 0
+    },
+    {
+      "cls": "lb-details",
+      "len": 0
+    },
+    {
+      "cls": "lb-closeContainer",
+      "len": 0
+    }
+  ],
+  "links": [
+    {
+      "href": "/",
+      "text": ""
+    },
+    {
+      "href": "/dashboard.php",
+      "text": "Řídící místnost"
+    },
+    {
+      "href": "#",
+      "text": "Vesmír"
+    },
+    {
+      "href": "/universe.php",
+      "text": "Mapa vesmíru"
+    },
+    {
+      "href": "/arena.php",
+      "text": "Aréna"
+    },
+    {
+      "href": "/expedition.php",
+      "text": "Expedice"
+    },
+    {
+      "href": "/buildings.php",
+      "text": "Planety & stavby"
+    },
+    {
+      "href": "/artifacts.php",
+      "text": "Naše artefakty"
+    },
+    {
+      "href": "/reports.php",
+      "text": "Bitevní reporty"
+    },
+    {
+      "href": "/quests.php",
+      "text": "Kvízy"
+    },
+    {
+      "href": "/referendum.php",
+      "text": "Referendum"
+    },
+    {
+      "href": "/referendum.php",
+      "text": ""
+    },
+    {
+      "href": "/referendum.php",
+      "text": ""
+    },
+    {
+      "href": "/sgc.php?subview=sgc",
+      "text": "=SGC="
+    },
+    {
+      "href": "/sgc.php?subview=sgc",
+      "text": ""
+    },
+    {
+      "href": "/sgc.php?subview=sgc",
+      "text": ""
+    },
+    {
+      "href": "/atlantis.php?subview=city",
+      "text": "=Atlantis="
+    },
+    {
+      "href": "/atlantis.php?subview=city",
+      "text": ""
+    },
+    {
+      "href": "/atlantis.php?subview=city",
+      "text": ""
+    },
+    {
+      "href": "#",
+      "text": "=Legacy of Alterans="
+    },
+    {
+      "href": "#",
+      "text": ""
+    },
+    {
+      "href": "#",
+      "text": ""
+    },
+    {
+      "href": "/stargate.php",
+      "text": "Hvězdná brána"
+    },
+    {
+      "href": "#",
+      "text": "Obchodní stanice"
+    },
+    {
+      "href": "/market.php",
+      "text": "Suroviny - nákup & prodej"
+    },
+    {
+      "href": "/technologies.php",
+      "text": "Technologie"
+    },
+    {
+      "href": "/specials.php",
+      "text": "Speciální technologie"
+    },
+    {
+      "href": "/store.php",
+      "text": "Prémiový obchod"
+    },
+    {
+      "href": "/research.php",
+      "text": "Výzkum"
+    },
+    {
+      "href": "#",
+      "text": "Vylepšení"
+    },
+    {
+      "href": "/upgrade.php?subview=weapon_system",
+      "text": "Zbraňové systémy"
+    },
+    {
+      "href": "/upgrade.php?subview=neural_armchair",
+      "text": "Neurální rozhraní"
+    },
+    {
+      "href": "/upgrade.php?subview=filters",
+      "text": "Filtry CO2"
+    },
+    {
+      "href": "/upgrade.php?subview=filters",
+      "text": ""
+    },
+    {
+      "href": "/upgrade.php?subview=filters",
+      "text": ""
+    },
+    {
+      "href": "/upgrade.php?subview=ftl",
+      "text": "FTL pohon"
+    },
+    {
+      "href": "/upgrade.php?subview=resources",
+      "text": "Sklady"
+    },
+    {
+      "href": "/upgrade.php?subview=shields",
+      "text": "Štíty"
+    },
+    {
+      "href": "/upgrade.php?subview=chambers",
+      "text": "Stázové komory"
+    },
+    {
+      "href": "/upgrade.php?subview=sublight",
+      "text": "Podsvětelné motory"
+    },
+    {
+      "href": "/lab.php",
+      "text": "Laboratoř"
+    },
+    {
+      "href": "#",
+      "text": "Komunikace"
+    },
+    {
+      "href": "/messages.php",
+      "text": "Zprávy"
+    },
+    {
+      "href": "/forums.php?forum=1",
+      "text": "Oznámení administrátorů"
+    },
+    {
+      "href": "/forums.php?forum=2",
+      "text": "Diskuzní fórum"
+    },
+    {
+      "href": "/forums.php?forum=4",
+      "text": "Systémové fórum"
+    },
+    {
+      "href": "/forums.php?forum=3",
+      "text": "Obchodní fórum"
+    },
+    {
+      "href": "/alliance.php",
+      "text": "Aliance"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Mayk",
+      "text": "Mayk"
+    },
+    {
+      "href": "/research.php",
+      "text": "Výzkum"
+    },
+    {
+      "href": "/stargate.php",
+      "text": "Brány v dosahu"
+    },
+    {
+      "href": "/crew.php",
+      "text": "Posádka"
+    },
+    {
+      "href": "/universe.php",
+      "text": "Letí FTL rychlostí (0:32:30)"
+    },
+    {
+      "href": "/reports.php",
+      "text": "Nový bitevní report!"
+    },
+    {
+      "href": "/note.php",
+      "text": "Poznámky"
+    },
+    {
+      "href": "/helpdesk.php",
+      "text": "Helpdesk"
+    },
+    {
+      "href": "/stats.php",
+      "text": "Statistiky"
+    },
+    {
+      "href": "/help.php",
+      "text": "Nápověda"
+    },
+    {
+      "href": "/settings.php",
+      "text": "Nastavení"
+    },
+    {
+      "href": "/logout.php",
+      "text": "Odhlásit"
+    },
+    {
+      "href": "/dashboard.php",
+      "text": "Můstek"
+    },
+    {
+      "href": "/destiny.php",
+      "text": "Strojovna"
+    },
+    {
+      "href": "/crew.php",
+      "text": "Posádka"
+    },
+    {
+      "href": "/checksums.php",
+      "text": "Historie přepočtů"
+    },
+    {
+      "href": "/hero.php",
+      "text": "Hrdinové"
+    },
+    {
+      "href": "/progress.php",
+      "text": "Postup ve hře"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=patriks",
+      "text": "patriks"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=boomsteel",
+      "text": "boomsteel"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Rodney_McKay",
+      "text": "Rodney_McKay"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=VLADo",
+      "text": "VLADo"
+    },
+    {
+      "href": "/store.php",
+      "text": "Prémiový obchod"
+    },
+    {
+      "href": "https://www.facebook.com/sgugame/",
+      "text": "Facebook"
+    },
+    {
+      "href": "/discord.php",
+      "text": "Discord"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Messi",
+      "text": "Messi"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Messi",
+      "text": "Messi"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Messi",
+      "text": "Messi"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Messi",
+      "text": "Messi"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Messi",
+      "text": "Messi"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Messi",
+      "text": "Messi"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Moros",
+      "text": "Moros"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Jarblox",
+      "text": "Jarblox"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=VLADo",
+      "text": "VLADo"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=BlockyBee50",
+      "text": "BlockyBee50"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=BlockyBee50",
+      "text": "BlockyBee50"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=BlockyBee50",
+      "text": "BlockyBee50"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=BlockyBee50",
+      "text": "BlockyBee50"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=VLADo",
+      "text": "VLADo"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=LBond94",
+      "text": "LBond94"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=VLADo",
+      "text": "VLADo"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=VLADo",
+      "text": "VLADo"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=VLADo",
+      "text": "VLADo"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=irvin",
+      "text": "irvin"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=boomsteel",
+      "text": "boomsteel"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=irvin2",
+      "text": "irvin2"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=irvin2",
+      "text": "irvin2"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Warlock95",
+      "text": "Warlock95"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=irvin",
+      "text": "irvin"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=boomsteel",
+      "text": "boomsteel"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=boomsteel",
+      "text": "boomsteel"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=ATD009",
+      "text": "ATD009"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=VLADo",
+      "text": "VLADo"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=VLADo",
+      "text": "VLADo"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=ATD009",
+      "text": "ATD009"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=kriko",
+      "text": "kriko"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Thomaso911",
+      "text": "Thomaso911"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=kriko",
+      "text": "kriko"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=VLADo",
+      "text": "VLADo"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=kriko",
+      "text": "kriko"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=kriko",
+      "text": "kriko"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=goodmansig",
+      "text": "goodmansig"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=VLADo",
+      "text": "VLADo"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=VLADo",
+      "text": "VLADo"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Mayk",
+      "text": "Mayk"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Mayk",
+      "text": "Mayk"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=boomsteel",
+      "text": "boomsteel"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Mayk",
+      "text": "Mayk"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=DoctorWho163",
+      "text": "DoctorWho163"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=VLADo",
+      "text": "VLADo"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Mayk",
+      "text": "Mayk"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Xenibl254",
+      "text": "Xenibl254"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=Xenibl254",
+      "text": "Xenibl254"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=G_Minarik",
+      "text": "G_Minarik"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=boomsteel",
+      "text": "boomsteel"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=LBond94",
+      "text": "LBond94"
+    },
+    {
+      "href": "/stats.php?subview=profile&playerName=VLADo",
+      "text": "VLADo"
+    },
+    {
+      "href": "",
+      "text": ""
+    },
+    {
+      "href": "",
+      "text": ""
+    },
+    {
+      "text": ""
+    },
+    {
+      "text": ""
+    }
+  ]
+}

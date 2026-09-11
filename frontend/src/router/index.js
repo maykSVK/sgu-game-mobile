@@ -8,6 +8,7 @@ const routes = [
   { path: '/universe',  name: 'universe',  component: () => import('../views/UniverseView.vue')  },
   { path: '/arena',     name: 'arena',     component: () => import('../views/ArenaView.vue')      },
   { path: '/stats',     name: 'stats',     component: () => import('../views/StatsView.vue')      },
+  { path: '/reports',   name: 'reports',   component: () => import('../views/ReportsView.vue')    },
   { path: '/:pathMatch(.*)*', redirect: '/' },
 ]
 
