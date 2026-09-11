@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Základné štýly pre mobilnú app */
+* { -webkit-tap-highlight-color: transparent; }
+
+body {
+  @apply bg-sgu-dark text-sgu-text;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  overscroll-behavior: none;
+}
+
+/* Touch-friendly tlačidlá */
+.btn {
+  @apply min-h-[48px] px-4 py-3 rounded-lg font-semibold text-sm
+         active:scale-95 transition-transform duration-75 select-none;
+}
+.btn-primary  { @apply bg-sgu-accent text-white; }
+.btn-danger   { @apply bg-red-600 text-white; }
+.btn-ghost    { @apply bg-white/10 text-sgu-text; }
+
+/* Karta */
+.card {
+  @apply bg-sgu-navy rounded-xl p-4 border border-white/10;
+}
+
+/* Scrollovateľný obsah s miestom pre bottom nav */
+.page-content {
+  @apply pb-24 pt-4 px-4 min-h-screen overflow-y-auto;
+}

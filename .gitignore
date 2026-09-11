@@ -1,0 +1,29 @@
+# Závislosti
+node_modules/
+package-lock.json
+
+# Zostavené frontend súbory
+frontend/dist/
+frontend/dist-ssr/
+frontend/.output/
+
+# Logy a dočasné súbory
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Prostredie
+.env
+.env.local
+.env.*.local
+
+# Editor / OS súbory
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

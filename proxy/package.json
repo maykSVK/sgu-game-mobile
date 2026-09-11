@@ -1,0 +1,21 @@
+{
+  "name": "sgu-mobile-proxy",
+  "version": "1.0.0",
+  "description": "SGU-Game mobile wrapper proxy server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "cookie": "^0.6.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "node-fetch": "^2.7.0",
+    "tough-cookie": "^4.1.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
