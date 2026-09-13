@@ -47,16 +47,16 @@
           <div>
             <div class="font-bold text-white text-base">{{ playerName }}</div>
             <div class="text-xs text-sgu-accent uppercase tracking-wider">{{ playerRank }}</div>
-            <div class="text-xs text-sgu-gold mt-0.5">💰 {{ playerCredits }} kreditov</div>
+            <div class="text-xs text-sgu-gold mt-0.5">💰 {{ playerCredits }} kreditů</div>
           </div>
         </div>
       </div>
 
       <!-- Menu items -->
       <div class="flex-1 overflow-y-auto py-2">
-        <!-- Hlavná navigácia -->
+        <!-- Hlavní navigace -->
         <div class="px-4 pt-3 pb-1">
-          <span class="text-[10px] uppercase tracking-widest text-sgu-text/30 font-semibold">Hlavná navigácia</span>
+          <span class="text-[10px] uppercase tracking-widest text-sgu-text/30 font-semibold">Hlavní navigace</span>
         </div>
 
         <DrawerItem v-for="item in primaryItems" :key="item.to"
@@ -65,23 +65,23 @@
         <!-- Divider -->
         <div class="mx-4 my-2" style="border-top: 1px solid rgba(32,156,255,0.1);"></div>
 
-        <!-- Ostatné -->
+        <!-- Ostatní -->
         <div class="px-4 pt-1 pb-1">
-          <span class="text-[10px] uppercase tracking-widest text-sgu-text/30 font-semibold">Ostatné</span>
+          <span class="text-[10px] uppercase tracking-widest text-sgu-text/30 font-semibold">Ostatní</span>
         </div>
 
         <DrawerItem v-for="item in secondaryItems" :key="item.to"
           :item="item" @click="navigate(item)" />
       </div>
 
-      <!-- Logout -->
+      <!-- Odhlásit -->
       <div class="p-4 shrink-0" style="border-top: 1px solid rgba(255,80,80,0.2);">
         <button
           @click="doLogout"
           class="w-full py-3 rounded-lg text-sm font-bold text-red-300 uppercase tracking-wider active:scale-95 transition-transform"
           style="background: rgba(180,30,30,0.2); border: 1px solid rgba(255,80,80,0.3);"
         >
-          🚪 Odhlásiť
+          🚪 Odhlásit
         </button>
       </div>
     </nav>
@@ -107,22 +107,22 @@ const route  = useRoute()
 const auth   = useAuthStore()
 
 const primaryItems = [
-  { to: '/',          icon: '🖥️',  label: 'Dashboard',          sub: 'Mústek' },
-  { to: '/universe',  icon: '🌌',  label: 'Mapa Vesmíru',        sub: 'Galaxie & planéty' },
-  { to: '/arena',     icon: '⚔️',  label: 'Aréna',               sub: 'Boje & rank' },
-  { to: '/expedition',icon: '🚀',  label: 'Expedície',            sub: 'Prieskumné misie' },
-  { to: '/stargate',  icon: '⭐',  label: 'Hviezdna brána',       sub: 'Stargate' },
-  { to: '/research',  icon: '🔬',  label: 'Výskum',              sub: 'Strom technológií' },
-  { to: '/upgrades',  icon: '⚙️',  label: 'Vylepšenia',          sub: 'Loď & vybavenie' },
+  { to: '/',          icon: '🖥️',  label: 'Dashboard',       sub: 'Můstek' },
+  { to: '/universe',  icon: '🌌',  label: 'Mapa Vesmíru',    sub: 'Galaxie & planety' },
+  { to: '/arena',     icon: '⚔️',  label: 'Aréna',           sub: 'Boje & rank' },
+  { to: '/expedition',icon: '🚀',  label: 'Expedice',        sub: 'Průzkumné mise' },
+  { to: '/stargate',  icon: '⭐',  label: 'Hvězdná brána',   sub: 'Stargate' },
+  { to: '/research',  icon: '🔬',  label: 'Výzkum',          sub: 'Strom technologií' },
+  { to: '/upgrades',  icon: '⚙️',  label: 'Vylepšení',       sub: 'Loď & vybavení' },
 ]
 
 const secondaryItems = [
-  { to: '/messages',  icon: '💬',  label: 'Správy / Chat',       sub: '' },
-  { to: '/alliance',  icon: '🤝',  label: 'Aliancia',             sub: '' },
-  { to: '/market',    icon: '🏪',  label: 'Obchodná stanica',     sub: '' },
-  { to: '/lab',       icon: '🧪',  label: 'Laboratórium',         sub: '' },
-  { to: '/stats',     icon: '📊',  label: 'Štatistiky',           sub: '' },
-  { to: '/reports',   icon: '📝',  label: 'Quest Log / Reporty',  sub: '' },
+  { to: '/messages',  icon: '💬',  label: 'Zprávy / Chat',       sub: '' },
+  { to: '/alliance',  icon: '🤝',  label: 'Aliance',             sub: '' },
+  { to: '/market',    icon: '🏪',  label: 'Obchodní stanice',    sub: '' },
+  { to: '/lab',       icon: '🧪',  label: 'Laboratoř',           sub: '' },
+  { to: '/stats',     icon: '📊',  label: 'Statistiky',          sub: '' },
+  { to: '/reports',   icon: '📝',  label: 'Quest Log / Reporty', sub: '' },
 ]
 
 function navigate(item) {

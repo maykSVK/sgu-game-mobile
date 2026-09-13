@@ -2,39 +2,374 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Základné štýly pre mobilnú app */
-* { -webkit-tap-highlight-color: transparent; }
+/* ═══════════════════════════════════════════
+   SG:U GAME MOBILE — SCI-FI HUD VISUAL SYSTEM
+   ═══════════════════════════════════════════ */
 
-body {
-  @apply bg-sgu-dark text-sgu-text;
-  font-family: 'Segoe UI', system-ui, sans-serif;
+/* Base */
+* { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
+
+:root {
+  --c-dark:    #050d1a;
+  --c-navy:    #0a1628;
+  --c-panel:   #071221;
+  --c-blue:    #0d2040;
+  --c-accent:  #1eaaff;
+  --c-accent2: #00e5ff;
+  --c-gold:    #f0c040;
+  --c-red:     #ff3b3b;
+  --c-green:   #00ff88;
+  --c-text:    #a8c8f0;
+  --c-dim:     #4a6a8c;
+  --glow-sm:   0 0 8px rgba(30,170,255,0.5);
+  --glow-md:   0 0 16px rgba(30,170,255,0.4), 0 0 32px rgba(30,170,255,0.2);
+  --glow-lg:   0 0 24px rgba(30,170,255,0.5), 0 0 60px rgba(30,170,255,0.2);
+  --border-glow: 1px solid rgba(30,170,255,0.35);
+}
+
+html, body {
+  margin: 0; padding: 0;
+  background: var(--c-dark);
+  color: var(--c-text);
+  font-family: 'Rajdhani', 'Segoe UI', sans-serif;
+  font-size: 15px;
   overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Touch-friendly tlačidlá */
-.btn {
-  @apply min-h-[48px] px-4 py-3 rounded-lg font-semibold text-sm
-         active:scale-95 transition-transform duration-75 select-none;
-}
-.btn-primary  { @apply bg-sgu-accent text-white; }
-.btn-danger   { @apply bg-red-600 text-white; }
-.btn-ghost    { @apply bg-white/10 text-sgu-text; }
+/* ── TYPOGRAPHY ── */
+.font-hud   { font-family: 'Orbitron', monospace; }
+.font-body  { font-family: 'Rajdhani', sans-serif; }
 
-/* Karta */
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 3px; background: var(--c-panel); }
+::-webkit-scrollbar-thumb { background: var(--c-accent); border-radius: 2px; }
+
+/* ── GLOBAL PAGE WRAPPER ── */
+.page-content {
+  min-height: 100vh;
+  padding: 0 0 96px 0;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* ── HUD PANEL (replaces .card) ── */
+.hud-panel {
+  position: relative;
+  background: rgba(5, 18, 38, 0.85);
+  border: var(--border-glow);
+  border-radius: 4px;
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+}
+
+/* Corner accents */
+.hud-panel::before,
+.hud-panel::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: var(--c-accent);
+  border-style: solid;
+  z-index: 1;
+}
+.hud-panel::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.hud-panel::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+/* Inner top-right + bottom-left corners via pseudo on child */
+.hud-panel .corner-tr {
+  position: absolute; top: -1px; right: -1px;
+  width: 10px; height: 10px;
+  border-top: 2px solid var(--c-accent);
+  border-right: 2px solid var(--c-accent);
+  z-index: 1;
+}
+.hud-panel .corner-bl {
+  position: absolute; bottom: -1px; left: -1px;
+  width: 10px; height: 10px;
+  border-bottom: 2px solid var(--c-accent);
+  border-left: 2px solid var(--c-accent);
+  z-index: 1;
+}
+
+/* Inner scan line */
+.hud-panel .scan-line {
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--c-accent), transparent);
+  opacity: 0.4;
+  animation: scanMove 3s ease-in-out infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* HUD Panel header bar */
+.hud-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: linear-gradient(90deg, rgba(30,170,255,0.12) 0%, transparent 100%);
+  border-bottom: 1px solid rgba(30,170,255,0.2);
+  font-family: 'Orbitron', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--c-accent);
+}
+.hud-header .hud-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  box-shadow: var(--glow-sm);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ── GLOW VARIANTS ── */
+.glow-accent  { box-shadow: var(--glow-md); }
+.glow-gold    { box-shadow: 0 0 12px rgba(240,192,64,0.4); }
+.glow-green   { box-shadow: 0 0 12px rgba(0,255,136,0.4); }
+.glow-red     { box-shadow: 0 0 12px rgba(255,59,59,0.5); }
+
+/* ── RESOURCE CHIP ── */
+.res-chip {
+  display: flex;
+  flex-direction: column;
+  background: rgba(5,18,38,0.9);
+  border: 1px solid rgba(30,170,255,0.2);
+  border-radius: 4px;
+  padding: 8px 10px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.res-chip:active { border-color: var(--c-accent); }
+.res-chip .res-bar {
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--c-accent), var(--c-accent2));
+  box-shadow: 0 0 6px var(--c-accent);
+  transition: width 1s ease;
+}
+
+/* ── STAT BLOCK ── */
+.stat-block {
+  background: rgba(5,18,38,0.8);
+  border: 1px solid rgba(30,170,255,0.15);
+  border-radius: 4px;
+  padding: 10px 12px;
+  position: relative;
+}
+.stat-block .stat-label {
+  font-family: 'Orbitron', monospace;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--c-dim);
+  margin-bottom: 2px;
+}
+.stat-block .stat-value {
+  font-family: 'Orbitron', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* ── BUTTONS ── */
+.btn-hud {
+  font-family: 'Orbitron', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  border-radius: 3px;
+  border: 1px solid var(--c-accent);
+  background: rgba(30,170,255,0.1);
+  color: var(--c-accent);
+  cursor: pointer;
+  transition: all 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+.btn-hud:active {
+  transform: scale(0.96);
+  background: rgba(30,170,255,0.25);
+  box-shadow: var(--glow-sm);
+}
+.btn-hud.btn-primary {
+  background: rgba(30,170,255,0.2);
+  box-shadow: var(--glow-sm);
+}
+.btn-hud.btn-danger {
+  border-color: var(--c-red);
+  background: rgba(255,59,59,0.1);
+  color: var(--c-red);
+}
+
+/* ── ALERT ITEM ── */
+.alert-item {
+  padding: 10px 12px;
+  background: rgba(30,170,255,0.05);
+  border-left: 2px solid var(--c-accent);
+  border-bottom: 1px solid rgba(30,170,255,0.1);
+  font-size: 13px;
+  color: var(--c-text);
+  font-family: 'Rajdhani', sans-serif;
+  line-height: 1.4;
+}
+.alert-item.alert-warn {
+  border-left-color: var(--c-gold);
+  background: rgba(240,192,64,0.05);
+}
+
+/* ── TOP BAR / HEADER ── */
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(5,13,26,0.95);
+  border-bottom: 1px solid rgba(30,170,255,0.2);
+  backdrop-filter: blur(12px);
+  padding: 0 16px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ── BOTTOM NAV ── */
+.bottom-nav {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 50;
+  background: rgba(5,13,26,0.97);
+  border-top: 1px solid rgba(30,170,255,0.25);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 -4px 30px rgba(0,0,0,0.5);
+  display: flex;
+  height: 60px;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.nav-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-family: 'Orbitron', monospace;
+  font-size: 8px;
+  letter-spacing: 0.5px;
+  color: var(--c-dim);
+  transition: color 0.15s;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+.nav-tab.active { color: var(--c-accent); }
+.nav-tab.active::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 20%; right: 20%;
+  height: 2px;
+  background: var(--c-accent);
+  box-shadow: 0 0 8px var(--c-accent);
+  border-radius: 0 0 3px 3px;
+}
+.nav-tab .nav-icon { font-size: 20px; line-height: 1; }
+
+/* ── SCANLINE GLOBAL OVERLAY ── */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.04) 2px,
+    rgba(0,0,0,0.04) 4px
+  );
+  opacity: 0.6;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+@keyframes scanMove {
+  0%   { top: 0%; opacity: 0; }
+  10%  { opacity: 0.5; }
+  90%  { opacity: 0.5; }
+  100% { top: 100%; opacity: 0; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(30,170,255,0.3); }
+  50%       { box-shadow: 0 0 20px rgba(30,170,255,0.7), 0 0 40px rgba(30,170,255,0.3); }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.anim-fade-up   { animation: fadeInUp 0.4s ease both; }
+.anim-glow-pulse { animation: glowPulse 2.5s ease-in-out infinite; }
+.anim-spin      { animation: spin 1s linear infinite; }
+.anim-blink     { animation: blink 1s step-end infinite; }
+
+/* ── PROGRESS BAR ── */
+.hud-progress {
+  height: 4px;
+  background: rgba(30,170,255,0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+.hud-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--c-accent), var(--c-accent2));
+  box-shadow: 0 0 8px var(--c-accent);
+  border-radius: 2px;
+  transition: width 1.2s ease;
+}
+
+/* ── DIVIDER ── */
+.hud-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(30,170,255,0.3), transparent);
+  margin: 0;
+}
+
+/* ── LEGACY CARD (compatibility) ── */
 .card {
   @apply bg-sgu-navy rounded-xl p-4 border border-white/10;
 }
-
-/* Scrollovateľný obsah s miestom pre bottom nav */
-.page-content {
-  @apply pb-24 pt-4 px-4 min-h-screen overflow-y-auto;
+.btn {
+  @apply min-h-[44px] px-4 py-2 rounded font-semibold text-sm active:scale-95 transition-transform duration-75 select-none;
 }
+.btn-ghost { @apply bg-white/10 text-sgu-text; }
 
-/* Drawer hex-grid overlay (bez inline SVG kvôli Vue parseru) */
+/* Drawer hex-grid overlay */
 .hex-bg {
-  background-color: #209cff;
   background-image:
-    repeating-linear-gradient(60deg,  transparent, transparent 10px, rgba(32,156,255,0.06) 10px, rgba(32,156,255,0.06) 11px),
+    repeating-linear-gradient(60deg, transparent, transparent 10px, rgba(32,156,255,0.06) 10px, rgba(32,156,255,0.06) 11px),
     repeating-linear-gradient(-60deg, transparent, transparent 10px, rgba(32,156,255,0.06) 10px, rgba(32,156,255,0.06) 11px);
-  background-color: transparent;
 }
+
+/* pb-safe */
+.pb-safe { padding-bottom: env(safe-area-inset-bottom, 8px); }
