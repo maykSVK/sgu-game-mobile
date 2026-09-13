@@ -1,31 +1,50 @@
 <template>
   <!-- Fixná spodná navigácia -->
-  <nav class="fixed bottom-0 left-0 right-0 bg-sgu-navy border-t border-white/10
-              flex items-center justify-around z-50
-              pb-safe">
+  <nav class="fixed bottom-0 left-0 right-0 bg-sgu-navy border-t z-50 pb-safe flex items-stretch"
+       style="border-color: rgba(32,156,255,0.2); box-shadow: 0 -4px 20px rgba(0,0,0,0.4);">
+    <!-- Bežné taby -->
     <RouterLink
       v-for="item in navItems"
       :key="item.to"
       :to="item.to"
-      class="flex flex-col items-center py-2 px-3 min-w-[60px] transition-colors duration-150"
-      :class="isActive(item.to) ? 'text-sgu-accent' : 'text-sgu-text/50'"
+      class="flex flex-col items-center justify-center py-2 px-1 flex-1 min-w-0 transition-colors duration-150 relative"
+      :class="isActive(item.to) ? 'text-sgu-accent' : 'text-sgu-text/40'"
     >
-      <span class="text-2xl">{{ item.icon }}</span>
-      <span class="text-[10px] mt-0.5 font-medium">{{ item.label }}</span>
+      <!-- Active glow underline -->
+      <div v-if="isActive(item.to)"
+           class="absolute top-0 left-1/2 -translate-x-1/2 h-0.5 w-8 rounded-full"
+           style="background: #209cff; box-shadow: 0 0 8px #209cff;"></div>
+
+      <span class="text-2xl leading-none">{{ item.icon }}</span>
+      <span class="text-[9px] mt-0.5 font-medium truncate max-w-full px-1">{{ item.label }}</span>
     </RouterLink>
+
+    <!-- "Viac" tab – otvára hamburger drawer -->
+    <button
+      @click="$emit('open-drawer')"
+      class="flex flex-col items-center justify-center py-2 px-1 flex-1 min-w-0 transition-colors duration-150"
+      :class="drawerHint ? 'text-sgu-accent' : 'text-sgu-text/40'"
+    >
+      <span class="text-2xl leading-none">☰</span>
+      <span class="text-[9px] mt-0.5 font-medium">Viac</span>
+    </button>
   </nav>
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import { useRoute } from 'vue-router'
+
+defineEmits(['open-drawer'])
+
 const route = useRoute()
+const drawerHint = ref(false)
 
 const navItems = [
-  { to: '/',         icon: '🖥️',  label: 'Dashboard' },
-  { to: '/research', icon: '🔬',  label: 'Výskum'    },
-  { to: '/universe', icon: '🌌',  label: 'Vesmír'    },
-  { to: '/arena',    icon: '⚔️',  label: 'Aréna'     },
-  { to: '/stats',    icon: '📊',  label: 'Štatistiky'},
+  { to: '/',          icon: '🖥️',  label: 'Dashboard' },
+  { to: '/universe',  icon: '🌌',  label: 'Vesmír'    },
+  { to: '/arena',     icon: '⚔️',  label: 'Aréna'     },
+  { to: '/research',  icon: '🔬',  label: 'Výskum'    },
 ]
 
 function isActive(path) {

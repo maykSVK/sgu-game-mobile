@@ -29,3 +29,12 @@ body {
 .page-content {
   @apply pb-24 pt-4 px-4 min-h-screen overflow-y-auto;
 }
+
+/* Drawer hex-grid overlay (bez inline SVG kvôli Vue parseru) */
+.hex-bg {
+  background-color: #209cff;
+  background-image:
+    repeating-linear-gradient(60deg,  transparent, transparent 10px, rgba(32,156,255,0.06) 10px, rgba(32,156,255,0.06) 11px),
+    repeating-linear-gradient(-60deg, transparent, transparent 10px, rgba(32,156,255,0.06) 10px, rgba(32,156,255,0.06) 11px);
+  background-color: transparent;
+}
