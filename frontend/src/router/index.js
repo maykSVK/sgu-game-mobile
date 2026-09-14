@@ -24,7 +24,7 @@ const routes = [
   { path: '/market',     name: 'market',     ...wip('Obchodná stanica')  },
   { path: '/lab',        name: 'lab',        ...wip('Laboratórium')      },
   { path: '/stats',      name: 'stats',      ...wip('Štatistiky')        },
-  { path: '/reports',    name: 'reports',    ...wip('Quest Log / Reporty') },
+  { path: '/reports',    name: 'reports',    component: () => import('../views/ReportsView.vue') },
   { path: '/arena',      name: 'arena',      ...wip('Aréna')            },
 
   // ── Fallback ──────────────────────────────────────────────────

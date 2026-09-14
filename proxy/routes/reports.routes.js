@@ -17,23 +17,10 @@ router.get('/', async (req, res) => {
       html = await fetchPage(targetUrl.startsWith('/') ? targetUrl : '/' + targetUrl);
     }
     
-    const $ = cheerio.load(html);
-    
-    // Odstránime zbytočnosti (pätička, prémiový obchod, facebook, discord...)
-    $('.premium-shop, .facebook-badge, .discord-badge, footer, .footer, .chat-box').remove();
-    
-    let contentHtml = $('.content-container').html();
-    if (!contentHtml) contentHtml = $('.container .row .col-12').html();
-    if (!contentHtml) contentHtml = '<p class="p-4 text-center">Nenašli sa žiadne dáta.</p>';
-    
-    // DEBUG: Extract all forms
-    const forms = [];
-    $('form').each((i, el) => {
-       forms.push($.html(el));
-    });
-    require('fs').writeFileSync(__dirname + '/reports_forms.json', JSON.stringify(forms, null, 2));
+    const { parseReports } = require('../parsers/reports');
+    const parsedData = parseReports(html);
 
-    res.json({ ok: true, data: { html: contentHtml } });
+    res.json({ ok: true, data: parsedData });
   } catch (err) {
     require('fs').writeFileSync(__dirname + '/reports_error.log', err.message);
     res.status(500).json({ ok: false, error: err.message });
