@@ -1,229 +1,185 @@
 <template>
-  <!-- Starfield pozadie -->
+  <!-- Vesmírne pozadie -->
   <StarField />
+  <div class="sgu-scanlines" />
 
-  <!-- Scanlines overlay -->
-  <div class="scanlines" />
-
-  <!-- Hlavní wrapper -->
-  <div class="page-content" style="position:relative; z-index:1;">
+  <!-- Hlavný wrapper -->
+  <div class="sgu-page">
 
     <!-- ══ TOP BAR ══ -->
-    <div class="top-bar">
-      <!-- Levá: logo + player -->
-      <div class="flex items-center gap-3">
-        <div class="font-hud text-xs font-bold tracking-widest" style="color:var(--c-accent); letter-spacing:3px;">
-          SG·U
+    <div class="sgu-topbar">
+      <!-- Ľavá: logo + hráč -->
+      <div style="display:flex; align-items:center; gap:8px;">
+        <img src="/src/assets/img/sgu-game.png" alt="SG:U" style="height:22px; filter:drop-shadow(0 0 6px rgba(4,190,254,0.5));" />
+        <div v-if="data?.player?.username" class="sgu-player-badge">
+          👨‍🚀 {{ data.player.username }}
         </div>
-        <div class="hud-divider" style="width:1px; height:24px; background:rgba(30,170,255,0.3);"></div>
-        <div v-if="data?.player?.username" class="flex items-center gap-2">
-          <div class="relative">
-            <div class="w-8 h-8 rounded flex items-center justify-center text-base"
-                 style="background:rgba(30,170,255,0.1); border:1px solid rgba(30,170,255,0.4); box-shadow:var(--glow-sm);">
-              👨‍🚀
-            </div>
-            <div class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full"
-                 style="background:var(--c-green); border:1px solid var(--c-dark); box-shadow:0 0 6px var(--c-green);"></div>
-          </div>
-          <div>
-            <div class="font-hud text-xs font-bold text-white tracking-wide">{{ data.player.username }}</div>
-            <div class="text-[9px] tracking-wider uppercase" style="color:var(--c-dim);">
-              {{ data.player.rankClass?.replace('rank-standard','').replace(/-/g,' ').trim() || 'Velitel' }}
-            </div>
-          </div>
-        </div>
-        <div v-else class="font-hud text-xs" style="color:var(--c-dim);">NAČÍTÁVÁM...</div>
+        <div v-else style="font-size:11px; color:rgba(4,190,254,0.5);">Načítavam...</div>
       </div>
 
-      <!-- Pravá: notif + refresh -->
-      <div class="flex items-center gap-2">
-        <router-link v-if="data?.hasNewReport" to="/reports"
-          class="flex items-center gap-1 px-2 py-1 text-[9px] font-hud tracking-wider rounded"
-          style="background:rgba(255,59,59,0.15); border:1px solid rgba(255,59,59,0.5); color:var(--c-red); animation:glowPulse 1.5s infinite;">
+      <!-- Pravá: report badge + refresh -->
+      <div style="display:flex; align-items:center; gap:6px;">
+        <router-link v-if="data?.hasNewReport" to="/reports" class="sgu-report-badge">
           ⚠ REPORT
         </router-link>
-        <button @click="refresh"
-          class="w-8 h-8 flex items-center justify-center rounded text-base"
-          :class="loading ? 'anim-spin' : ''"
-          style="background:rgba(30,170,255,0.08); border:1px solid rgba(30,170,255,0.25); color:var(--c-accent);">
-          ↺
-        </button>
+        <button
+          @click="refresh"
+          class="sgu-refresh-btn"
+          :class="loading ? 'sg-spin' : ''"
+          title="Obnoviť"
+        >↺</button>
       </div>
     </div>
 
     <!-- ══ LOADING ══ -->
-    <div v-if="loading && !data" class="flex flex-col items-center justify-center py-20 gap-4">
-      <div class="w-16 h-16 rounded-full flex items-center justify-center font-hud text-2xl anim-glow-pulse"
-           style="border:2px solid var(--c-accent); color:var(--c-accent); box-shadow:var(--glow-md);">
-        ⟳
-      </div>
-      <div class="font-hud text-xs tracking-widest" style="color:var(--c-dim); letter-spacing:3px;">
-        NAČÍTÁVÁM SYSTÉMY<span class="anim-blink">_</span>
-      </div>
+    <div v-if="loading && !data" class="sgu-loading">
+      <div class="sgu-loading-ring"></div>
+      <div class="sgu-loading-text">Načítavam systémy<span class="sg-blink">_</span></div>
     </div>
 
     <!-- ══ CHYBA ══ -->
-    <div v-else-if="error" class="mx-4 mt-4 hud-panel anim-fade-up" style="border-color:rgba(255,59,59,0.5);">
-      <div class="corner-tr"></div><div class="corner-bl"></div>
-      <div class="hud-header" style="color:var(--c-red); border-bottom-color:rgba(255,59,59,0.2);">
-        <div class="hud-dot" style="background:var(--c-red);"></div> CHYBA SYSTÉMU
-      </div>
-      <div class="p-4">
-        <p class="text-sm mb-3" style="color:rgba(255,100,100,0.9);">{{ error }}</p>
-        <button @click="refresh" class="btn-hud">↺ ZNOVU</button>
-      </div>
+    <div v-else-if="error" class="sgu-error sg-fade-up">
+      <div style="font-weight:bold; margin-bottom:6px;">⚠ Chyba systému</div>
+      <div style="font-size:12px;">{{ error }}</div>
+      <button @click="refresh" class="sgu-btn" style="margin-top:10px; width:100%;">↺ Skúsiť znova</button>
     </div>
 
-    <!-- ══ HLAVNÍ OBSAH ══ -->
+    <!-- ══ HLAVNÝ OBSAH ══ -->
     <template v-else-if="data">
-      <div class="px-4 pt-3 space-y-4">
+      <div style="padding: 10px 10px 0; display:flex; flex-direction:column; gap:10px;">
 
-        <!-- ── SUROVINY (Resource Grid) ── -->
-        <section v-if="Object.keys(data.resources || {}).length" class="anim-fade-up">
-          <div class="flex items-center gap-2 mb-2">
-            <div class="font-hud text-[9px] tracking-widest" style="color:var(--c-dim); letter-spacing:2.5px;">
-              ▸ ZDROJE LODE
-            </div>
-            <div class="flex-1 hud-divider"></div>
-          </div>
-          <div class="grid grid-cols-3 gap-2">
-            <div v-for="(val, key) in data.resources" :key="key"
-                 v-show="!['renown','happiness','success','progress','progress-bar'].includes(key)"
-                 class="res-chip">
-              <div class="text-[9px] font-hud tracking-wider mb-1 truncate" style="color:var(--c-dim);">
-                {{ resourceIcon(key) }} {{ key }}
-              </div>
-              <div class="font-hud text-sm font-bold truncate"
-                   :style="`color: ${resourceColor(key)};`"
-                   v-html="formatResourceVal(val)">
-              </div>
-              <!-- Animovaný bottom bar -->
-              <div class="res-bar" :style="`width: ${resourcePercent(val)}%;`"></div>
+        <!-- ── ZDROJE LODE ── -->
+        <section v-if="Object.keys(data.resources || {}).length" class="sg-fade-up">
+          <div class="sgu-section-label">▸ Zdroje lode</div>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:6px;">
+            <div
+              v-for="(val, key) in data.resources" :key="key"
+              v-show="!['renown','happiness','success','progress','progress-bar'].includes(key)"
+              class="sgu-res-chip"
+            >
+              <div class="sgu-res-label">{{ resourceIcon(key) }} {{ key }}</div>
+              <div class="sgu-res-value" :style="`color:${resourceColor(key)};`" v-html="formatResourceVal(val)"></div>
+              <div class="sgu-res-bar" :style="`width:${resourcePercent(val)}%;`"></div>
             </div>
           </div>
         </section>
 
         <!-- ── ŠTATISTIKY LODE ── -->
-        <section v-if="Object.keys(data.stats || {}).length" class="anim-fade-up" style="animation-delay:0.05s;">
-          <div class="flex items-center gap-2 mb-2">
-            <div class="font-hud text-[9px] tracking-widest" style="color:var(--c-dim); letter-spacing:2.5px;">▸ STATISTIKY</div>
-            <div class="flex-1 hud-divider"></div>
+        <section v-if="Object.keys(data.stats || {}).length" class="sgu-panel sg-fade-up" style="animation-delay:0.05s;">
+          <div class="sgu-panel-title">
+            <span class="dot"></span>
+            Štatistiky Destiny
           </div>
-          <div class="grid grid-cols-2 gap-2">
-            <div v-for="(val, key) in data.stats" :key="key" class="stat-block">
-              <div class="stat-label">{{ key.replace(/-/g,' ') }}</div>
-              <div class="stat-value text-xs truncate">{{ formatStatVal(val) }}</div>
+          <div class="sgu-panel-body">
+            <div v-for="(val, key) in data.stats" :key="key" class="sgu-stat-row">
+              <span class="sgu-stat-key">{{ key.replace(/-/g,' ') }}</span>
+              <span class="sgu-stat-val">{{ formatStatVal(val) }}</span>
             </div>
           </div>
         </section>
 
-        <!-- ── ROZKAZY PRO DESTINY ── -->
-        <section class="hud-panel anim-fade-up" style="animation-delay:0.1s;">
-          <div class="corner-tr"></div><div class="corner-bl"></div>
-          <div class="scan-line"></div>
-          <div class="hud-header">
-            <div class="hud-dot"></div>
-            ROZKAZY PRO DESTINY
-            <span class="ml-auto font-hud text-[8px]" style="color:var(--c-dim);">MŮSTEK</span>
+        <!-- ── ROZKAZY PRE DESTINY ── -->
+        <section class="sgu-panel sg-fade-up" style="animation-delay:0.08s;">
+          <div class="sgu-panel-title">
+            <span class="dot"></span>
+            Rozkazy pre Destiny
+            <span style="margin-left:auto; font-size:9px; color:rgba(4,190,254,0.5);">MŮSTEK</span>
           </div>
-          <div class="p-3 grid grid-cols-2 gap-2">
-            <button class="btn-hud btn-primary text-center">⚡ AUTOPILOT</button>
-            <button class="btn-hud text-center">🌀 FTL LET</button>
-            <button class="btn-hud col-span-2 text-center" style="font-size:9px;">
-              🌍 ORBITÁLNÍ SKEN PLANETY
-            </button>
+          <div class="sgu-panel-body" style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+            <button class="sgu-btn" style="font-size:11px; padding:7px 8px;">⚡ Autopilot</button>
+            <button class="sgu-btn" style="font-size:11px; padding:7px 8px;">🌀 FTL let</button>
+            <button class="sgu-btn" style="font-size:11px; padding:7px 8px; grid-column:1/-1;">🌍 Orbitálny sken planéty</button>
           </div>
         </section>
 
         <!-- ── VÝSTRAHY A HLÁSENIA ── -->
-        <section v-if="data.alerts?.length" class="hud-panel anim-fade-up" style="animation-delay:0.15s;">
-          <div class="corner-tr"></div><div class="corner-bl"></div>
-          <div class="hud-header">
-            <div class="hud-dot" style="background:var(--c-gold); box-shadow:0 0 8px var(--c-gold);"></div>
-            VÝSTRAHY A HLÁŠENÍ
-            <span class="ml-auto text-[8px] font-hud px-2 py-0.5 rounded"
-                  style="background:rgba(240,192,64,0.1); border:1px solid rgba(240,192,64,0.3); color:var(--c-gold);">
+        <section v-if="data.alerts?.length" class="sgu-panel sg-fade-up" style="animation-delay:0.1s;">
+          <div class="sgu-panel-title" style="border-bottom-color:rgba(255,200,0,0.3);">
+            <span class="dot" style="background:gold; box-shadow:0 0 6px gold;"></span>
+            Výstrahy a hlásenia
+            <span style="margin-left:auto; background:rgba(255,200,0,0.1); border:1px solid rgba(255,200,0,0.3); color:gold; font-size:10px; border-radius:2px; padding:1px 6px;">
               {{ data.alerts.length }}
             </span>
           </div>
           <div>
-            <div v-for="(alert, i) in data.alerts.slice(0,4)" :key="i" class="alert-item">
+            <div v-for="(alert, i) in data.alerts.slice(0,5)" :key="i" class="sgu-alert">
               {{ alert }}
             </div>
-            <div v-if="data.alerts.length > 4"
-                 class="px-3 py-2 text-[10px] font-hud text-center"
-                 style="color:var(--c-dim);">
-              + {{ data.alerts.length - 4 }} dalších hlášení
+            <div v-if="data.alerts.length > 5"
+                 style="padding:6px 10px; font-size:10px; color:rgba(4,190,254,0.5); text-align:center; cursor:pointer;"
+                 @click="showAllAlerts = !showAllAlerts">
+              {{ showAllAlerts ? '▲ Skryť' : `+ ${data.alerts.length - 5} ďalších hlásení ▼` }}
             </div>
+            <template v-if="showAllAlerts">
+              <div v-for="(alert, i) in data.alerts.slice(5)" :key="'a'+i" class="sgu-alert">
+                {{ alert }}
+              </div>
+            </template>
           </div>
         </section>
 
         <!-- ── QUEST LOG ── -->
-        <section v-if="data.quests?.length" class="hud-panel anim-fade-up" style="animation-delay:0.2s; border-color:rgba(30,100,255,0.4);">
-          <div class="corner-tr" style="border-color:rgba(50,130,255,0.6);"></div>
-          <div class="corner-bl" style="border-color:rgba(50,130,255,0.6);"></div>
-          <div class="hud-header" style="background:linear-gradient(90deg, rgba(50,100,255,0.12) 0%, transparent 100%); border-bottom-color:rgba(50,130,255,0.2);">
-            <div class="hud-dot" style="background:#4a7aff; box-shadow:0 0 8px #4a7aff;"></div>
-            QUEST LOG
+        <section v-if="data.quests?.length" class="sgu-panel sg-fade-up" style="animation-delay:0.15s; border-color:rgba(30,100,255,0.4);">
+          <div class="sgu-panel-title" style="background:rgba(30,80,200,0.2); border-bottom-color:rgba(50,100,255,0.3);">
+            <span class="dot" style="background:#4a7aff; box-shadow:0 0 6px #4a7aff;"></span>
+            Quest Log
           </div>
-          <div class="p-3 space-y-1.5">
-            <div v-for="(q, i) in data.quests" :key="i"
-                 class="flex items-start gap-2 text-xs"
-                 :class="i === 0 ? 'font-bold' : 'opacity-70'">
-              <span :style="i === 0 ? 'color:#4a7aff;' : 'color:var(--c-dim);'">{{ i === 0 ? '►' : '·' }}</span>
-              <span :style="i === 0 ? 'color:#a0c0ff;' : 'color:var(--c-text);'">{{ q }}</span>
+          <div class="sgu-panel-body">
+            <div
+              v-for="(q, i) in data.quests" :key="i"
+              style="display:flex; align-items:flex-start; gap:8px; margin-bottom:5px;"
+              :style="i === 0 ? 'font-weight:bold;' : 'opacity:0.65;'"
+            >
+              <span :style="i===0 ? 'color:#4a7aff;' : 'color:rgba(255,255,255,0.3);'">{{ i===0 ? '►' : '·' }}</span>
+              <span style="font-size:12px;">{{ q }}</span>
             </div>
           </div>
         </section>
 
-        <!-- ── DENNÍ PŘÍJEM / INFO BOXY ── -->
-        <section v-if="data.infoboxes?.length" class="space-y-3 anim-fade-up" style="animation-delay:0.25s;">
-          <div class="flex items-center gap-2 mb-1">
-            <div class="font-hud text-[9px] tracking-widest" style="color:var(--c-dim); letter-spacing:2.5px;">▸ DENNÍ REPORTY</div>
-            <div class="flex-1 hud-divider"></div>
-          </div>
-          <div v-for="box in data.infoboxes" :key="box.title" class="hud-panel">
-            <div class="corner-tr"></div><div class="corner-bl"></div>
-            <div class="hud-header">
-              <div class="hud-dot"></div>
-              {{ box.title.replace(/\[\?\]|\[x\]/g,'').trim() }}
-            </div>
-            <div class="p-3 text-xs leading-relaxed" style="color:var(--c-text); font-family:'Rajdhani',sans-serif;">
-              {{ box.content }}{{ box.content?.length === 300 ? '…' : '' }}
+        <!-- ── DENNÉ REPORTY / INFO BOXY ── -->
+        <section v-if="data.infoboxes?.length" class="sg-fade-up" style="animation-delay:0.2s;">
+          <div class="sgu-section-label">▸ Denné reporty</div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div v-for="box in data.infoboxes" :key="box.title" class="sgu-panel">
+              <div class="sgu-panel-title">
+                <span class="dot"></span>
+                {{ box.title.replace(/\[\?\]|\[x\]/g,'').trim() }}
+              </div>
+              <div class="sgu-panel-body" style="font-size:12px; line-height:1.5; color:rgba(255,255,255,0.85);">
+                {{ box.content }}{{ box.content?.length === 300 ? '…' : '' }}
+              </div>
             </div>
           </div>
         </section>
 
         <!-- ── CHAT ── -->
-        <section v-if="data.chat?.length" class="hud-panel anim-fade-up" style="animation-delay:0.3s; border-color:rgba(30,170,255,0.15);">
-          <div class="corner-tr"></div><div class="corner-bl"></div>
-          <div class="hud-header" style="color:var(--c-dim); background:none;">
-            <div class="hud-dot" style="background:var(--c-dim); box-shadow:none;"></div>
-            HERNÍ CHAT
+        <section v-if="data.chat?.length" class="sgu-panel sg-fade-up" style="animation-delay:0.25s; border-color:rgba(4,190,254,0.15);">
+          <div class="sgu-panel-title" style="color:rgba(255,255,255,0.5); background:none;">
+            <span class="dot" style="background:rgba(255,255,255,0.3); box-shadow:none;"></span>
+            Herný chat
           </div>
-          <div class="max-h-40 overflow-y-auto p-3 space-y-1">
-            <div v-for="(msg, i) in data.chat" :key="i"
-                 class="text-xs leading-relaxed"
-                 style="color:var(--c-dim); font-family:'Rajdhani',sans-serif;">
-              <span style="color:rgba(30,170,255,0.4);">&gt;</span> {{ msg }}
+          <div style="max-height:150px; overflow-y:auto; padding:8px 10px; display:flex; flex-direction:column; gap:4px;">
+            <div
+              v-for="(msg, i) in data.chat" :key="i"
+              style="font-size:12px; color:rgba(255,255,255,0.55); line-height:1.35;"
+            >
+              <span style="color:rgba(4,190,254,0.4);">&gt;</span> {{ msg }}
             </div>
           </div>
         </section>
 
-        <!-- Prázdný panel když nejsou data -->
-        <section v-if="!data.alerts?.length && !data.quests?.length" class="hud-panel anim-fade-up">
-          <div class="corner-tr"></div><div class="corner-bl"></div>
-          <div class="scan-line"></div>
-          <div class="hud-header">
-            <div class="hud-dot"></div>
-            SYSTÉM AKTIVNÍ
+        <!-- Ak nie sú žiadne dáta -->
+        <section v-if="!data.alerts?.length && !data.quests?.length" class="sgu-panel sg-fade-up">
+          <div class="sgu-panel-title">
+            <span class="dot sg-glow"></span>
+            Systém aktívny
           </div>
-          <div class="p-4 text-center space-y-2">
-            <div class="font-hud text-2xl" style="color:var(--c-accent);">◈</div>
-            <div class="font-hud text-xs tracking-wider" style="color:var(--c-dim);">
-              VŠECHNY SYSTÉMY V POŘÁDKU
+          <div class="sgu-panel-body" style="text-align:center; padding:20px 10px;">
+            <div style="font-size:24px; color:#04befe; margin-bottom:8px;">◈</div>
+            <div style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(4,190,254,0.6);">
+              Všetky systémy v poriadku
             </div>
-            <div class="text-xs" style="color:rgba(30,170,255,0.5);">Žádná aktivní hlášení</div>
+            <div style="font-size:12px; color:rgba(255,255,255,0.3); margin-top:6px;">Žiadne aktívne hlásenia</div>
           </div>
         </section>
 
@@ -243,40 +199,41 @@ import StarField from '../components/StarField.vue'
 const data    = ref(null)
 const loading = ref(false)
 const error   = ref(null)
+const showAllAlerts = ref(false)
 
 const router = useRouter()
 const auth   = useAuthStore()
 
-// ── Helpers pre zdroje ──
+// ── Resource helpers (pôvodné farby z CSS) ──
 const RESOURCE_ICONS = {
   energia: '⚡', energy: '⚡',
   jedlo: '🍖', food: '🍖',
   voda: '💧', water: '💧',
-  vapno: '🪨', lime: '🪨', vápno: '🪨',
+  vapno: '🪨', lime: '🪨', vápno: '🪨', vapenc: '🪨',
   kredity: '💳', credits: '💳',
   vyskum: '🔬', research: '🔬', výskum: '🔬',
   slava: '⭐', renown: '⭐', sláva: '⭐',
   fragmenty: '🔷', fragments: '🔷',
+  posadka: '👥',
 }
 const RESOURCE_COLORS = {
-  energia: '#f0c040', energy: '#f0c040',
-  jedlo: '#ff8844', food: '#ff8844',
-  voda: '#44aaff', water: '#44aaff',
-  vapno: '#aaaaaa', lime: '#aaaaaa', vápno: '#aaaaaa',
-  kredity: '#f0c040', credits: '#f0c040',
-  vyskum: '#00e5ff', research: '#00e5ff', výskum: '#00e5ff',
-  slava: '#f0c040', renown: '#f0c040', sláva: '#f0c040',
+  energia: '#59d34c', energy: '#59d34c',
+  jedlo: '#e284ff', food: '#e284ff',
+  voda: '#56fff3', water: '#56fff3',
+  vapno: '#ffd760', lime: '#ffd760', vápno: '#ffd760', vapenc: '#ffd760',
+  kredity: 'whitesmoke', credits: 'whitesmoke',
+  vyskum: 'whitesmoke', research: 'whitesmoke', výskum: 'whitesmoke',
+  slava: 'gold', renown: 'gold', sláva: 'gold',
 }
 
 function resourceIcon(key) {
   return RESOURCE_ICONS[key.toLowerCase()] || '◆'
 }
 function resourceColor(key) {
-  return RESOURCE_COLORS[key.toLowerCase()] || 'var(--c-accent)'
+  return RESOURCE_COLORS[key.toLowerCase()] || '#04befe'
 }
 function formatResourceVal(val) {
   if (!val) return '—'
-  // Odstráni textový prefix (napr. "Energia 95/100" → "95/100")
   return val.replace(/^[a-zA-ZáčďéěíňóřšťúůýžÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ\s]+/, '').trim() || val
 }
 function formatStatVal(val) {
@@ -305,7 +262,6 @@ async function refresh() {
     }
   } catch (e) {
     error.value = e.response?.data?.error || 'Nepodarilo sa načítať dashboard'
-    // Demo dáta pre ukážku keď nie je spojenie
     if (!data.value) {
       data.value = {
         player: { username: auth.playerName || 'Veliteľ', rankClass: '' },
@@ -326,6 +282,5 @@ onMounted(refresh)
 </script>
 
 <style scoped>
-/* Scoped override – page-content bez paddingu navrchu */
-:deep(.page-content) { padding-top: 0; }
+/* Scoped: page wrapper bez top paddingu – topbar je sticky */
 </style>

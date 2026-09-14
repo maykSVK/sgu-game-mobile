@@ -1,66 +1,116 @@
 <template>
-  <div class="min-h-screen flex flex-col items-center justify-center px-6 bg-sgu-dark">
+  <!-- Vesmírne pozadie -->
+  <StarField />
+  <div class="sgu-scanlines" />
+
+  <div class="sgu-login-page">
+
     <!-- Logo -->
-    <div class="mb-8 text-center">
-      <div class="text-4xl mb-2">🚀</div>
-      <h1 class="text-2xl font-bold text-sgu-accent tracking-widest uppercase">SGU-Game</h1>
-      <p class="text-sgu-text/60 text-sm mt-1">Mobilný wrapper</p>
+    <div class="sgu-login-logo sg-fade-up">
+      <img src="/src/assets/img/sgu-game.png" alt="SG:U GAME" style="filter: drop-shadow(0 0 10px rgba(4,190,254,0.7));" />
     </div>
 
-    <!-- Login form -->
-    <form @submit.prevent="handleLogin" class="w-full max-w-sm space-y-4">
-      <div>
-        <label class="block text-xs text-sgu-text/60 mb-1 uppercase tracking-wider">Meno hráča</label>
-        <input
-          v-model="username"
-          type="text"
-          autocomplete="username"
-          autocapitalize="none"
-          placeholder="username"
-          class="w-full bg-sgu-navy border border-white/20 rounded-lg px-4 py-3
-                 text-sgu-text placeholder-white/30 focus:outline-none focus:border-sgu-accent
-                 text-base"
-          required
-        />
+    <!-- Login box -->
+    <div class="sgu-login-box sg-fade-up" style="animation-delay:0.1s;">
+      <div class="sgu-login-title">Prihlásenie</div>
+
+      <form @submit.prevent="handleLogin" autocomplete="on">
+        <!-- Username -->
+        <div style="margin-bottom:12px;">
+          <label class="sgu-input-label">Používateľské meno</label>
+          <input
+            v-model="username"
+            type="text"
+            autocomplete="username"
+            autocapitalize="none"
+            autocorrect="off"
+            spellcheck="false"
+            placeholder="Meno hráča"
+            class="sgu-input"
+            required
+          />
+        </div>
+
+        <!-- Password -->
+        <div style="margin-bottom:14px;">
+          <label class="sgu-input-label">Heslo</label>
+          <div style="position:relative;">
+            <input
+              v-model="password"
+              :type="showPass ? 'text' : 'password'"
+              autocomplete="current-password"
+              placeholder="••••••••"
+              class="sgu-input"
+              style="padding-right:40px;"
+              required
+            />
+            <button
+              type="button"
+              @click="showPass = !showPass"
+              style="position:absolute; right:8px; top:50%; transform:translateY(-50%);
+                     background:none; border:none; color:rgba(4,190,254,0.6); cursor:pointer; font-size:16px; padding:0;"
+            >{{ showPass ? '🙈' : '👁' }}</button>
+          </div>
+        </div>
+
+        <!-- Remember me -->
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:14px;">
+          <input
+            type="checkbox"
+            id="rememberMe"
+            v-model="rememberMe"
+            style="width:15px; height:15px; accent-color: #04befe; cursor:pointer;"
+          />
+          <label for="rememberMe" style="font-size:12px; color:rgba(255,255,255,0.7); cursor:pointer; user-select:none;">
+            Zapamätať údaje na zariadení
+          </label>
+        </div>
+
+        <!-- Error -->
+        <div v-if="auth.error" class="sgu-error" style="margin-bottom:12px; margin-left:0; margin-right:0;">
+          ⚠ {{ auth.error }}
+        </div>
+
+        <!-- Submit -->
+        <button
+          type="submit"
+          :disabled="auth.loading"
+          class="sgu-btn sgu-btn-login sgu-btn-full"
+        >
+          <span v-if="auth.loading" class="sg-spin" style="display:inline-block; font-size:16px;">⟳</span>
+          {{ auth.loading ? 'Prihlasovanie...' : 'Prihlásiť sa' }}
+        </button>
+      </form>
+
+      <!-- Extra links -->
+      <div style="margin-top:14px; text-align:center; font-size:11px; color:rgba(255,255,255,0.45);">
+        <a href="#" style="color:rgba(4,190,254,0.6);">Zabudnuté heslo</a>
+        <span style="margin:0 8px; opacity:0.3;">|</span>
+        <a href="#" style="color:rgba(4,190,254,0.6);">Pre registráciu kliknite tu</a>
       </div>
+    </div>
 
-      <div>
-        <label class="block text-xs text-sgu-text/60 mb-1 uppercase tracking-wider">Heslo</label>
-        <input
-          v-model="password"
-          type="password"
-          autocomplete="current-password"
-          placeholder="••••••••"
-          class="w-full bg-sgu-navy border border-white/20 rounded-lg px-4 py-3
-                 text-sgu-text placeholder-white/30 focus:outline-none focus:border-sgu-accent
-                 text-base"
-          required
-        />
+    <!-- Štatistiky servera -->
+    <div class="sgu-login-stats sg-fade-up" style="animation-delay:0.2s;">
+      <div class="sgu-login-stats-title">Štatistiky</div>
+      <div class="sgu-login-stat-row">
+        <span class="sgu-login-stat-key">Hráčov</span>
+        <span class="sgu-login-stat-val">1894</span>
       </div>
-
-      <!-- Remember me -->
-      <div class="flex items-center gap-2 mt-2 mb-4">
-        <input type="checkbox" id="rememberMe" v-model="rememberMe" class="w-4 h-4 rounded bg-sgu-navy border-white/20 text-sgu-accent focus:ring-sgu-accent" />
-        <label for="rememberMe" class="text-sm text-sgu-text/80 cursor-pointer select-none">Zapamätať údaje na zariadení</label>
+      <div class="sgu-login-stat-row">
+        <span class="sgu-login-stat-key">Aliancií</span>
+        <span class="sgu-login-stat-val">0</span>
       </div>
-
-      <!-- Error -->
-      <div v-if="auth.error" class="bg-red-900/40 border border-red-500/50 rounded-lg px-4 py-3 text-red-300 text-sm">
-        {{ auth.error }}
+      <div class="sgu-login-stat-row">
+        <span class="sgu-login-stat-key">Planét</span>
+        <span class="sgu-login-stat-val">184</span>
       </div>
+      <div class="sgu-login-stat-row">
+        <span class="sgu-login-stat-key">Hviezd</span>
+        <span class="sgu-login-stat-val">47</span>
+      </div>
+    </div>
 
-      <!-- Submit -->
-      <button
-        type="submit"
-        :disabled="auth.loading"
-        class="btn btn-primary w-full flex items-center justify-center gap-2"
-      >
-        <span v-if="auth.loading" class="animate-spin text-lg">⟳</span>
-        <span>{{ auth.loading ? 'Prihlasovanie...' : 'Prihlásiť sa' }}</span>
-      </button>
-    </form>
-
-    <p class="mt-8 text-sgu-text/30 text-xs">Proxy server musí bežať na tvojom PC</p>
   </div>
 </template>
 
@@ -68,19 +118,21 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
+import StarField from '../components/StarField.vue'
 
 const auth = useAuthStore()
 const router = useRouter()
-const username = ref('')
-const password = ref('')
+const username  = ref('')
+const password  = ref('')
 const rememberMe = ref(false)
+const showPass   = ref(false)
 
 onMounted(() => {
   const savedUser = localStorage.getItem('sgu_saved_username')
   const savedPass = localStorage.getItem('sgu_saved_password')
   if (savedUser && savedPass) {
-    username.value = savedUser
-    password.value = savedPass
+    username.value  = savedUser
+    password.value  = savedPass
     rememberMe.value = true
   }
 })

@@ -1,5 +1,5 @@
 <template>
-  <div style="min-height:100vh; background:var(--c-dark); position:relative;">
+  <div style="min-height:100vh; position:relative;">
     <!-- Login – bez navigácie -->
     <RouterView v-if="route.name === 'login'" />
 

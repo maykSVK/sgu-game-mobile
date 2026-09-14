@@ -1,5 +1,5 @@
 <template>
-  <nav class="bottom-nav">
+  <nav class="sgu-bottom-nav">
     <!-- Bežné taby -->
     <RouterLink
       v-for="item in navItems"
@@ -10,7 +10,7 @@
     >
       <button
         @click="navigate"
-        class="nav-tab"
+        class="sgu-nav-tab"
         :class="isActive(item.to) ? 'active' : ''"
       >
         <span class="nav-icon">{{ item.icon }}</span>
@@ -18,9 +18,9 @@
       </button>
     </RouterLink>
 
-    <!-- "Viac" – otvára hamburger -->
-    <button class="nav-tab" @click="$emit('open-drawer')">
-      <span class="nav-icon" style="font-size:18px; letter-spacing:-1px;">☰</span>
+    <!-- "Viac" – otvára hamburger drawer -->
+    <button class="sgu-nav-tab" @click="$emit('open-drawer')">
+      <span class="nav-icon" style="font-size:17px; letter-spacing:-1px;">☰</span>
       <span>VIAC</span>
     </button>
   </nav>
@@ -33,10 +33,10 @@ defineEmits(['open-drawer'])
 const route = useRoute()
 
 const navItems = [
-  { to: '/',         icon: '⊞',  label: 'MŮSTEK'  },
-  { to: '/universe', icon: '✦',  label: 'VESMÍR'  },
-  { to: '/arena',    icon: '⚔',  label: 'ARÉNA'   },
-  { to: '/research', icon: '⬡',  label: 'VÝZKUM'  },
+  { to: '/',          icon: '🖥',  label: 'MŮSTEK'  },
+  { to: '/universe',  icon: '✦',   label: 'VESMÍR'  },
+  { to: '/stargate',  icon: '⭕',  label: 'BRÁNA'   },
+  { to: '/research',  icon: '🔬',  label: 'VÝZKUM'  },
 ]
 
 function isActive(path) {
