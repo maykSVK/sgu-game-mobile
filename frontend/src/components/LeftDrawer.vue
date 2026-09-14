@@ -19,7 +19,7 @@
         <button @click="$emit('close')" class="drawer-close-btn">✕</button>
         <div class="left-header-name">
           <span class="rank-strip"></span>
-          {{ auth.playerName || 'Veliteľ' }}
+          {{ auth.playerName || 'Velitel' }}
         </div>
         <div class="left-header-links">
           <span>🖧 Destiny</span> | <span style="color:gold;">⚠ Quest Log</span>
@@ -29,7 +29,7 @@
       <!-- Scrollable content -->
       <div class="left-content sgu-drawer-menu">
         <div v-if="game.loading && !game.data" style="padding:20px; text-align:center; color:#04befe;">
-          Načítavam...
+          Načítám...
         </div>
         
         <template v-else>
@@ -57,7 +57,7 @@
             {{ a.text || a }}
           </div>
           <div v-if="!alerts.length" class="left-alert" style="color:rgba(255,255,255,0.4);">
-            Žiadne hlásenia
+            Žádná hlášení
           </div>
 
           <!-- Ostatní -->
@@ -71,7 +71,7 @@
 
       <!-- Footer: Logout -->
       <div class="sgu-drawer-footer">
-        <button @click="doLogout" class="sgu-btn-logout">🚪 Odhlásiť sa</button>
+        <button @click="doLogout" class="sgu-btn-logout">🚪 Odhlásit se</button>
       </div>
 
     </nav>
@@ -102,7 +102,9 @@ watch(() => props.open, (isOpen) => {
 
 function resValue(val) {
   if (!val) return '—'
-  return String(val).replace(/^[a-zA-ZáčďéěíňóřšťúůýžÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ\s]+/, '').trim() || String(val)
+  let v = String(val).replace(/^[a-zA-ZáčďéěíňóřšťúůýžÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ\s]+/, '').trim()
+  v = v.replace(/^\[\?\]\s*/, '').trim()
+  return v || String(val)
 }
 
 function resPercent(val) {
@@ -112,26 +114,31 @@ function resPercent(val) {
 }
 
 const RES_META = {
-  energia: { label: 'Energie',   icon: '⚡', color: '#59d34c' },
-  energy:  { label: 'Energie',   icon: '⚡', color: '#59d34c' },
-  jedlo:   { label: 'Jídlo',     icon: '🍖', color: '#e284ff' },
-  food:    { label: 'Jídlo',     icon: '🍖', color: '#e284ff' },
-  voda:    { label: 'Voda',      icon: '💧', color: '#56fff3' },
-  water:   { label: 'Voda',      icon: '💧', color: '#56fff3' },
-  vapno:   { label: 'Vápenec',   icon: '🪨', color: '#ffd760' },
-  vapenc:  { label: 'Vápenec',   icon: '🪨', color: '#ffd760' },
-  kredity: { label: 'Kredity',   icon: '💳', color: '#f0f0f0' },
-  credits: { label: 'Kredity',   icon: '💳', color: '#f0f0f0' },
+  energia: { label: 'Energie',       icon: '⚡', color: '#59d34c' },
+  energy:  { label: 'Energie',       icon: '⚡', color: '#59d34c' },
+  jedlo:   { label: 'Jídlo',         icon: '🍖', color: '#e284ff' },
+  food:    { label: 'Jídlo',         icon: '🍖', color: '#e284ff' },
+  voda:    { label: 'Voda',          icon: '💧', color: '#56fff3' },
+  water:   { label: 'Voda',          icon: '💧', color: '#56fff3' },
+  vapno:   { label: 'Vápenec',       icon: '🪨', color: '#ffd760' },
+  vapenc:  { label: 'Vápenec',       icon: '🪨', color: '#ffd760' },
+  limestone:{ label: 'Vápenec',      icon: '🪨', color: '#ffd760' },
+  kredity: { label: 'Kredity',       icon: '💳', color: '#f0f0f0' },
+  credits: { label: 'Kredity',       icon: '💳', color: '#f0f0f0' },
   vyskum:  { label: 'Výzkumné body', icon: '🔬', color: '#f0f0f0' },
   research:{ label: 'Výzkumné body', icon: '🔬', color: '#f0f0f0' },
-  slava:   { label: 'Sláva',     icon: '👑', color: 'gold' },
-  renown:  { label: 'Sláva',     icon: '👑', color: 'gold' },
-  fragmenty: { label: 'Fragmenty', icon: '💠', color: '#04befe' },
-  fragments: { label: 'Fragmenty', icon: '💠', color: '#04befe' },
+  slava:   { label: 'Sláva',         icon: '👑', color: 'gold' },
+  renown:  { label: 'Sláva',         icon: '👑', color: 'gold' },
+  fragmenty: { label: 'Fragmenty',   icon: '💠', color: '#04befe' },
+  fragments: { label: 'Fragmenty',   icon: '💠', color: '#04befe' },
   spokojenost: { label: 'Spokojenost', icon: '😊', color: '#59d34c' },
+  happiness: { label: 'Spokojenost', icon: '😊', color: '#59d34c' },
 }
 
-const SKIP_KEYS = new Set(['success','progress','progress-bar'])
+const SKIP_KEYS = new Set([
+  'success', 'progress', 'progress-bar', 
+  'attack-power', 'attack power', 'shields', 'speed', 'science', 'gates-in-range', 'gates in range', 'crew'
+])
 
 const resources = computed(() => {
   const raw = game.data?.resources || {}
@@ -147,18 +154,32 @@ const stats = computed(() => {
   const raw = game.data?.stats || {}
   const items = []
   
-  // Custom mapping if available, otherwise just format generic
   for (const [k, v] of Object.entries(raw)) {
-    let icon = '🔸'
-    if (k.toLowerCase().includes('útocna') || k.toLowerCase().includes('utocna')) icon = '🎯'
-    if (k.toLowerCase().includes('stity') || k.toLowerCase().includes('štíty')) icon = '🛡'
-    if (k.toLowerCase().includes('rychlost')) icon = '🚀'
-    if (k.toLowerCase().includes('brany') || k.toLowerCase().includes('brány')) icon = '⭕'
-    if (k.toLowerCase().includes('posadka') || k.toLowerCase().includes('posádka')) icon = '👥'
+    const kLow = k.toLowerCase()
     
+    let label = k.replace(/-/g, ' ')
+    let icon = '🔸'
     let isBar = false
     let pct = 0
-    if (k.toLowerCase().includes('vyzkum') || k.toLowerCase().includes('výzkum')) {
+
+    // Překlady do češtiny (původní hra)
+    if (kLow.includes('attack') || kLow.includes('utocna') || kLow.includes('útocna')) {
+      label = 'Útočná síla'
+      icon = '🎯'
+    } else if (kLow.includes('shield') || kLow.includes('stity') || kLow.includes('štíty')) {
+      label = 'Štíty'
+      icon = '🛡'
+    } else if (kLow.includes('speed') || kLow.includes('rychlost')) {
+      label = 'Rychlost'
+      icon = '🚀'
+    } else if (kLow.includes('gate') || kLow.includes('brany') || kLow.includes('brány')) {
+      label = 'Brány v dosahu'
+      icon = '⭕'
+    } else if (kLow.includes('crew') || kLow.includes('posadka') || kLow.includes('posádka')) {
+      label = 'Posádka'
+      icon = '👥'
+    } else if (kLow.includes('science') || kLow.includes('vyzkum') || kLow.includes('výzkum')) {
+      label = 'Výzkum'
       icon = '🔍'
       isBar = true
       pct = resPercent(v)
@@ -166,7 +187,7 @@ const stats = computed(() => {
 
     items.push({
       key: k,
-      label: k.replace(/-/g, ' '),
+      label,
       value: resValue(v),
       icon,
       isBar,

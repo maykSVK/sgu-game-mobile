@@ -38,9 +38,15 @@ function parseDashboard(html) {
   $('#panelTabPlayer div').each((i, el) => {
     const cls = $(el).attr('class');
     if (cls && ['attack-power', 'shields', 'speed', 'science', 'gates-in-range'].includes(cls.split(' ')[0])) {
-       const key = cls.split(' ')[0];
-       const val = $(el).text().trim().replace(/\s+/g, ' ');
-       if (key && val) data.stats[key] = val;
+       let key = cls.split(' ')[0];
+       const text = $(el).text().trim().replace(/\s+/g, ' ');
+       
+       // Pôvodná hra má bug: Posádka má rovnakú CSS triedu "gates-in-range"
+       if (key === 'gates-in-range' && text.toLowerCase().includes('pos')) {
+           key = 'crew';
+       }
+
+       if (key && text) data.stats[key] = text;
     }
   });
 

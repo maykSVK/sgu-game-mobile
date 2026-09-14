@@ -9,6 +9,7 @@
       <!-- Globálny Topbar -->
       <header class="app-topbar">
         <div class="app-topbar-left" @click="leftDrawerOpen = true">
+          <span class="left-menu-icon">☰</span>
           <img src="/src/assets/img/sgu-game.png" alt="SG:U" class="app-logo" />
           <div v-if="auth.playerName" class="app-player-badge">
             <span class="app-player-dot"></span>
@@ -75,6 +76,13 @@ function refreshGlobal() {
   padding: 4px; border-radius: 4px;
 }
 .app-topbar-left:active { background: rgba(4,190,254,0.1); }
+
+.left-menu-icon {
+  font-size: 18px;
+  color: #04befe;
+  margin-right: -2px;
+  display: flex; align-items: center; justify-content: center;
+}
 
 .app-topbar-right { display: flex; align-items: center; gap: 8px; }
 
