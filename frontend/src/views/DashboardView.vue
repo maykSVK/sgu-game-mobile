@@ -4,14 +4,16 @@
 
   <div class="dash-page">
     
-    <!-- SUB-NAVIGATION -->
-    <div class="sub-nav">
-      <router-link to="/">Můstek</router-link> <span class="sep">|</span>
-      <router-link to="/destiny">Strojovna</router-link> <span class="sep">|</span>
-      <router-link to="/crew">Posádka</router-link> <span class="sep">|</span>
-      <router-link to="/checksums">Historie přepočtů</router-link> <span class="sep">|</span>
-      <router-link to="/hero">Hrdinové</router-link> <span class="sep">|</span>
-      <router-link to="/progress">Postup ve hře</router-link>
+    <!-- SUB-NAVIGATION (Scrollable Mobile Tabs) -->
+    <div class="sub-nav-wrapper">
+      <div class="sub-nav-scroll">
+        <router-link to="/" class="sub-nav-btn"><i class="fas fa-desktop"></i> Můstek</router-link>
+        <router-link to="/destiny" class="sub-nav-btn"><i class="fas fa-cogs"></i> Strojovna</router-link>
+        <router-link to="/crew" class="sub-nav-btn"><i class="fas fa-users"></i> Posádka</router-link>
+        <router-link to="/checksums" class="sub-nav-btn"><i class="fas fa-history"></i> Přepočty</router-link>
+        <router-link to="/hero" class="sub-nav-btn"><i class="fas fa-user-shield"></i> Hrdinové</router-link>
+        <router-link to="/progress" class="sub-nav-btn"><i class="fas fa-tasks"></i> Postup</router-link>
+      </div>
     </div>
 
     <div class="dash-content">
@@ -119,25 +121,54 @@ onMounted(() => {
   z-index: 1;
 }
 
-/* ── SUB-NAV ── */
-.sub-nav {
-  background: rgba(0, 0, 0, 0.7);
-  border-bottom: 1px solid rgba(4,190,254,0.3);
-  text-align: center;
-  padding: 8px 5px;
+/* ── SUB-NAV (Scrollable Pills) ── */
+.sub-nav-wrapper {
+  background: rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(4,190,254,0.2);
+  padding: 10px 0;
+  width: 100%;
+}
+.sub-nav-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 0 15px;
+  scroll-behavior: smooth;
+  /* Hide scrollbar for clean look but allow scrolling */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.sub-nav-scroll::-webkit-scrollbar {
+  display: none;
+}
+.sub-nav-btn {
+  flex-shrink: 0;
+  background: rgba(4,190,254,0.1);
+  border: 1px solid rgba(4,190,254,0.4);
+  border-radius: 20px;
+  padding: 8px 16px;
+  color: #fff;
+  text-decoration: none;
   font-family: Orbitron, sans-serif;
   font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
 }
-.sub-nav a {
+.sub-nav-btn i {
   color: #04befe;
-  text-decoration: none;
-  padding: 0 4px;
+  font-size: 14px;
 }
-.sub-nav a:hover, .sub-nav a.router-link-exact-active {
-  color: #fff;
-  text-shadow: 0 0 5px #04befe;
+.sub-nav-btn:hover, .sub-nav-btn.router-link-exact-active {
+  background: rgba(4,190,254,0.3);
+  border-color: #04befe;
+  box-shadow: 0 0 10px rgba(4,190,254,0.4);
 }
-.sep { color: rgba(255,255,255,0.2); }
+.sub-nav-btn.router-link-exact-active {
+  font-weight: bold;
+}
 
 
 .dash-content { padding: 15px; }
