@@ -55,6 +55,12 @@
             <template v-else>
               <div class="res-desc">{{ selectedNodeDetails.description }}</div>
               
+              <!-- Cena výskumu -->
+              <div v-if="selectedNodeDetails.price" class="res-price">
+                <span class="res-price-label">Cena:</span>
+                <span class="res-price-value">{{ selectedNodeDetails.price }}</span>
+              </div>
+              
               <div class="res-req-section">
                 <div class="res-req-title">Požadavky:</div>
                 <div v-for="req in selectedNodeDetails.dependsOn" :key="req.name" 
@@ -391,8 +397,17 @@ onMounted(refresh)
 
 .res-desc {
   font-size: 12px; color: rgba(255,255,255,0.85); line-height: 1.4;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
+
+.res-price {
+  font-size: 11px; margin-bottom: 12px;
+  background: rgba(4,190,254,0.1); padding: 4px 8px;
+  border-left: 2px solid #04befe;
+  display: inline-block; border-radius: 0 2px 2px 0;
+}
+.res-price-label { color: rgba(4,190,254,0.8); font-weight: bold; margin-right: 6px; }
+.res-price-value { color: #fff; font-weight: bold; }
 
 .res-req-section {
   background: rgba(0,0,0,0.5);
