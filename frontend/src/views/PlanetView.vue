@@ -266,8 +266,8 @@ onMounted(() => {
   background: rgba(0,0,0,0.4);
   font-size: 12px;
   color: #ddd;
-  height: 250px;
-  overflow-y: auto;
+  height: auto;
+  overflow-x: hidden;
 }
 
 /* ── STYLING RAW HTML IN DASHBOARD ── */
