@@ -29,7 +29,7 @@
                    @click="openReport(rep.id)">
                 
                 <div class="report-icon">
-                  <span v-if="rep.resultType === \`win\`">🏆</span>
+                  <span v-if="rep.resultType === 'win'">🏆</span>
                   <span v-else>☠️</span>
                 </div>
                 
