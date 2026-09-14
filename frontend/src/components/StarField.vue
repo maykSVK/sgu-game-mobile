@@ -43,14 +43,6 @@ onMounted(() => {
 
     ctx.clearRect(0, 0, W, H)
 
-    // Background
-    const bg = ctx.createRadialGradient(W*0.5, H*0.3, 0, W*0.5, H*0.5, H)
-    bg.addColorStop(0, '#0a1e3a')
-    bg.addColorStop(0.5, '#060f1e')
-    bg.addColorStop(1, '#020810')
-    ctx.fillStyle = bg
-    ctx.fillRect(0, 0, W, H)
-
     // Nebula blobs
     blobs.forEach(b => {
       const g = ctx.createRadialGradient(W*b.x, H*b.y, 0, W*b.x, H*b.y, W*b.r)
