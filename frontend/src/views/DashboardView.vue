@@ -28,7 +28,7 @@
               </span>
             </div>
             <!-- Vložíme raw HTML s opravenými cestami -->
-            <div class="dash-panel-body dash-raw-html" v-html="fixHtml(box.html)" @click="handleLinks">
+            <div class="dash-panel-body dash-raw-html" v-html="fixHtml(box.html)" @click="handleLinks" @submit.prevent="handleFormSubmit">
             </div>
           </div>
         </section>
@@ -90,12 +90,27 @@ function handleFormSubmit(e) {
     if (btn.name) formData.append(btn.name, btn.value)
   }
 
-  const obj = {}
-  formData.forEach((value, key) => obj[key] = value)
-  // For dashboard we might not have submitDashboardAction yet
-  // but if there's any form, we should probably handle it or prevent it.
-  // Actually, dashboard forms (Rozkazy) post to /ajax or /dashboard.
-  console.log("Form submit intercepted", obj)
+  const method = (form.getAttribute('method') || 'get').toLowerCase()
+  const action = form.getAttribute('action') || ''
+  
+  if (method === 'get') {
+    // If it's a GET form (e.g. action="/planet.php"), map it to our router
+    const qs = new URLSearchParams(formData).toString()
+    let routeTarget = action.replace('.php', '')
+    if (routeTarget.startsWith('/')) routeTarget = routeTarget.substring(1) // remove leading slash
+    
+    // Check known routes, else push directly
+    if (routeTarget === 'planet' || routeTarget === 'stargate') {
+      router.push(`/${routeTarget}?${qs}`)
+    } else {
+      console.log("Unknown GET form action:", action, qs)
+    }
+  } else {
+    // POST request logic (if any for dashboard)
+    const obj = {}
+    formData.forEach((value, key) => obj[key] = value)
+    console.log("Form submit intercepted", obj)
+  }
 }
 
 function handleLinks(e) {
