@@ -194,3 +194,13 @@ a:hover { text-decoration: underline; }
   animation: pulseBadge 1.5s infinite;
 }
 
+
+/* V�eobecn� pravidlo pre v��ku boxov pod�a po�iadavky pou��vate�a */
+
+
+@media (max-width: 768px) {
+  .dash-panel-body {
+    height: auto !important;
+    min-height: 150px;
+  }
+}
