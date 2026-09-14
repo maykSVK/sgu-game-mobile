@@ -156,7 +156,7 @@ onMounted(() => {
 
 <style scoped>
 .dash-page {
-  min-height: 100vh;
+  min-height: calc(100vh - 44px);
   padding-bottom: 72px;
   position: relative;
   z-index: 1;
