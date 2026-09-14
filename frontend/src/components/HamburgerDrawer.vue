@@ -70,6 +70,7 @@ const primary = [
   { to: '/universe',   icon: '🌌',  label: 'Vesmír',           sub: 'Galaxie & planéty', badge: 'ftlExited'  },
   { to: '/stargate',   icon: '⭕',  label: 'Hvezdná brána',    sub: 'Stargate'            },
   { to: '/expedition', icon: '🚀',  label: 'Expedícia',        sub: 'Prieskumné misie', badge: 'activeExpedition'   },
+  { to: '/arena',      icon: '⚔️',  label: 'Aréna',            sub: 'Bojový simulátor'   },
   { to: '/research',   icon: '🔬',  label: 'Výskum',           sub: 'Strom technológií'  },
   { to: '/upgrades',   icon: '⚙️',  label: 'Vylepšenia',       sub: 'Loď & vybavenie'    },
 ]

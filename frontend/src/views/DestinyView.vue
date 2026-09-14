@@ -51,6 +51,7 @@ import axios from "axios"
 import StarField from "../components/StarField.vue"
 import DashboardNav from "../components/DashboardNav.vue"
 import "../assets/tech.css"
+import "../assets/tech.css"
 
 const router = useRouter()
 const loading = ref(true)
@@ -85,14 +86,14 @@ function fixHtml(html) {
   if (!html) return ''
   let res = html.replace(/src="([^"]+)"/g, (match, p1) => {
     if (p1.startsWith("http")) return match
-    if (p1.startsWith("/")) return `src="https://sgu-game.cz${p1}"`
-    return `src="https://sgu-game.cz/${p1}"`
+    if (p1.startsWith("/")) return `src="/sgu-game-mobile${p1}"`
+    return `src="/sgu-game-mobile/${p1}"`
   })
   res = res.replace(/url\((['"]?)([^'")]+)(['"]?)\)/g, (match, q1, p2, q2) => {
     if (p2.startsWith("http") || p2.startsWith("data:")) return match
-    if (p2.startsWith("../")) return `url(${q1}https://sgu-game.cz/${p2.substring(3)}${q2})`
-    if (p2.startsWith("/")) return `url(${q1}https://sgu-game.cz${p2}${q2})`
-    return `url(${q1}https://sgu-game.cz/${p2}${q2})`
+    if (p2.startsWith("../")) return `url(${q1}/sgu-game-mobile/${p2.substring(3)}${q2})`
+    if (p2.startsWith("/")) return `url(${q1}/sgu-game-mobile${p2}${q2})`
+    return `url(${q1}/sgu-game-mobile/${p2}${q2})`
   })
   return res
 }
@@ -368,10 +369,7 @@ onMounted(() => {
   background: rgba(0,255,0,0.2);
 }
 
-/* Obrazky pre originalne tech triedy (fallbacky ak sa nacitavaju len podla classy) */
-.dash-raw-html :deep(.et-electronics) {
-  background-image: url('https://sgu-game.cz/img/techs/electronics.png');
-}
+
 
 /* ── MODAL ── */
 .sgu-modal-overlay {

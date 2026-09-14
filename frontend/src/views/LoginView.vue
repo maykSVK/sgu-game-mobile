@@ -59,7 +59,7 @@
 
         <button type="submit" :disabled="auth.loading" class="btn-login">
           <span v-if="auth.loading" class="spin-icon">⟳</span>
-          {{ auth.loading ? 'Prihlasovanie...' : 'Prihlásiť sa' }}
+          {{ auth.loading ? 'Přihlašování...' : 'Přihlásit se' }}
         </button>
       </form>
 

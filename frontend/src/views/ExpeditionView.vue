@@ -12,8 +12,14 @@
           Nacítám expedice...
         </div>
 
-        <!-- GRID PRO INFOBOXY -->
-        <div v-else-if="expeditionData?.infoboxes" class="dash-grid">
+        <template v-else-if="expeditionData">
+          <!-- INFO BAR -->
+          <div v-if="expeditionData.availableExpeditionsInfo" class="expeditions-info-bar">
+            <i class="fas fa-rocket"></i> {{ expeditionData.availableExpeditionsInfo }}
+          </div>
+
+          <!-- GRID PRO INFOBOXY -->
+          <div v-if="expeditionData.infoboxes" class="dash-grid">
           <section v-for="(box, i) in expeditionData.infoboxes" :key="i" class="dash-section">
             <div class="dash-panel">
               <div class="dash-panel-head">
@@ -25,6 +31,7 @@
             </div>
           </section>
         </div>
+        </template>
         
         <!-- TOOLTIP MODAL PRO MOBILY -->
         <div v-if="tooltipModalHtml" class="sgu-modal-overlay" @click.self="tooltipModalHtml = null">
@@ -89,14 +96,14 @@ function fixHtml(html) {
   if (!html) return ""
   let res = html.replace(/src="([^"]+)"/g, (match, p1) => {
     if (p1.startsWith("http")) return match
-    if (p1.startsWith("/")) return `src="https://sgu-game.cz${p1}"`
-    return `src="https://sgu-game.cz/${p1}"`
+    if (p1.startsWith("/")) return `src="/sgu-game-mobile${p1}"`
+    return `src="/sgu-game-mobile/${p1}"`
   })
   res = res.replace(/url\((['"]?)([^'")]+)(['"]?)\)/g, (match, q1, p2, q2) => {
     if (p2.startsWith("http") || p2.startsWith("data:")) return match
-    if (p2.startsWith("../")) return `url(${q1}https://sgu-game.cz/${p2.substring(3)}${q2})`
-    if (p2.startsWith("/")) return `url(${q1}https://sgu-game.cz${p2}${q2})`
-    return `url(${q1}https://sgu-game.cz/${p2}${q2})`
+    if (p2.startsWith("../")) return `url(${q1}/sgu-game-mobile/${p2.substring(3)}${q2})`
+    if (p2.startsWith("/")) return `url(${q1}/sgu-game-mobile${p2}${q2})`
+    return `url(${q1}/sgu-game-mobile/${p2}${q2})`
   })
   return res
 }
@@ -197,6 +204,23 @@ onMounted(() => {
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 15px;
   align-items: flex-start;
+}
+
+.expeditions-info-bar {
+  background: rgba(4,190,254,0.1);
+  border: 1px solid rgba(4,190,254,0.3);
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 0 10px rgba(4,190,254,0.1);
+}
+.expeditions-info-bar i {
+  color: #04befe;
+  margin-right: 8px;
 }
 
 /* ── PANEL ── */
@@ -371,10 +395,7 @@ onMounted(() => {
   background: rgba(0,255,0,0.2);
 }
 
-/* Obrazky pre originalne tech triedy (fallbacky ak sa nacitavaju len podla classy) */
-.dash-raw-html :deep(.et-electronics) {
-  background-image: url('https://sgu-game.cz/img/techs/electronics.png');
-}
+
 
 /* ── MODAL ── */
 .sgu-modal-overlay {
@@ -399,4 +420,5 @@ onMounted(() => {
   color: #ff3c3c; cursor: pointer; padding: 5px; font-size: 16px;
 }
 </style>
+
 

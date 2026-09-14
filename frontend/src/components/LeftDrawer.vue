@@ -327,4 +327,20 @@ async function doLogout() {
   cursor: pointer; display: flex; align-items: center; gap: 8px;
 }
 .left-link:hover { color: #04befe; background: rgba(4,190,254,0.1); }
+
+@media (min-width: 768px) {
+  .sgu-overlay {
+    display: none !important;
+  }
+  .left-drawer {
+    width: 320px !important;
+    box-shadow: 1px 0 0 rgba(4,190,254,0.3) !important;
+    top: 44px !important;
+    bottom: calc(56px + env(safe-area-inset-bottom, 0px)) !important;
+    height: auto !important;
+  }
+  .drawer-close-btn {
+    display: none !important;
+  }
+}
 </style>

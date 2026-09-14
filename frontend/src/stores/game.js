@@ -57,7 +57,7 @@ export const useGameStore = defineStore('game', {
           )
         }
       } catch (e) {
-        this.error = e.response?.data?.error || 'Nepodarilo sa načítať dashboard'
+        this.error = e.response?.data?.error || 'Nepodařilo se načíst dashboard'
         if (!this.data) {
           const auth = useAuthStore()
           this.data = { player: { username: auth.playerName || '' }, resources: {}, stats: {}, alerts: [], quests: [], infoboxes: [] }

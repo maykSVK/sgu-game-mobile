@@ -5,12 +5,16 @@ const dashboardRoutes = require('./routes/dashboard.routes');
 const researchRoutes = require('./routes/research.routes');
 const universeRoutes = require('./routes/universe.routes');
 const arenaRoutes = require('./routes/arena.routes');
+const crewRoutes = require('./routes/crew.routes');
 const statsRoutes = require('./routes/stats.routes');
 const ajaxRoutes = require('./routes/ajax.routes');
 const reportsRoutes = require('./routes/reports.routes');
 const destinyRoutes = require('./routes/destiny.routes');
 const expeditionRoutes = require('./routes/expedition.routes');
 const planetRoutes = require('./routes/planet.routes');
+const checksumsRoutes = require('./routes/checksums.routes');
+const heroRoutes = require('./routes/hero.routes');
+const progressRoutes = require('./routes/progress.routes');
 
 const app = express();
 const PORT = 3000;
@@ -26,12 +30,16 @@ app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/research', researchRoutes);
 app.use('/api/universe', universeRoutes);
 app.use('/api/arena', arenaRoutes);
+app.use('/api/crew', crewRoutes);
 app.use('/api/stats', statsRoutes);
 app.use('/api/ajax', ajaxRoutes);
 app.use('/api/reports', reportsRoutes);
 app.use('/api/destiny', destinyRoutes);
 app.use('/api/expedition', expeditionRoutes);
 app.use('/api/planet', planetRoutes);
+app.use('/api/checksums', checksumsRoutes);
+app.use('/api/hero', heroRoutes);
+app.use('/api/progress', progressRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

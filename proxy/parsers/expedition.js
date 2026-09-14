@@ -18,6 +18,13 @@ function parseExpedition(html) {
     }
   });
 
+  // Extract available expeditions info from the delimiter table
+  let availableExpeditionsInfo = '';
+  const delimiterTable = $('table.delimiter').first();
+  if (delimiterTable.length) {
+    availableExpeditionsInfo = delimiterTable.find('td').first().text().trim();
+  }
+
   // Skúsime nájsť hlásenia z notyf (error alebo success)
   const messages = [];
   $('script').each((_, el) => {
@@ -34,7 +41,7 @@ function parseExpedition(html) {
     }
   });
 
-  return { infoboxes, messages };
+  return { infoboxes, messages, availableExpeditionsInfo };
 }
 
 module.exports = { parseExpedition };

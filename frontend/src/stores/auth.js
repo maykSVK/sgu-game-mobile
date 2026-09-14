@@ -54,7 +54,7 @@ export const useAuthStore = defineStore('auth', {
           return false
         }
       } catch (e) {
-        this.error = 'Chyba spojenia so serverom'
+        this.error = 'Chyba spojení se serverem'
         return false
       } finally {
         this.loading = false

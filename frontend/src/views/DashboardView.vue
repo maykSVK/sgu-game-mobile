@@ -73,9 +73,9 @@ async function deleteAlerts() {
 
 function fixHtml(html) {
   if (!html) return ''
-  // Prepend https://sgu-game.cz to all relative images/urls
-  let res = html.replace(/src="\/?((?:img|images|css|js)\/[^"]+)"/g, 'src="https://sgu-game.cz/$1"')
-  res = res.replace(/url\(['"]?\/?(?:\.\.\/)?(img\/[^'"\)]+)['"]?\)/g, 'url(https://sgu-game.cz/$1)')
+  // Prepend  to all relative images/urls
+  let res = html.replace(/src="\/?((?:img|images|css|js)\/[^"]+)"/g, 'src="/$1"')
+  res = res.replace(/url\(['"]?\/?(?:\.\.\/)?(img\/[^'"\)]+)['"]?\)/g, 'url(/$1)')
   return res
 }
 
@@ -106,10 +106,22 @@ function handleFormSubmit(e) {
       console.log("Unknown GET form action:", action, qs)
     }
   } else {
-    // POST request logic (if any for dashboard)
+    // POST request logic
     const obj = {}
     formData.forEach((value, key) => obj[key] = value)
-    console.log("Form submit intercepted", obj)
+    
+    loading.value = true
+    axios.post("/api/dashboard/action", obj).then(async (res) => {
+      if (res.data.ok) {
+        // aktualizujeme game store dáta
+        game.data = res.data.data
+      }
+      loading.value = false
+    }).catch(e => {
+      console.error(e)
+      alert("Nepodařilo se odeslat rozkaz.")
+      loading.value = false
+    })
   }
 }
 
@@ -226,7 +238,7 @@ onMounted(() => {
   background: rgba(0,0,0,0.4);
   font-size: 12px;
   color: #ddd;
-  height: 250px;
+  height: 450px;
   overflow-y: auto;
 }
 
@@ -274,8 +286,14 @@ onMounted(() => {
   border-radius: 2px;
   width: 100%;
 }
-.dash-raw-html :deep(.btn-bevel:hover) {
+.dash-raw-html :deep(.btn-bevel:hover:not(:disabled):not(.not-allowed)) {
   background: rgba(4,190,254,0.3);
+}
+.dash-raw-html :deep(.not-allowed),
+.dash-raw-html :deep(input[disabled]) {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(100%);
 }
 
 /* Obrazky vo Vystrahach (crew-alert) */
