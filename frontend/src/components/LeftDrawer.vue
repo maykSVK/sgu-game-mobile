@@ -53,7 +53,10 @@
 
           <!-- Stav -->
           <div class="left-section">Stav</div>
-          <div v-for="(a, i) in alerts" :key="i" class="left-alert">
+          <div v-for="(a, i) in alerts" :key="i" 
+               class="left-alert"
+               :class="{ 'report-blink': isBattleReport(a) }"
+               @click="isBattleReport(a) ? go('/reports') : null">
             {{ a.text || a }}
           </div>
           <div v-if="!alerts.length" class="left-alert" style="color:rgba(255,255,255,0.4);">
@@ -201,6 +204,11 @@ const alerts = computed(() => {
   return (game.data?.shipStatus || []).slice(0, 5) // max 5 statuses
 })
 
+function isBattleReport(a) {
+  const text = (a.text || a || '').toLowerCase()
+  return text.includes('bitevn') && text.includes('report')
+}
+
 function go(path) {
   router.push(path)
   emit('close')
@@ -273,6 +281,17 @@ async function doLogout() {
 
 .left-alert {
   padding: 4px 12px; font-size: 12px; color: rgba(255,255,255,0.9);
+}
+
+.report-blink {
+  color: #ff3c3c;
+  font-weight: bold;
+  cursor: pointer;
+  animation: sguBlink 1.5s infinite;
+}
+@keyframes sguBlink {
+  0%, 100% { opacity: 1; text-shadow: 0 0 5px rgba(255,60,60,0.8); }
+  50% { opacity: 0.5; text-shadow: none; }
 }
 
 .left-link {
