@@ -9,6 +9,7 @@ const statsRoutes = require('./routes/stats.routes');
 const ajaxRoutes = require('./routes/ajax.routes');
 const reportsRoutes = require('./routes/reports.routes');
 const destinyRoutes = require('./routes/destiny.routes');
+const expeditionRoutes = require('./routes/expedition.routes');
 
 const app = express();
 const PORT = 3000;
@@ -28,6 +29,7 @@ app.use('/api/stats', statsRoutes);
 app.use('/api/ajax', ajaxRoutes);
 app.use('/api/reports', reportsRoutes);
 app.use('/api/destiny', destinyRoutes);
+app.use('/api/expedition', expeditionRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
