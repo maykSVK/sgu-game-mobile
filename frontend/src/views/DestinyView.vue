@@ -36,6 +36,14 @@
           </div>
         </section>
       </div>
+      
+      <!-- TOOLTIP MODAL PRO MOBILY -->
+      <div v-if="tooltipModalHtml" class="sgu-modal-overlay" @click.self="tooltipModalHtml = null">
+        <div class="sgu-modal">
+          <div class="sgu-modal-close" @click="tooltipModalHtml = null"><i class="fas fa-times"></i></div>
+          <div class="dash-raw-html" v-html="tooltipModalHtml" @click="handleLinks"></div>
+        </div>
+      </div>
 
     </div>
   </div>
@@ -46,10 +54,14 @@ import { onMounted, ref } from "vue"
 import { useRouter } from "vue-router"
 import axios from "axios"
 import StarField from "../components/StarField.vue"
+import "../assets/tech.css"
 
 const router = useRouter()
 const loading = ref(true)
 const destinyData = ref(null)
+
+// Modal state pre tooltpy
+const tooltipModalHtml = ref(null)
 
 async function loadData() {
   loading.value = true
@@ -64,7 +76,6 @@ async function loadData() {
 
 function fixHtml(html) {
   if (!html) return ''
-  // Prepend https://sgu-game.cz to all relative images/urls
   let res = html.replace(/src="\/?((?:img|images|css|js)\/[^"]+)"/g, 'src="https://sgu-game.cz/$1"')
   res = res.replace(/url\(['"]?\/?(?:\.\.\/)?(img\/[^'"\)]+)['"]?\)/g, 'url(https://sgu-game.cz/$1)')
   return res
@@ -72,6 +83,7 @@ function fixHtml(html) {
 
 async function submitDestinyAction(data) {
   loading.value = true
+  tooltipModalHtml.value = null // Close modal on action
   try {
     const res = await axios.post("/api/destiny", data)
     destinyData.value = res.data.data
@@ -95,6 +107,15 @@ function handleLinks(e) {
     const obj = {}
     formData.forEach((value, key) => obj[key] = value)
     submitDestinyAction(obj)
+    return
+  }
+
+  // Handle sgu-tooltip clicks (on mobile, we show them as modal)
+  const tooltipElement = e.target.closest(".sgu-tooltip")
+  if (tooltipElement && tooltipElement.dataset.sguTooltip) {
+    e.preventDefault()
+    e.stopPropagation()
+    tooltipModalHtml.value = fixHtml(tooltipElement.dataset.sguTooltip)
     return
   }
 
@@ -333,6 +354,71 @@ onMounted(() => {
   font-size: 10px;
   width: 60px;
   flex-shrink: 0;
+}
+
+/* ── TECH SLOTS (Ukořistěné technologie) ── */
+.dash-raw-html :deep(.enemy-tech) {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  margin: 3px;
+  border-radius: 6px;
+  border: 1px solid rgba(4,190,254,0.6);
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(4,190,254,0.1);
+  box-shadow: 0 0 5px rgba(4,190,254,0.3);
+  cursor: pointer;
+  vertical-align: middle;
+}
+.dash-raw-html :deep(.enemy-tech:hover) {
+  box-shadow: 0 0 10px rgba(4,190,254,0.8);
+}
+.dash-raw-html :deep(.tech-slot-empty) {
+  display: inline-flex;
+  width: 48px;
+  height: 48px;
+  margin: 3px;
+  border-radius: 6px;
+  border: 2px solid #3cff3c; /* Zelený border ako na screenshote */
+  background: rgba(0,255,0,0.05);
+  color: rgba(255,255,255,0.7);
+  font-size: 10px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.dash-raw-html :deep(.tech-slot-empty:hover) {
+  background: rgba(0,255,0,0.2);
+}
+
+/* Obrazky pre originalne tech triedy (fallbacky ak sa nacitavaju len podla classy) */
+.dash-raw-html :deep(.et-electronics) {
+  background-image: url('https://sgu-game.cz/img/techs/electronics.png');
+}
+
+/* ── MODAL ── */
+.sgu-modal-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.sgu-modal {
+  background: #08111e;
+  border: 1px solid rgba(4,190,254,0.6);
+  border-radius: 4px;
+  box-shadow: 0 0 20px rgba(4,190,254,0.2);
+  width: 100%;
+  max-width: 400px;
+  padding: 15px;
+  position: relative;
+}
+.sgu-modal-close {
+  position: absolute; top: 5px; right: 5px;
+  color: #ff3c3c; cursor: pointer; padding: 5px; font-size: 16px;
 }
 </style>
 

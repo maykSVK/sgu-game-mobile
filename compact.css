@@ -1,0 +1,2980 @@
+/* hlavní */
+.energy {
+    color: #59d34c;
+}
+
+.food {
+    color: #e284ff;
+}
+
+.renown {
+    color: gold;
+}
+
+.water {
+    color: #56fff3;
+}
+
+.limestone {
+    color: #ffd760;
+}
+
+.naquadah {
+    color: #ef7b00;
+}
+
+.trinium {
+    color: gold;
+}
+
+.naquadria {
+    color: cyan;
+}
+
+.population {
+    color: whitesmoke;
+}
+
+.credits {
+    color: whitesmoke;
+}
+
+.research-points {
+    color: whitesmoke;
+}
+
+.fragments {
+    color: whitesmoke;
+}
+
+.happiness {
+    color: whitesmoke;
+}
+
+.repairing {
+    color: #00e5ff;
+}
+
+/* planety */
+.planet-bg {
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 200px;
+    background-size: 100% 100%;
+    vertical-align: top;
+    margin: 5px;
+    display: inline-block;
+}
+
+.planet-detail {
+    background-repeat: no-repeat;
+    width: 216px;
+    height: 216px;
+    background-size: 100% 100%;
+    vertical-align: top;
+    margin: 5px;
+    display: inline-block;
+}
+
+.planet-ice {
+    background-image: url('../img/planet-ice.png');
+}
+
+.planet-desert {
+    background-image: url('../img/planet-desert.png');
+}
+
+.planet-water {
+    background-image: url('../img/planet-water.png');
+}
+
+.planet-earth {
+    background-image: url('../img/planet-earth.png');
+}
+
+.planet-toxic {
+    background-image: url('../img/planet-toxic.png');
+}
+
+.planet-volcanic {
+    background-image: url('../img/planet-volcanic.png');
+}
+
+.planet-asteroid {
+    background-image: url('../img/planet-asteroid.png');
+    width: 180px!important;
+    height: 152px!important;;
+}
+
+/* expedice */
+.expedition-preview {
+    background-repeat: no-repeat;
+    width: 197px;
+    height: 108px;
+    background-size: 100% 100%;
+    margin: auto;
+    display: block;
+}
+
+.expedition-1 {
+    background-image: url('../img/expedition/nakai-fighter.jpg');
+}
+
+.expedition-2 {
+    background-image: url('../img/expedition/berserker-dron.jpg');
+}
+
+.expedition-3 {
+    background-image: url('../img/expedition/wraith-dart.jpg');
+}
+
+.expedition-4 {
+    background-image: url('../img/expedition/goauld-glider.jpg');
+}
+
+.expedition-5 {
+    background-image: url('../img/expedition/nakai-ship.jpg');
+}
+
+.expedition-6 {
+    background-image: url('../img/expedition/berzerker-ship.jpg');
+}
+
+.expedition-7 {
+    background-image: url('../img/expedition/alkesh.jpg');
+}
+
+.expedition-8 {
+    background-image: url('../img/expedition/wraith-cruiser.jpg');
+}
+
+.expedition-9 {
+    background-image: url('../img/expedition/hatak.jpg');
+}
+
+.expedition-10 {
+    background-image: url('../img/expedition/replicator-ship.jpg');
+}
+
+.expedition-11 {
+    background-image: url('../img/expedition/ori-ship.jpg');
+}
+
+.expedition-12 {
+    background-image: url('../img/expedition/waraith-hive.jpg');
+}
+
+.expedition-13 {
+    background-image: url('../img/expedition/drones-last-stand.jpg');
+}
+
+/* obchod - technologie*/
+.naquadah-generator {
+    background-repeat: no-repeat;
+    width: 284px;
+    height: 160px;
+    background-size: 100% 100%;
+    background-image: url('../img/naquadah-generator.jpg');
+    margin: auto;
+}
+
+.naquadah-generator-mk-2 {
+    background-repeat: no-repeat;
+    width: 284px;
+    height: 160px;
+    background-size: 100% 100%;
+    margin: auto;
+    background-image: url('../img/naq_gen_mk_2.jpeg');
+}
+
+.zero-point-module {
+    background-repeat: no-repeat;
+    width: 284px;
+    height: 160px;
+    background-size: 100% 100%;
+    margin: auto;
+    background-image: url('../img/zpm.jpg');
+}
+
+.ancient-scanner {
+    background-repeat: no-repeat;
+    width: 284px;
+    height: 160px;
+    background-size: 100% 100%;
+    margin: auto;
+    background-image: url('../img/ancient-scanner.jpg');
+}
+
+.asgard-transponder {
+    background-repeat: no-repeat;
+    width: 284px;
+    height: 160px;
+    background-size: 100% 100%;
+    margin: auto;
+    background-image: url('../img/transponder.jpg');
+}
+
+/* aréna */
+.arena-img {
+    background-image: url("../img/arena.jpg");
+    background-repeat: no-repeat;
+    width: 392px;
+    height: 243px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.arena-winner {
+    background-image: url('../img/arena_winner.png');
+    background-repeat: no-repeat;
+    width: 19px;
+    height: 19px;
+    background-size: 100% 100%;
+    display: block;
+    margin: -4px auto -4px auto;
+}
+
+.arena-battle {
+    background-image: url('../img/arena_battle.png');
+    background-repeat: no-repeat;
+    width: 19px;
+    height: 19px;
+    background-size: 100% 100%;
+    margin: auto;
+    vertical-align: bottom;
+}
+
+/* vesmír */
+.distance-light-years {
+    color: white;
+}
+
+#planet-arrow {
+    background-image: url('../img/arrow.png');
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    background-size: 100% 100%;
+}
+
+#quest-arrow {
+    background-image: url('../img/arrow.png');
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    background-size: 100% 100%;
+}
+
+.planet-universe-preview {
+    background-repeat: no-repeat;
+    width: 180px;
+    height: 180px;
+    background-size: 100% 100%;
+    vertical-align: top;
+    margin: 5px;
+}
+
+.star-k {
+    background-image: url('../img/star-k.png');
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    background-size: 100% 100%;
+}
+
+.star-m {
+    background-image: url('../img/star-k.png');
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    background-size: 100% 100%;
+}
+
+.star-o {
+    background-image: url('../img/star-o.png');
+    background-repeat: no-repeat;
+    width: 55px;
+    height: 55px;
+    background-size: 100% 100%;
+}
+
+.star-g {
+    background-image: url('../img/star-g.png');
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    background-size: 100% 100%;
+}
+
+.planet-type-water {
+    background-image: url('../img/planet-water.png');
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 15px;
+    background-size: 100% 100%;
+}
+
+.planet-type-earth {
+    background-image: url('../img/planet-earth.png');
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    background-size: 100% 100%;
+}
+
+.planet-type-desert {
+    background-image: url('../img/planet-desert.png');
+    background-repeat: no-repeat;
+    width: 12px;
+    height: 12px;
+    background-size: 100% 100%;
+}
+
+.planet-type-ice {
+    background-image: url('../img/planet-ice.png');
+    background-repeat: no-repeat;
+    width: 14px;
+    height: 14px;
+    background-size: 100% 100%;
+}
+
+.planet-type-toxic {
+    background-image: url('../img/planet-toxic.png');
+    background-repeat: no-repeat;
+    width: 14px;
+    height: 14px;
+    background-size: 100% 100%;
+}
+
+.planet-type-volcanic {
+    background-image: url('../img/planet-volcanic.png');
+    background-repeat: no-repeat;
+    width: 10px;
+    height: 10px;
+    background-size: 100% 100%;
+}
+
+.planet-type-asteroid {
+    background-image: url('../img/asteroid.png');
+    background-repeat: no-repeat;
+    width: 14px;
+    height: 14px;
+    background-size: 100% 100%;
+}
+
+.ark {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url('../img/treasure.png');
+    width: 20px;
+    height: 20px;
+}
+
+.step {
+    height: 10px;
+    width: 10px;
+    border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    background: deepskyblue;
+    border: 1px solid;
+}
+
+.space-market-station {
+    background-image: url('../img/market-station.png');
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 28px;
+    background-size: 100% 100%;
+}
+
+.space-object-nebula {
+    background-image: url('../img/nebula.png');
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 32px;
+    background-size: 100% 100%;
+}
+
+.space-object-debris {
+    background-image: url('../img/debris.png');
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 32px;
+    background-size: 100% 100%;
+}
+
+.space-object-seed-ship {
+    background-image: url('../img/seed-ship.png');
+    background-repeat: no-repeat;
+    width: 45px;
+    height: 26px;
+    background-size: 100% 100%;
+}
+
+.space-object-nakai-left {
+    background-image: url('../img/nakai-mothership-left.png');
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 30px;
+    background-size: 100% 100%;
+}
+
+.space-object-nakai-right {
+    background-image: url('../img/nakai-mothership-right.png');
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 30px;
+    background-size: 100% 100%;
+}
+
+.galactic-bridge {
+    background-image: url('../img/galaxy-bridge-white.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 32px;
+    height: 32px;
+}
+
+.destiny-universe {
+    width: 33px;
+    height: 30px;
+    background-image: url('../img/destiny-universe.png');
+    background-size: 100% 100%;
+    z-index: 1000;
+}
+
+.target-point {
+    background-image: url('../img/target-point.png');
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    background-size: 100% 100%;
+    z-index: 10;
+}
+
+.origin-point {
+    background-image: url('../img/origin-point.png');
+    background-repeat: no-repeat;
+    width: 24px;
+    height: 24px;
+    background-size: 100% 100%;
+    z-index: 10;
+}
+
+#destiny-radius {
+    background:none;
+    border: 1px solid;
+    color: white;
+}
+
+#destiny-final-radius {
+    background:none;
+    border: 1px solid #00b6ff;
+}
+
+.radius-default {
+    height:200px;
+    width:200px;
+    border-radius: 100px 100px 100px 100px;
+    -moz-border-radius: 100px 100px 100px 100px;
+    -webkit-border-radius: 100px 100px 100px 100px;
+}
+
+.radius-extended-range {
+    height:300px;
+    width: 300px;
+    border-radius: 150px 150px 150px 150px;
+    -moz-border-radius: 150px 150px 150px 150px;
+    -webkit-border-radius: 150px 150px 150px 150px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    -webkit-animation-name: fadeIn;
+    -webkit-animation-duration: 0.4s;
+    animation-name: fadeIn;
+    animation-duration: 0.4s
+}
+
+.modal-content {
+    position: fixed;
+    bottom: 0;
+    background-color: rgba(36, 38, 39, 0.88);
+    color: white;
+    width: 100%;
+    -webkit-animation-name: slideIn;
+    -webkit-animation-duration: 0.4s;
+    animation-name: slideIn;
+    animation-duration: 0.4s
+}
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: rgba(36, 38, 39, 0.88);;
+    color: white;
+}
+
+.modal-body {
+    padding: 2px 16px;
+    color: white;
+    text-align: center;
+}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+@-webkit-keyframes slideIn {
+    from {bottom: -300px; opacity: 0}
+    to {bottom: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+    from {bottom: -300px; opacity: 0}
+    to {bottom: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+/* artefakty */
+.artifact {
+    background-repeat: no-repeat;
+    width: 245px;
+    height: 148px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+.artifact-sarkofag {
+    background-image: url('../img/sarkofag.jpg');
+}
+
+.artifact-crystal-skull {
+    background-image: url('../img/crystal-skull.jpg');
+}
+
+.artifact-library {
+    background-image: url('../img/four-races-lib.jpg');
+}
+
+.artifact-furling {
+    background-image: url('../img/furling-transporter.jpg');
+}
+
+.artifact-nakai {
+    background-image: url('../img/nakai-database.jpg');
+}
+
+.artifact-shield {
+    background-image: url('../img/personal-shield.png');
+}
+
+.artifact-tenaran {
+    background-image: url('../img/tenaran-archive.jpg');
+}
+
+.artifact-thor {
+    background-image: url('../img/thors-hammer.jpg');
+}
+
+.artifact-tiamat {
+    background-image: url('../img/tiamat-eye.jpg');
+}
+
+.artifact-touchstone {
+    background-image: url('../img/touchstone.JPG');
+}
+
+/* hodnosti */
+.rank-standard {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    vertical-align: sub;
+    margin: auto;
+}
+
+.airman {
+    height: 14px;
+    width: 28px;
+    background-image: url('../img/rank/airman.png');
+}
+
+.airman-first-class {
+    height: 14px;
+    width: 20px;
+    background-image: url('../img/rank/airman-first-class.png');
+}
+
+.senior-airman {
+    height: 14px;
+    width: 18px;
+    background-image: url('../img/rank/senior-airman.png');
+}
+
+.staff-sergeant {
+    height: 14px;
+    width: 17px;
+    background-image: url('../img/rank/staff-sergeant.png');
+}
+
+.technical-sergeant {
+    height: 14px;
+    width: 15px;
+    background-image: url('../img/rank/technical-sergeant.png');
+}
+
+.second-lieutenant {
+    height: 14px;
+    width: 6px;
+    background-image: url('../img/rank/second-lieutenant.png');
+}
+
+.first-lieutenant {
+    height: 14px;
+    width: 6px;
+    background-image: url('../img/rank/first-lieutenant.png');
+}
+
+.captain {
+    height: 14px;
+    width: 15px;
+    background-image: url('../img/rank/captain.png');
+}
+
+.major {
+    height: 14px;
+    width: 14px;
+    background-image: url('../img/rank/major.png');
+}
+
+.lieutenant-colonel {
+    height: 14px;
+    width: 14px;
+    background-image: url('../img/rank/lieutenant-colonel.png');
+}
+
+.colonel {
+    height: 14px;
+    width: 27px;
+    background-image: url('../img/rank/colonel.png');
+}
+
+.brigadier-general {
+    height: 14px;
+    width: 15px;
+    background-image: url('../img/rank/brigadier-general.png');
+}
+
+.general-of-the-air-force {
+    height: 14px;
+    width: 15px;
+    background-image: url('../img/rank/general-of-the-air-force.png');
+}
+
+/* vylepšení */
+.upgrade-img {
+    background-repeat: no-repeat;
+    width: 344px;
+    height: 202px;
+    background-size: 100% 100%;
+    vertical-align: top;
+}
+
+.upgrade-weapons {
+    background-image: url('../img/upgrade-weapons.png');
+}
+
+.upgrade-armchair {
+    background-image: url('../img/upgrade-armchair.jpg');
+}
+
+.upgrade-filters {
+    background-image: url('../img/upgrade-filters.jpg');
+}
+
+.upgrade-ftl {
+    background-image: url('../img/upgrade-ftl.jpg');
+}
+
+.upgrade-resources {
+    background-image: url('../img/upgrade-resources.jpg');
+}
+.upgrade-shields {
+    background-image: url('../img/upgrade-shields.jpg');
+}
+
+.upgrade-chambers {
+    background-image: url('../img/upgrade-chambers.jpg');
+}
+
+.upgrade-sublight {
+    background-image: url('../img/upgrade-sublight.jpg');
+}
+
+/* laboratoř */
+.lab-img {
+    background-repeat: no-repeat;
+    width: 344px;
+    height: 236px;
+    background-size: 100% 100%;
+    vertical-align: top;
+    background-image: url(../img/lab.jpg);
+    display: inline-block;
+}
+
+/* hvězdná brána */
+#stargate-gate {
+    width: 357px;
+    height: 273px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#stargate-locker {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    left: 167px;
+    top: 0px;
+}
+
+#stargate-stargate {
+    margin-top: 0px;
+    position: relative;
+    bottom: 12px;
+    right: 6px;
+}
+
+#stargate-properties {
+    width: 557px;
+    height: 500px;
+    display: inline-block;
+}
+
+#stargate-actions {
+    background-color: rgba(4, 190, 254, 0.31);
+    width: 100%;
+    height: 247px;
+    text-align: center;
+}
+
+#stargate-console {
+    background-repeat: no-repeat;
+    width: 987px;
+    height: 393px;
+    background-size: 100% 100%;
+    vertical-align: top;
+    background-image: url(../img/console.png);
+    background-color: rgba(0,0,0,.4);
+    display: inline-block;
+}
+
+#chevron-visualisation {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+#stargate-clear-console-button {
+    position: relative;
+    left: 568px;
+    bottom: 149px;
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+}
+
+#stargate-submit-console-button {
+    position: relative;
+    left: 594px;
+    top: 28px;
+    width: 57px;
+    height: 57px;
+    cursor: pointer;
+}
+
+.chevron {
+    border: 1px solid;
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin: 3px;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+}
+
+ul.tabs{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+ul.tabs li{
+    background: none;
+    color: #222;
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+ul.tabs li.current{
+    background: #ededed;
+    color: #222;
+}
+
+.tab-content{
+    display: none;
+    background: #ededed;
+    padding: 15px;
+    width: 347px;
+}
+
+.tab-content.current{
+    display: inherit;
+    height: 175px;
+}
+
+.stargate-action-btn {
+    padding-top: 2px;
+}
+
+.stargate-action-btn:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.stargate-symbol-hover {
+    border: 1px solid;
+}
+
+.stargate-symbol-hover:hover {
+    border-color: #000000;
+    cursor: pointer;
+}
+
+.container {
+    position: relative;
+    top: 88px;
+    right: 91px;
+    width: 380px;
+}
+
+.console-tab-1 {
+    border-radius: 40px 0px 0px 0px;
+    background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%)!important;
+}
+
+.console-tab-2 {
+    border-radius: 0px 40px 0px 0px;
+    background: linear-gradient(to right, #ff4300 , yellow)!important;
+}
+.console-content-1 {
+    border-radius: 0px 40px 40px 40px;
+    height: 150px;
+    background: linear-gradient(to right, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+}
+
+.console-content-2 {
+    border-radius: 0px 40px 40px 40px;
+    height: 150px;
+    background: linear-gradient(to right, #ff4300 , yellow);
+    line-height: 25px;
+}
+
+.stargate-gate-off {
+    background-image: url(../img/stargate-off.png);
+    background-repeat: no-repeat;
+    width: 368px;
+    height: 276px;
+    background-size: 100% 100%;
+}
+
+.stargate-gate-action {
+    background-image: url("../img/stargate-active.png");
+    background-repeat: no-repeat;
+    width: 368px;
+    height: 276px;
+    background-size: 100% 100%;
+}
+
+.stargate-locker-off {
+    background-image: url("../img/stargate-locker-off.png");
+    background-repeat: no-repeat;
+    width: 71px;
+    height: 75px;
+    background-size: 100% 100%;
+}
+
+.stargate-locker-on {
+    background-image: url("../img/stargate-locker-on.png");
+    background-repeat: no-repeat;
+    width: 71px;
+    height: 75px;
+    background-size: 100% 100%;
+}
+
+.stargate-icon {
+    background-image: url('../img/stargate.png');
+    background-repeat: no-repeat;
+    width: 35px;
+    height: 35px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.stargate-stargate-horizon {
+    background-image: url("../img/stargate.gif");
+    background-repeat: no-repeat;
+    width: 196px;
+    height: 196px;
+    background-size: 100% 100%;
+    position: relative;
+    left: 86px;
+    top: 40px;
+}
+
+.stargate-stargate-open {
+    background-image: url("../img/stargate-open.gif");
+    ackground-repeat: no-repeat;
+    width: 196px;
+    height: 196px;
+    background-size: 100% 100%;
+    position: relative;
+    left: 86px;
+    top: 40px;
+}
+
+.chevron-locked {
+    background-color: #1ac71a;
+}
+
+.chevron-failed {
+    background-color: #da1616;
+}
+
+/* report */
+.battle-report-destiny {
+    background-image: url('../img/destiny-report-detail.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-destiny-defender {
+    background-image: url('../img/destiny-defender-report-detail.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-berserker {
+    background-image: url('../img/berserker-report-detail.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-nakai {
+    background-image: url('../img/nakai-report-detail.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-nakai_fighter {
+    background-image: url('../img/expedition/nakai-fighter.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-berserker_dron {
+    background-image: url('../img/expedition/berserker-dron.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-wraith_dart {
+    background-image: url('../img/expedition/wraith-dart.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-goauld_glider {
+    background-image: url('../img/expedition/goauld-glider.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-nakai_ship {
+    background-image: url('../img/expedition/nakai-ship.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-berzerker_ship {
+    background-image: url('../img/expedition/berzerker-ship.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-alkesh {
+    background-image: url('../img/expedition/alkesh.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-wraith_cruiser {
+    background-image: url('../img/expedition/wraith-cruiser.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-hatak {
+    background-image: url('../img/expedition/hatak.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-replicator_ship {
+    background-image: url('../img/expedition/replicator-ship.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-ori_ship {
+    background-image: url('../img/expedition/ori-ship.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-wraith_hive {
+    background-image: url('../img/expedition/waraith-hive.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-special_expedition_1 {
+    background-image: url('../img/expedition/drones_attack.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-goauld_baal_hatak {
+    background-image: url('../img/hatak4.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-lucian_alliance_hatak {
+    background-image: url('../img/expedition/hatak.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-goauld_baal_matheral_ship {
+    background-image: url('../img/goauld-supership.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-goauld_baal_alkesh {
+    background-image: url('../img/alkesh.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-lucian_alliance_alkesh {
+    background-image: url('../img/alkesh2.png');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-goauld_baal_glider {
+    background-image: url('../img/gliders.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.battle-report-lucian_alliance_glider {
+    background-image: url('../img/gliders.jpg');
+    background-repeat: no-repeat;
+    width: 551px;
+    height: 352px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+/* planety - stavby */
+.infrastructure-img {
+    background-repeat: no-repeat;
+    width: 230px;
+    height: 125px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.colony-1 {
+    background-image: url('../img/colony-1.png');
+}
+
+.colony-2 {
+    background-image: url('../img/colony-2.png');
+}
+
+.colony-3 {
+    background-image: url('../img/colony-3.png');
+}
+
+.limestone-extractor {
+    background-image: url('../img/limestone_extractor.png');
+}
+
+.water-extractor {
+    background-image: url('../img/water_extractor.png');
+}
+
+.food-extractor {
+    background-image: url('../img/foor_extractor.png');
+}
+
+.observatory {
+    background-image: url('../img/observatory.jpg');
+}
+
+.satellite {
+    background-image: url('../img/satellite.png');
+}
+
+.geothermal-base {
+    background-image: url('../img/geothermal_base.JPG');
+}
+
+/* pomocné */
+.admin a {
+    color: #209cff;
+}
+
+.teacher a {
+    color: rgb(255, 154, 0);
+}
+
+.player a {
+    color: white;
+}
+
+
+.pl-infra {
+    display: inline-block;
+    vertical-align: top;
+    min-width: 300px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.mwt {
+    max-width: 300px;
+}
+
+.mwp {
+    max-width: 180px;
+}
+
+.gate-address {
+    background-color: white;
+    border-radius: 3px;
+    max-width: 180px;
+    margin: auto;
+}
+
+.alliance-gate-address {
+    background-color: white;
+    border-radius: 3px;
+    max-width: 96px;
+    margin: auto;
+    margin-top: -3px;
+    margin-bottom: -3px;
+}
+
+.gate-address > img {
+    vertical-align: bottom;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.display-none {
+    display: none;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.tooltip-content {
+    max-width: 250px;
+}
+
+.no-padding {
+    padding: 0!important;
+}
+
+.not-allowed:hover {
+    cursor: not-allowed;
+}
+
+.content-margin {
+    margin-top: 19px;
+}
+
+.paginator {
+    text-align: center;
+    margin: 5px;
+}
+
+.delimiter {
+    margin-top: 10px;
+}
+
+.v-a-m {
+    vertical-align: middle
+}
+
+.v-a-b {
+    vertical-align: bottom;
+}
+
+/* planeta - stavby, prehled */
+#stargate-icon {
+    background-image: url('../img/icon-stargate.png');
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    background-size: 100% 100%;
+    background-color: #ffffff;
+    border-radius: 6px;
+}
+
+.satellite-planet {
+
+    background-image: url('../img/icon-satellite.png');
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    background-size: 100% 100%;
+    background-color: #ffffff;
+    border-radius: 6px;
+}
+
+.icon-colony {
+    background-image: url('../img/icon-colony.png');
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    background-size: 100% 100%;
+    background-color: #ffffff;
+    border-radius: 6px;
+}
+
+.icon-geothermal_base {
+    background-image: url("../img/icon-geothermal.png");
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    background-size: 100% 100%;
+    background-color: #ffffff;
+    border-radius: 6px;
+}
+
+.icon-limestone_extractor {
+    background-image: url("../img/icon-minerals.png");
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    background-size: 100% 100%;
+    background-color: #ffffff;
+    border-radius: 6px;
+}
+
+.icon-water_extractor {
+    background-image: url("../img/icon-water.png");
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    background-size: 100% 100%;
+    background-color: #ffffff;
+    border-radius: 6px;
+}
+
+.icon-food_extractor {
+    background-image: url("../img/icon-food.png");
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    background-size: 100% 100%;
+    background-color: #ffffff;
+    border-radius: 6px;
+}
+
+.icon-observatory {
+    background-image: url("../img/icon-observatory.png");
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    background-size: 100% 100%;
+    background-color: #ffffff;
+    border-radius: 6px;
+}
+
+.building-delimiter {
+    margin-right: 5px;
+}
+
+/* ikonky */
+.quest-icon {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url('../img/quest.png');
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+
+/* avatar */
+.settings-avatar {
+    width: 100px;
+    height: 100px;
+    padding-top: 5px;
+}
+
+.forums-avatar {
+    width: 100px;
+    height: 100px;
+}
+
+.forums-default-avatar {
+    width: 100px;
+    background-image: url(../img/default-contact.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 100px;
+    margin: auto;
+}
+
+/* country plugin custom */
+.country-list .country  {
+    color: black;
+}
+
+/* statistiky */
+.stats-img {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 352px;
+    height: 200px;
+    margin: auto;
+}
+
+.stats-stargate {
+    background-image: url('../img/stats-stargate.jpg');
+}
+
+.stats-overview {
+    background-image: url('../img/sgu-stats.jpg');
+}
+
+.stats-results {
+    background-image: url('../img/sgu-results.jpg');
+}
+
+.stats-veterans {
+    background-image: url('../img/sgu-veterans.jpeg');
+}
+
+.stats-online {
+    background-image: url('../img/online-players.jpg');
+}
+
+.gold-medal {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url('../img/gold-medal.png');
+    width: 20px;
+    height: 20px;
+    margin: auto;
+}
+
+.silver-medal {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url('../img/silver-medal.png');
+    width: 20px;
+    height: 20px;
+    margin: auto;
+}
+
+.bronze-medal {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url('../img/bronze-medal.png');
+    width: 20px;
+    height: 20px;
+    margin: auto;
+}
+
+.alliance-trophy {
+    background-image: url('../img/alliance/alliance_trophy.png');
+    background-repeat: no-repeat;
+    width: 19px;
+    height: 19px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.veteran {
+    background-image: url('../img/veteran.png');
+    background-repeat: no-repeat;
+    width: 19px;
+    height: 19px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+/* aliance */
+.building_img, .fleet_img {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.radar-building {
+    background-image: url('../img/alliance/alliance-radar.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.security-service-building {
+    background-image: url('../img/alliance/alliance-security_service.jpeg');
+    width: 213px;
+    height: 130px;
+}
+
+.base-humans {
+    background-image: url('../img/alliance/humans_base.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.base-asgard {
+    background-image: url('../img/alliance/asgard_base.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.base-goauld {
+    background-image: url('../img/alliance/goauld_base.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.base-wraith {
+    background-image: url('../img/alliance/wraith_base.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.base-ancient {
+    background-image: url('../img/alliance/ancient_base.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.base-jaffa {
+    background-image: url('../img/alliance/jaffa_base.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.base-asuran {
+    background-image: url('../img/alliance/asuran_base.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.base-lucian {
+    background-image: url('../img/alliance/lucian_base.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.base-nakai {
+    background-image: url('../img/alliance/nakai_base.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.base-ori {
+    background-image: url('../img/alliance/ori_base.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.base-replicator {
+    background-image: url('../img/alliance/replicator_base.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.base-tokra {
+    background-image: url('../img/alliance/tokra_base.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.naq_mine {
+    background-image: url('../img/alliance/naq_mine.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.tri_mine {
+    background-image: url('../img/alliance/tri_mine.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.lab-humans {
+    background-image: url('../img/alliance/humans_lab.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.lab-asgard {
+    background-image: url('../img/alliance/asgard_lab.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.lab-goauld {
+    background-image: url('../img/alliance/goauld_lab.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.lab-wraith {
+    background-image: url('../img/alliance/wraith_lab.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.lab-ancient {
+    background-image: url('../img/alliance/ancient_lab.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.lab-jaffa {
+    background-image: url('../img/alliance/jaffa_lab.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.lab-asuran {
+    background-image: url('../img/alliance/asuran_lab.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.lab-lucian {
+    background-image: url('../img/alliance/lucian_lab.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.lab-nakai {
+    background-image: url('../img/alliance/nakai_lab.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.lab-ori {
+    background-image: url('../img/alliance/ori_lab.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.lab-replicator {
+    background-image: url('../img/alliance/replicator_lab.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.lab-tokra {
+    background-image: url('../img/alliance/tokra_lab.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.barracks-humans {
+    background-image: url('../img/alliance/humans_barracks.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.barracks-asgard {
+    background-image: url('../img/alliance/asgard_barracks.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.barracks-goauld {
+    background-image: url('../img/alliance/goauld_barracks.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.barracks-wraith {
+    background-image: url('../img/alliance/wraith_barracks.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.barracks-ancient {
+    background-image: url('../img/alliance/ancient_barracks.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.barracks-jaffa {
+    background-image: url('../img/alliance/jaffa_barracks.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.barracks-asuran {
+    background-image: url('../img/alliance/asuran_barracks.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.barracks-lucian {
+    background-image: url('../img/alliance/lucian_barracks.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.barracks-nakai {
+    background-image: url('../img/alliance/nakai_barracks.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.barracks-ori {
+    background-image: url('../img/alliance/ori_barracks.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.barracks-replicator {
+    background-image: url('../img/alliance/replicator_barracks.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.barracks-tokra {
+    background-image: url('../img/alliance/tokra_barracks.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.shipyard-humans {
+    background-image: url('../img/alliance/humans_shipyard.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.shipyard-asgard {
+    background-image: url('../img/alliance/asgard_shipyard.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.shipyard-goauld {
+    background-image: url('../img/alliance/goauld_shipyard.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.shipyard-wraith {
+    background-image: url('../img/alliance/wraith_shipyard.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.shipyard-ancient {
+    background-image: url('../img/alliance/ancient_shipyard.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.shipyard-jaffa {
+    background-image: url('../img/alliance/jaffa_shipyard.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.shipyard-asuran {
+    background-image: url('../img/alliance/asuran_shipyard.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.shipyard-lucian {
+    background-image: url('../img/alliance/lucian_shipyard.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.shipyard-nakai {
+    background-image: url('../img/alliance/nakai_shipyard.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.shipyard-ori {
+    background-image: url('../img/alliance/ori_shipyard.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.shipyard-replicator {
+    background-image: url('../img/alliance/replicator_shipyard.png');
+    width: 213px;
+    height: 130px;
+}
+
+.shipyard-tokra {
+    background-image: url('../img/alliance/tokra_shipyard.png');
+    width: 213px;
+    height: 130px;
+}
+
+.satellite-humans {
+    background-image: url('../img/alliance/humans_satellite.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.satellite-asgard {
+    background-image: url('../img/alliance/asgard_satellite.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.satellite-goauld {
+    background-image: url('../img/alliance/goauld_satallite.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.satellite-wraith {
+    background-image: url('../img/alliance/wraith_satellite.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.satellite-ancient {
+    background-image: url('../img/alliance/ancient_satellite.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.satellite-jaffa {
+    background-image: url('../img/alliance/jaffa_satellite.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.satellite-asuran {
+    background-image: url('../img/alliance/asuran_satellite.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.satellite-lucian {
+    background-image: url('../img/alliance/lucian_satellite.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.satellite-nakai {
+    background-image: url('../img/alliance/nakai_satellite.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.satellite-ori {
+    background-image: url('../img/alliance/ori_satellite.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.satellite-replicator {
+    background-image: url('../img/alliance/replicator_satellite.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.satellite-tokra {
+    background-image: url('../img/alliance/tokra_satellite.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.infantry-humans {
+    background-image: url('../img/alliance/humans_infantry.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.infantry-asgard {
+    background-image: url('../img/alliance/asgard_infantry.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.infantry-goauld {
+    background-image: url('../img/alliance/goauld_infantry.jpg');
+    width: 136px;
+    height: 130px;
+}
+
+.infantry-wraith {
+    background-image: url('../img/alliance/wraith_infantry.jpg');
+    width: 167px;
+    height: 130px;
+}
+
+.infantry-ancient {
+    background-image: url('../img/alliance/ancient_infantry.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.infantry-jaffa {
+    background-image: url('../img/alliance/jaffa_infantry.jpg');
+    width: 181px;
+    height: 130px;
+}
+
+.infantry-asuran {
+    background-image: url('../img/alliance/asuran_infantry.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.infantry-lucian {
+    background-image: url('../img/alliance/lucian_infantry.jpg');
+    width: 167px;
+    height: 130px;
+}
+
+.infantry-nakai {
+    background-image: url('../img/alliance/nakai_infantry.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.infantry-ori {
+    background-image: url('../img/alliance/ori_infantry.jpg');
+    width: 167px;
+    height: 130px;
+}
+
+.infantry-replicator {
+    background-image: url('../img/alliance/replicator_infantry.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.infantry-tokra {
+    background-image: url('../img/alliance/tokra_infantry.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.universal-humans {
+    background-image: url('../img/alliance/humans_universal.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.universal-asgard {
+    background-image: url('../img/alliance/asgard_universal.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.universal-goauld {
+    background-image: url('../img/alliance/goauld_universal.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.universal-wraith {
+    background-image: url('../img/alliance/wraith_universal.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.universal-ancient {
+    background-image: url('../img/alliance/ancient_universal.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.universal-jaffa {
+    background-image: url('../img/alliance/jaffa_universal.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.universal-asuran {
+    background-image: url('../img/alliance/asuran_universal.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.universal-lucian {
+    background-image: url('../img/alliance/lucian_universal.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.universal-nakai {
+    background-image: url('../img/alliance/nakai_universal.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.universal-ori {
+    background-image: url('../img/alliance/ori_universal.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.universal-replicator {
+    background-image: url('../img/alliance/replicator_universal.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.universal-tokra {
+    background-image: url('../img/alliance/tokra_universal.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.cruiser-humans {
+    background-image: url('../img/alliance/humans_cruiser.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.cruiser-asgard {
+    background-image: url('../img/alliance/asgard_cruiser.jpg');
+    width: 213px;
+    height: 130px;
+}
+.cruiser-goauld {
+    background-image: url('../img/alliance/goauld_cruiser.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.cruiser-wraith {
+    background-image: url('../img/alliance/wraith_cruiser.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.cruiser-ancient {
+    background-image: url('../img/alliance/ancient_cruiser.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.cruiser-jaffa {
+    background-image: url('../img/alliance/jaffa_cruiser.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.cruiser-asuran {
+    background-image: url('../img/alliance/asuran_cruiser.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.cruiser-lucian {
+    background-image: url('../img/alliance/lucian_cruiser.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.cruiser-nakai {
+    background-image: url('../img/alliance/nakai_cruiser.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.cruiser-ori {
+    background-image: url('../img/alliance/ori_cruiser.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.cruiser-replicator {
+    background-image: url('../img/alliance/replicator_cruiser.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.cruiser-tokra {
+    background-image: url('../img/alliance/tokra_cruiser.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.battleship-humans {
+    background-image: url('../img/alliance/humans_battleship.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.battleship-asgard {
+    background-image: url('../img/alliance/asgard_battleship.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.battleship-goauld {
+    background-image: url('../img/alliance/goauld_battleship.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.battleship-wraith {
+    background-image: url('../img/alliance/wraih_battleship.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.battleship-ancient {
+    background-image: url('../img/alliance/ancient_battleship.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.battleship-jaffa {
+    background-image: url('../img/alliance/jaffa_battleship.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.battleship-asuran {
+    background-image: url('../img/alliance/asuran_battleship.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.battleship-lucian {
+    background-image: url('../img/alliance/lucian_battleship.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.battleship-nakai {
+    background-image: url('../img/alliance/nakai_battleship.jpg');
+    width: 213px;
+    height: 152px;
+}
+
+.battleship-ori {
+    background-image: url('../img/alliance/ori_battleship.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.battleship-replicator {
+    background-image: url('../img/alliance/replicator_battleship.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.battleship-tokra {
+    background-image: url('../img/alliance/tokra_battleship.jpg');
+    width: 213px;
+    height: 130px;
+}
+
+.pact {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url('../img/alliance/contract_pact.png');
+    width: 20px;
+    height: 20px;
+    margin: auto;
+    margin-top: -3px;
+    margin-bottom: -3px;
+}
+
+.trading {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url('../img/alliance/contract_trading.png');
+    width: 20px;
+    height: 20px;
+    margin: auto;
+    margin-top: -3px;
+    margin-bottom: -3px;
+}
+
+.non-aggression {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url('../img/alliance/contract_non-aggression.png');
+    width: 20px;
+    height: 20px;
+    margin: auto;
+}
+
+.infantry-weapons-upgrade {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url('../img/alliance/infantry-upgrade.png');
+    width: 20px;
+    height: 20px;
+    margin: auto;
+    margin-top: -3px;
+    margin-bottom: -3px;
+}
+
+.universal-engine-upgrade {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url('../img/alliance/universal_upgrade.png');
+    width: 20px;
+    height: 20px;
+    margin: auto;
+}
+
+.cruiser-weapons-upgrade {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url('../img/alliance/cruiser_upgrade.png');
+    width: 20px;
+    height: 20px;
+    margin: auto;
+}
+
+.research-radar {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url('../img/alliance/radar.png');
+    width: 20px;
+    height: 20px;
+    margin: auto;
+}
+
+.research-infiltration-team {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url('../img/alliance/infiltration.png');
+    width: 20px;
+    height: 20px;
+    margin: auto;
+}
+
+.research-infiltration-prevention{
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url('../img/alliance/infiltration_prevention.png');
+    width: 20px;
+    height: 20px;
+    margin: auto;
+}
+
+.alliance-user-online {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url('../img/alliance/alliance-user-online.png');
+    width: 15px;
+    height: 15px;
+
+}
+
+.alliance-user-offline {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url('../img/alliance/alliance-user-offline.png');
+    width: 15px;
+    height: 15px;
+}
+
+.race-humans {
+    background-image: url('../img/alliance/human.jpg');
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 145px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+.race-asgard {
+    background-image: url('../img/alliance/asgard.jpg');
+    background-repeat: no-repeat;
+    width: 130px;
+    height: 145px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.race-goauld {
+    background-image: url('../img/alliance/goauld.jpg');
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 145px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.race-wraith {
+    background-image: url('../img/alliance/wraith.jpg');
+    background-repeat: no-repeat;
+    width: 205px;
+    height: 135px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.race-ancient {
+    background-image: url('../img/alliance/ancient.jpg');
+    background-repeat: no-repeat;
+    width: 243px;
+    height: 136px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.race-jaffa {
+    background-image: url('../img/alliance/jaffa.jpg');
+    background-repeat: no-repeat;
+    width: 211px;
+    height: 134px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.race-asuran {
+    background-image: url('../img/alliance/asuran.jpg');
+    background-repeat: no-repeat;
+    width: 211px;
+    height: 142px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.race-lucian {
+    background-image: url('../img/alliance/lucian.JPG');
+    background-repeat: no-repeat;
+    width: 211px;
+    height: 142px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.race-nakai {
+    background-image: url('../img/alliance/nakai.jpg');
+    background-repeat: no-repeat;
+    width: 190px;
+    height: 172px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.race-ori {
+    background-image: url('../img/alliance/ori.jpg');
+    background-repeat: no-repeat;
+    width: 239px;
+    height: 149px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.race-replicator {
+    background-image: url('../img/alliance/replicator.jpg');
+    background-repeat: no-repeat;
+    width: 239px;
+    height: 149px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.race-tokra {
+    background-image: url('../img/alliance/tokra.jpg');
+    background-repeat: no-repeat;
+    width: 239px;
+    height: 149px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+/* store */
+.store-hero {
+    background-image: url("../img/store-hero2.jpg");
+    background-repeat: no-repeat;
+    width: 266px;
+    height: 146px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.store-nick {
+    background-image: url("../img/store-nick.jpg");
+    background-repeat: no-repeat;
+    width: 266px;
+    height: 146px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.store-credits {
+    background-image: url("../img/store-credits.jpg");
+    background-repeat: no-repeat;
+    width: 238px;
+    height: 133px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.store-rp {
+    background-image: url("../img/store-resources.png");
+    background-repeat: no-repeat;
+    width: 238px;
+    height: 133px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.store-resources {
+    background-image: url("../img/store-resources.png");
+    background-repeat: no-repeat;
+    width: 266px;
+    height: 146px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.store-vip {
+    background-image: url("../img/store-lab.jpg");
+    background-repeat: no-repeat;
+    width: 238px;
+    height: 133px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.drones-icon {
+    height: 14px;
+    width: 16px;
+    color: white;
+}
+
+.occupier-icon {
+    height: 14px;
+    width: 16px;
+    color: white;
+}
+
+/* enemy technologies */
+.enemy-tech {
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    background-size: 100% 100%;
+    cursor: pointer;
+    background-color: #ced4dad1;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 1px;
+}
+
+.tech-slot-empty {
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    text-align: center;
+    background-size: 100% 100%;
+    cursor: pointer;
+    background-color: #1a4046;
+    border: 2px solid #37ff4b;
+    border-radius: 8px;
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    margin: 1px;
+}
+
+.et-electronics {
+    border: 2px solid #117a8b;
+}
+
+.et-crystal {
+    border: 2px solid #ffee23;
+}
+
+.et-laser {
+    border: 2px solid #8b0d7e;
+}
+
+.et-plasma {
+    border: 2px solid #ff000a;
+}
+
+.et-1  {background-image: url(../img/enemy_technology/001-coding.png);}
+.et-2  {background-image: url(../img/enemy_technology/001-database.png);}
+.et-3  {background-image: url(../img/enemy_technology/002-brain.png);}
+.et-4  {background-image: url(../img/enemy_technology/002-database.png);}
+.et-5  {background-image: url(../img/enemy_technology/005-coding.png);}
+.et-6  {background-image: url(../img/enemy_technology/006-database.png);}
+.et-7  {background-image: url(../img/enemy_technology/006-settings.png);}
+.et-8  {background-image: url(../img/enemy_technology/007-coding.png);}
+.et-9  {background-image: url(../img/enemy_technology/007-database.png);}
+.et-10 {background-image: url(../img/enemy_technology/008-database.png);}
+.et-11 {background-image: url(../img/enemy_technology/009-database.png);}
+.et-12 {background-image: url(../img/enemy_technology/011-coding.png);}
+.et-13 {background-image: url(../img/enemy_technology/011-network.png);}
+.et-14 {background-image: url(../img/enemy_technology/012-network.png);}
+.et-15 {background-image: url(../img/enemy_technology/013-network.png);}
+.et-16 {background-image: url(../img/enemy_technology/014-idea.png);}
+.et-17 {background-image: url(../img/enemy_technology/014-network.png);}
+.et-18 {background-image: url(../img/enemy_technology/015-project.png);}
+.et-19 {background-image: url(../img/enemy_technology/017-coding.png);}
+.et-20 {background-image: url(../img/enemy_technology/018-database.png);}
+.et-21 {background-image: url(../img/enemy_technology/019-database.png);}
+.et-22 {background-image: url(../img/enemy_technology/020-database.png);}
+.et-23 {background-image: url(../img/enemy_technology/021-coding.png);}
+.et-24 {background-image: url(../img/enemy_technology/021-database.png);}
+.et-25 {background-image: url(../img/enemy_technology/022-database.png);}
+.et-26 {background-image: url(../img/enemy_technology/019-database.png);}
+.et-27 {background-image: url(../img/enemy_technology/020-database.png);}
+.et-28 {background-image: url(../img/enemy_technology/021-coding.png);}
+.et-29 {background-image: url(../img/enemy_technology/021-database.png);}
+.et-30 {background-image: url(../img/enemy_technology/022-database.png);}
+.et-31 {background-image: url(../img/enemy_technology/024-coding.png);}
+.et-32 {background-image: url(../img/enemy_technology/024-database.png);}
+.et-33 {background-image: url(../img/enemy_technology/027-database.png);}
+.et-34 {background-image: url(../img/enemy_technology/028-share.png);}
+.et-35 {background-image: url(../img/enemy_technology/030-database.png);}
+
+/*  výzkum technologií*/
+#technologies table tr:nth-child(3) {
+    height: 36px;
+}
+
+.research-img {
+    background-repeat: no-repeat;
+    width: 400px;
+    height: 240px;
+    background-size: 100% 100%;
+    vertical-align: top;
+}
+
+.research-dhd {
+    background-image: url('../img/research-dhd.jpg');
+}
+
+.research-lab {
+    background-image: url('../img/lab.jpg');
+}
+
+.research-bar {
+    background-image: url('../img/researcg-bar.jpg');
+}
+
+.research-chambers {
+    background-image: url('../img/research-chambers.jpg');
+    height: 380px!important;
+}
+
+.research-chambers2 {
+    background-image: url('../img/research-chambers2.jpeg');
+    height: 390px!important;
+}
+
+.research-control {
+    background-image: url('../img/research-control.jpg');
+}
+
+.research-ftl {
+    background-image: url('../img/research-ftl.jpg');
+}
+
+.research-ftl2 {
+    background-image: url('../img/research-ftl-second-generation.jpg');
+}
+
+.research-guns {
+    background-image: url('../img/research-guns.png');
+}
+
+.research-head-gun {
+    background-image: url('../img/research-head-gun.jpg');
+}
+
+.research-hydroponical-garden {
+    background-image: url('../img/research-hydroponical-garden.jpg');
+}
+
+.research-hydroponical-lab {
+    background-image: url('../img/research-hydroponical-lab.jpg');
+}
+
+.research-jidelna {
+    background-image: url('../img/research-jidelna.jpg');
+}
+
+.research-kino {
+    background-image: url('../img/research-kino.jpg');
+    height: 280px!important;
+}
+
+.research-armchair {
+    background-image: url('../img/research-neural-armchair.jpg');
+    height: 280px!important;
+}
+.research-osetrovna {
+    background-image: url('../img/research-osetrovna.jpg');
+}
+
+.research-komora {
+    background-image: url('../img/research-prechodova-komora.jpg');
+}
+
+.research-emitor {
+    background-image: url('../img/research-shield-emitor.jpg');
+}
+
+.research-shields {
+    background-image: url('../img/research-shields.jpg');
+}
+
+.research-shuttle {
+    background-image: url('../img/research-shuttle.jpg');
+}
+
+.research-collector {
+    background-image: url('../img/research-solar-collector.jpg');
+}
+
+.research-sprchy {
+    background-image: url('../img/research-sprchy.jpg');
+}
+
+.research-sublight {
+    background-image: url('../img/research-sublight.jpg');
+}
+
+.research-suits {
+    background-image: url('../img/research-suits.jpg');
+}
+
+.research-trysky {
+    background-image: url('../img/research-trysky.jpg');
+}
+
+.research-robot {
+    background-image: url('../img/research-robot.jpg');
+}
+
+/* forum */
+.smile {
+    width: 20px;
+    height: 20px;
+}
+
+.like {
+    background-image: url('../img/like.png');
+    background-repeat: no-repeat;
+    width: 12px;
+    height: 12px;
+    background-size: 100% 100%;
+    margin: auto;
+    cursor: pointer;
+}
+
+.dislike {
+    background-image: url('../img/dislike.png');
+    background-repeat: no-repeat;
+    width: 12px;
+    height: 12px;
+    background-size: 100% 100%;
+    margin: auto;
+    cursor: pointer
+}
+
+.number-bubble {
+    background-color: rgba(4, 190, 254, 0.31);
+    min-width: 10px;
+    padding: 1px 8px;
+    font-size: 8px;
+    font-weight: bold;
+    vertical-align: baseline;
+    border-radius: 10px;
+}
+
+.forum-box {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #fff;
+    border: 1px solid #163b61
+}
+
+.forum-box .forum-box-header {
+    background-color: rgba(11, 29, 48, 0.9);
+    padding-top: 6px;
+    padding-left: 6px;
+}
+
+.forum-box-header-item {
+    float: left;
+    width: 200px;
+}
+
+.forum-message {
+    padding: 6px;
+    background-color: rgba(10, 10, 10, 0.9);
+    clear: both
+}
+
+.forum-re {
+    color: gold; font-size: 10px; font-weight: bold;
+}
+
+.forum-avatar {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    text-align: center;
+}
+
+.forum-message-text {
+    display: inline-block;
+    vertical-align: top;
+    width: 1050px;
+    padding-left: 5px;
+    line-height: 20px;
+}
+
+/* zpravy */
+.contact-panel {
+    width: 325px;
+}
+
+.contact-panel-header {
+    color: #209cff;
+    background-color: rgba(11, 29, 48, 0.9);
+    padding: 6px;
+    border: 1px solid #163b61;
+}
+
+.contacts-heading {
+    font-weight: bold;
+    color: white;
+    font-size: 15px;
+}
+
+.contacts-a {
+    font-size: 14px;
+}
+
+.contact-panel-items {
+    font-size: 14px;
+    background-color: rgba(10, 10, 10, 0.9);
+    min-height: 538px;
+    color: white;
+    padding: 6px;
+    border: 1px solid #163b61;
+    border-top: none;
+}
+
+.contact-panel-paginator {
+    background-color: rgba(10, 10, 10, 0.9);
+    color: white;
+    padding: 6px;
+    border: 1px solid #163b61;
+}
+
+/* pozadi */
+.pref-bg-1 { background: url(../img/bg/1.jpg) no-repeat center center fixed }
+.pref-bg-2 { background: url(../img/bg/2.jpg) no-repeat center center fixed }
+.pref-bg-3 { background: url(../img/bg/3.jpg) no-repeat center center fixed }
+.pref-bg-4 { background: url(../img/bg/4.jpg) no-repeat center center fixed }
+.pref-bg-5 { background: url(../img/bg/5.jpg) no-repeat center center fixed }
+.pref-bg-6 { background: url(../img/bg/6.jpg) no-repeat center center fixed }
+.pref-bg-7 { background: url(../img/bg/7.jpg) no-repeat center center fixed }
+.pref-bg-8 { background: url(../img/bg/8.jpg) no-repeat center center fixed }
+
+.bg-skill-tree { background: url(../img/tree-bg.png) no-repeat center center fixed }
+
+.bg-settings-preview-1 {background: url(../img/bg/1.jpg)}
+.bg-settings-preview-2 {background: url(../img/bg/2.jpg)}
+.bg-settings-preview-3 {background: url(../img/bg/3.jpg)}
+.bg-settings-preview-4 {background: url(../img/bg/4.jpg)}
+.bg-settings-preview-5 {background: url(../img/bg/5.jpg)}
+.bg-settings-preview-6 {background: url(../img/bg/6.jpg)}
+.bg-settings-preview-7 {background: url(../img/bg/7.jpg)}
+.bg-settings-preview-8 {background: url(../img/bg/8.jpg)}
+
+.bg-settings-preview {
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 120px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+/* alliance main msg */
+.alliance-main-msg {
+    resize: none;
+    background: #15283c;
+    border: none;
+    border-bottom: solid 1px #283033;
+    width: 100%;
+    height: 94px;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px;
+}
+
+/* vip */
+.vip {
+    background-image: url("../img/vip.png");
+    background-repeat: no-repeat;
+    width: 19px;
+    height: 19px;
+    background-size: 100% 100%;
+    margin: auto;
+    display: inline-block;
+    vertical-align: sub;
+    cursor: pointer;
+}
+
+.vip-table {
+    margin-top: -3px;
+    margin-bottom: -2px;
+}
+
+/* */
+.help-tab { margin-left: 15px; }
+
+.research-box {
+    width: 230px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.number-circle {
+    background: white;
+    border-radius: 0.8em;
+    -moz-border-radius: 0.8em;
+    -webkit-border-radius: 0.8em;
+    color: black;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 19px;
+    margin-right: 5px;
+    text-align: center;
+    width: 19px;
+}
+
+.table-button-resizer {
+    margin-top: -6px;
+    margin-bottom: -6px;
+}
+
+.table-select-resizer {
+    margin-top: -3px;
+    margin-bottom: -3px;
+}
+.table-input-resizer {
+    margin-top: -3px;
+    margin-bottom: -3px;
+}
+
+.table-building-icon {
+    margin-top: -1px;
+    margin-bottom: -5px;
+}
+
+.space-object-z-index {
+    z-index: 999;
+}
+
+.alliance-rank {
+    width: 18px;
+    margin-top: -3px;
+    margin-bottom: -3px;
+}
+
+.crew-alert {
+    color: #ace7ff;
+    font-size: 12px;
+    padding: 3px;
+    min-height: 60px;
+}
+
+.crew-alert-date {
+    font-size: 14px;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.crew-alert-text {
+    float: right;
+    position: relative;
+    top: 0px;right: 0px;
+    background-repeat: no-repeat;
+    width: 66px;
+    height: 42px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+
+.text-note {
+    font-style: italic;
+}
+
+.quests-icon {
+    color: #ffca00;
+}
+
+.quest-task {
+    display:block;
+    padding-top: 5px;
+    padding-left: 15px;
+    font-size: 10px;
+    color: white;
+}
+
+.quest-task-done {
+    color: grey;
+    text-decoration: line-through;
+}
+
+.quest-task-description {
+    display:block;
+    padding-top: 5px;
+    font-style: italic;
+    font-size: 10px;
+}
