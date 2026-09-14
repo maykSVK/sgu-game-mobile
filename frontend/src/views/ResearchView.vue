@@ -225,9 +225,11 @@ async function doResearch() {
   if (sData && sData.id) {
     try {
       loading.value = true
-      await axios.post('/api/research', { technology_id: sData.id })
-      showToast('Výskum úspešne odoslaný!', 'success')
-      selectedNodeKey.value = null
+      const res = await axios.post('/api/research', { technology_id: sData.id })
+      showToast(res.data.message || 'Výskum odoslaný!', res.data.type || 'success')
+      if (res.data.type !== 'error') {
+        selectedNodeKey.value = null
+      }
       await refresh()
     } catch (e) {
       showToast('Chyba: ' + (e.response?.data?.error || e.message), 'error')
