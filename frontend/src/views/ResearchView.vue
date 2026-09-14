@@ -86,6 +86,15 @@
           </div>
         </div>
       </transition>
+
+      <!-- ── CUSTOM TOAST NOTIFICATION ── -->
+      <transition name="toast-slide">
+        <div v-if="toast.show" class="sgu-toast" :class="'toast-' + toast.type">
+          <span class="toast-icon">{{ toast.type === 'success' ? '✅' : '⚠️' }}</span>
+          <div class="toast-msg">{{ toast.message }}</div>
+        </div>
+      </transition>
+
     </div>
   </div>
 </template>
@@ -101,6 +110,15 @@ const error = ref(null)
 
 const selectedNodeKey = ref(null)
 const selectedNodeDetails = ref(null)
+
+const toast = ref({ show: false, message: '', type: 'error' })
+
+function showToast(message, type = 'success') {
+  toast.value = { show: true, message, type }
+  setTimeout(() => {
+    toast.value.show = false
+  }, 4000)
+}
 
 // Rozloženie mriežky pre mobilný pohľad (trochu posunuté, aby sa to zmestilo)
 const GRID_SIZE_X = 65;
@@ -197,7 +215,7 @@ async function selectNode(key) {
       const res = await axios.get(`/api/research/${sData.id}`)
       selectedNodeDetails.value = res.data.data
     } catch (e) {
-      console.error('Failed to load node details', e)
+      showToast('Nepodarilo sa načítať detaily výskumu.', 'error')
     }
   }
 }
@@ -208,11 +226,11 @@ async function doResearch() {
     try {
       loading.value = true
       await axios.post('/api/research', { technology_id: sData.id })
-      alert('Výskum odoslaný!') // Pre zjednodušenie použijeme alert, neskôr môžeme pridať sgu notifikácie
+      showToast('Výskum úspešne odoslaný!', 'success')
       selectedNodeKey.value = null
       await refresh()
     } catch (e) {
-      alert('Chyba: ' + (e.response?.data?.error || e.message))
+      showToast('Chyba: ' + (e.response?.data?.error || e.message), 'error')
       loading.value = false
     }
   }
@@ -398,4 +416,32 @@ onMounted(refresh)
 /* Transitions */
 .slide-up-enter-active, .slide-up-leave-active { transition: all 0.3s ease; }
 .slide-up-enter-from, .slide-up-leave-to { transform: translateY(100%); opacity: 0; }
+
+/* Toast */
+.sgu-toast {
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(10,20,35,0.95);
+  border: 1px solid #04befe;
+  padding: 12px 20px;
+  border-radius: 4px;
+  z-index: 100;
+  display: flex; align-items: center; gap: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+  font-family: Orbitron, sans-serif;
+  font-size: 13px;
+  backdrop-filter: blur(4px);
+  min-width: 250px;
+}
+.toast-success { border-color: #59d34c; }
+.toast-success .toast-icon { color: #59d34c; }
+.toast-error { border-color: #ff3c3c; }
+.toast-error .toast-icon { color: #ff3c3c; }
+.toast-msg { color: #fff; font-weight: bold; }
+
+.toast-slide-enter-active, .toast-slide-leave-active { transition: all 0.3s ease; }
+.toast-slide-enter-from { transform: translate(-50%, -20px); opacity: 0; }
+.toast-slide-leave-to { transform: translate(-50%, -20px); opacity: 0; }
 </style>
