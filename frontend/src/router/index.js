@@ -1,22 +1,33 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
 
+const wip = (title) => ({
+  component: () => import('../views/WipView.vue'),
+  props: { title },
+})
+
 const routes = [
-  { path: '/login',      name: 'login',      component: () => import('../views/LoginView.vue'),     meta: { public: true } },
-  { path: '/',           name: 'dashboard',  component: () => import('../views/DashboardView.vue') },
-  { path: '/research',   name: 'research',   component: () => import('../views/ResearchView.vue')  },
-  { path: '/universe',   name: 'universe',   component: () => import('../views/UniverseView.vue')  },
-  { path: '/arena',      name: 'arena',      component: () => import('../views/ArenaView.vue')      },
-  { path: '/stats',      name: 'stats',      component: () => import('../views/StatsView.vue')      },
-  { path: '/reports',    name: 'reports',    component: () => import('../views/ReportsView.vue')    },
-  // Nové views
-  { path: '/stargate',   name: 'stargate',   component: () => import('../views/StargateView.vue')   },
-  { path: '/upgrades',   name: 'upgrades',   component: () => import('../views/UpgradesView.vue')   },
-  { path: '/expedition', name: 'expedition', component: () => import('../views/ExpeditionView.vue') },
-  { path: '/messages',   name: 'messages',   component: () => import('../views/StatsView.vue')      }, // placeholder
-  { path: '/alliance',   name: 'alliance',   component: () => import('../views/StatsView.vue')      }, // placeholder
-  { path: '/market',     name: 'market',     component: () => import('../views/StatsView.vue')      }, // placeholder
-  { path: '/lab',        name: 'lab',        component: () => import('../views/StatsView.vue')      }, // placeholder
+  // ── Verejné ──────────────────────────────────────────────────
+  { path: '/login', name: 'login', component: () => import('../views/LoginView.vue'), meta: { public: true } },
+
+  // ── Dashboard ─────────────────────────────────────────────────
+  { path: '/', name: 'dashboard', component: () => import('../views/DashboardView.vue') },
+
+  // ── V príprave ────────────────────────────────────────────────
+  { path: '/universe',   name: 'universe',   ...wip('Vesmír')            },
+  { path: '/stargate',   name: 'stargate',   ...wip('Hvezdná brána')     },
+  { path: '/expedition', name: 'expedition', ...wip('Expedícia')         },
+  { path: '/research',   name: 'research',   ...wip('Výskum')            },
+  { path: '/upgrades',   name: 'upgrades',   ...wip('Vylepšenia')        },
+  { path: '/messages',   name: 'messages',   ...wip('Správy / Chat')     },
+  { path: '/alliance',   name: 'alliance',   ...wip('Aliancia')          },
+  { path: '/market',     name: 'market',     ...wip('Obchodná stanica')  },
+  { path: '/lab',        name: 'lab',        ...wip('Laboratórium')      },
+  { path: '/stats',      name: 'stats',      ...wip('Štatistiky')        },
+  { path: '/reports',    name: 'reports',    ...wip('Quest Log / Reporty') },
+  { path: '/arena',      name: 'arena',      ...wip('Aréna')            },
+
+  // ── Fallback ──────────────────────────────────────────────────
   { path: '/:pathMatch(.*)*', redirect: '/' },
 ]
 
