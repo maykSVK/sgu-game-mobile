@@ -5,14 +5,15 @@
   <div class="dash-page">
     <div class="dash-content">
       
+<!-- VUE TEMPLATE -->
       <!-- ── HLAVNÁ SEKCIÁ: STROM VÝSKUMU ── -->
       <section class="dash-section">
         <div class="dash-panel">
           <div class="dash-panel-head">
-            <span class="dash-panel-dot"></span> Strom výskumu
+            <span class="dash-panel-dot"></span> Strom výzkumu
           </div>
           <div class="dash-panel-body" style="padding: 0;">
-            <div v-if="loading && !data" class="loading-box">Načítavam výskumy...</div>
+            <div v-if="loading && !data" class="loading-box">Načítám výzkumy...</div>
             <div v-else class="res-tree-container">
               
               <svg class="res-lines">
@@ -49,30 +50,30 @@
           </div>
           
           <div class="res-detail-body">
-            <div v-if="!selectedNodeDetails" class="loading-box" style="min-height:100px;">Načítavam detaily...</div>
+            <div v-if="!selectedNodeDetails" class="loading-box" style="min-height:100px;">Načítám detaily...</div>
             
             <template v-else>
               <div class="res-desc">{{ selectedNodeDetails.description }}</div>
               
               <div class="res-req-section">
-                <div class="res-req-title">Požiadavky:</div>
+                <div class="res-req-title">Požadavky:</div>
                 <div v-for="req in selectedNodeDetails.dependsOn" :key="req.name" 
                      class="res-req-item" :class="req.met ? 'req-met' : 'req-fail'">
                   <span class="req-icon">{{ req.met ? '✓' : '✕' }}</span>
                   {{ req.name }}
                 </div>
-                <div v-if="!selectedNodeDetails.dependsOn?.length" class="req-met">Žiadne (alebo nenačítané)</div>
+                <div v-if="!selectedNodeDetails.dependsOn?.length" class="req-met">Žádné (nebo nenačteno)</div>
               </div>
 
               <!-- Tlačidlá akcií -->
               <div class="res-actions">
                 <button v-if="selectedNodeDetails.status === 'researched' || isResearched(selectedNodeKey)" 
                         class="res-btn btn-done" disabled>
-                  Vyskúmané
+                  Vyzkoumáno
                 </button>
                 <button v-else-if="selectedNodeDetails.status === 'researching' || isResearching(selectedNodeKey)" 
                         class="res-btn btn-progress" disabled>
-                  Prebieha výskum
+                  Probíhá výzkum
                 </button>
                 <button v-else 
                         @click="doResearch" 
@@ -86,7 +87,7 @@
           </div>
         </div>
       </transition>
-
+      
       <!-- ── CUSTOM TOAST NOTIFICATION ── -->
       <transition name="toast-slide">
         <div v-if="toast.show" class="sgu-toast" :class="'toast-' + toast.type">
@@ -215,7 +216,7 @@ async function selectNode(key) {
       const res = await axios.get(`/api/research/${sData.id}`)
       selectedNodeDetails.value = res.data.data
     } catch (e) {
-      showToast('Nepodarilo sa načítať detaily výskumu.', 'error')
+      showToast('Nepodařilo se načíst detaily výzkumu.', 'error')
     }
   }
 }
@@ -226,7 +227,7 @@ async function doResearch() {
     try {
       loading.value = true
       const res = await axios.post('/api/research', { technology_id: sData.id })
-      showToast(res.data.message || 'Výskum odoslaný!', res.data.type || 'success')
+      showToast(res.data.message || 'Výzkum odeslán!', res.data.type || 'success')
       if (res.data.type !== 'error') {
         selectedNodeKey.value = null
       }
@@ -245,7 +246,7 @@ async function refresh() {
     const res = await axios.get('/api/research')
     data.value = res.data.data
   } catch (e) {
-    error.value = e.response?.data?.error || 'Nepodarilo sa načítať dáta.'
+    error.value = e.response?.data?.error || 'Nepodařilo se načíst data.'
     if (!data.value) data.value = { researches: [] }
   } finally {
     loading.value = false
@@ -298,9 +299,9 @@ onMounted(refresh)
 .res-tree-container {
   position: relative;
   width: 100%;
-  height: 750px;
+  height: calc(100vh - 150px); /* Fit to screen instead of fixed 750px */
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: auto;
   background: rgba(0,0,0,0.4);
 }
 

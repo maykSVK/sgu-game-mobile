@@ -119,21 +119,22 @@ function resPercent(val) {
 const RES_META = {
   energia: { label: 'Energie',       icon: '⚡', color: '#59d34c' },
   energy:  { label: 'Energie',       icon: '⚡', color: '#59d34c' },
-  jedlo:   { label: 'Jídlo',         icon: '🍖', color: '#e284ff' },
-  food:    { label: 'Jídlo',         icon: '🍖', color: '#e284ff' },
+  jedlo:   { label: 'Jídlo',         icon: '🍗', color: '#e284ff' },
+  food:    { label: 'Jídlo',         icon: '🍗', color: '#e284ff' },
   voda:    { label: 'Voda',          icon: '💧', color: '#56fff3' },
   water:   { label: 'Voda',          icon: '💧', color: '#56fff3' },
   vapno:   { label: 'Vápenec',       icon: '🪨', color: '#ffd760' },
   vapenc:  { label: 'Vápenec',       icon: '🪨', color: '#ffd760' },
   limestone:{ label: 'Vápenec',      icon: '🪨', color: '#ffd760' },
-  kredity: { label: 'Kredity',       icon: '💳', color: '#f0f0f0' },
-  credits: { label: 'Kredity',       icon: '💳', color: '#f0f0f0' },
-  vyskum:  { label: 'Výzkumné body', icon: '🔬', color: '#f0f0f0' },
-  research:{ label: 'Výzkumné body', icon: '🔬', color: '#f0f0f0' },
-  slava:   { label: 'Sláva',         icon: '👑', color: 'gold' },
-  renown:  { label: 'Sláva',         icon: '👑', color: 'gold' },
-  fragmenty: { label: 'Fragmenty',   icon: '💠', color: '#04befe' },
-  fragments: { label: 'Fragmenty',   icon: '💠', color: '#04befe' },
+  kredity: { label: 'Kredity',       icon: '💰', color: '#f0f0f0' },
+  credits: { label: 'Kredity',       icon: '💰', color: '#f0f0f0' },
+  vyskum:  { label: 'Výzkumné body', icon: '⚛️', color: '#f0f0f0' },
+  research:{ label: 'Výzkumné body', icon: '⚛️', color: '#f0f0f0' },
+  'research-points':{ label: 'Výzkumné body', icon: '⚛️', color: '#f0f0f0' },
+  slava:   { label: 'Sláva',         icon: '🌟', color: 'gold' },
+  renown:  { label: 'Sláva',         icon: '🌟', color: 'gold' },
+  fragmenty: { label: 'Fragmenty',   icon: '🧩', color: '#04befe' },
+  fragments: { label: 'Fragmenty',   icon: '🧩', color: '#04befe' },
   spokojenost: { label: 'Spokojenost', icon: '😊', color: '#59d34c' },
   happiness: { label: 'Spokojenost', icon: '😊', color: '#59d34c' },
 }
@@ -239,6 +240,10 @@ async function doLogout() {
   padding: 14px 14px 12px;
   position: relative;
   background: rgba(0,0,0,0.4);
+}
+.left-content {
+  flex: 1; overflow-y: auto; overflow-x: hidden;
+  padding: 10px 15px 20px 15px;
 }
 .left-header-name {
   font-size: 18px; font-weight: bold; color: #fff;
