@@ -67,10 +67,13 @@ function parseDashboard(html) {
   // Ship status
   data.shipStatus = [];
   $('span.panel-heading:contains("Stav")').next('div').find('p').each((i, el) => {
-    const text = $(el).text().trim().replace(/\s+/g, ' ');
+    const p = $(el);
+    let text = p.text().trim().replace(/\s+/g, ' ');
+    const countdownTarget = p.find('[data-countdown]').attr('data-countdown') || null;
+
     if (text) {
         if (!text.includes('bitevn') || data.hasNewReport) {
-            data.shipStatus.push(text);
+            data.shipStatus.push({ text, countdown: countdownTarget });
         }
     }
   });

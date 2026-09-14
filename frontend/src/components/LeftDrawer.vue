@@ -58,6 +58,7 @@
                :class="{ 'report-blink': isBattleReport(a) }"
                @click="isBattleReport(a) ? go('/reports') : null">
             {{ a.text || a }}
+            <span v-if="a.countdown" class="left-countdown">{{ formatCountdown(a.countdown) }}</span>
           </div>
           <div v-if="!alerts.length" class="left-alert" style="color:rgba(255,255,255,0.4);">
             Žádná hlášení
@@ -82,7 +83,7 @@
 </template>
 
 <script setup>
-import { computed, watch } from 'vue'
+import { computed, watch, ref, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
 import { useGameStore } from '../stores/game'
@@ -208,6 +209,28 @@ const alerts = computed(() => {
 function isBattleReport(a) {
   const text = (a.text || a || '').toLowerCase()
   return text.includes('bitevn') && text.includes('report')
+}
+
+const now = ref(Date.now())
+let timerInterval = null
+onMounted(() => {
+  timerInterval = setInterval(() => { now.value = Date.now() }, 1000)
+})
+onUnmounted(() => {
+  if (timerInterval) clearInterval(timerInterval)
+})
+
+function formatCountdown(targetDateStr) {
+  if (!targetDateStr) return ''
+  // targetDateStr format: "2026-09-14 11:17:52"
+  const t = new Date(targetDateStr.replace(' ', 'T')).getTime()
+  let diff = Math.floor((t - now.value) / 1000)
+  if (diff <= 0) return '00:00:00'
+  
+  const h = Math.floor(diff / 3600).toString().padStart(2, '0')
+  const m = Math.floor((diff % 3600) / 60).toString().padStart(2, '0')
+  const s = (diff % 60).toString().padStart(2, '0')
+  return `${h}:${m}:${s}`
 }
 
 function go(path) {
