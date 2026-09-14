@@ -19,7 +19,11 @@
               <div class="dash-panel-head">
                 <span class="dash-panel-dot"></span> {{ box.title }}
               </div>
-              <!-- Vložíme raw HTML s opravenými cestami -->
+              
+              <!-- NATIVE VUE IMAGE WRAPPER -->
+              <div v-if="box.imageClass" class="native-card-image" :class="box.imageClass"></div>
+
+              <!-- Zvyšok vložíme ako raw HTML (obrázky sú v ňom skryté) -->
               <div class="dash-panel-body dash-raw-html" v-html="fixHtml(box.html)" @click="handleLinks" @submit.prevent="handleFormSubmit">
               </div>
             </div>
@@ -268,6 +272,22 @@ onMounted(() => {
   color: #ddd;
   height: auto;
   overflow-x: hidden;
+}
+
+/* ── NATIVE VUE IMAGES ── */
+.native-card-image {
+  width: 100%;
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 2px solid rgba(4,190,254,0.4);
+  box-shadow: inset 0 -20px 20px -20px rgba(0,0,0,0.8);
+}
+.native-card-image.planet-detail {
+  height: 220px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #040914; /* Tmavé vesmírne pozadie */
 }
 
 /* ── STYLING RAW HTML IN DASHBOARD ── */

@@ -11,11 +11,21 @@ function parsePlanet(html) {
     const bodyHtml = $(el).find('.infobox-standard-body').html();
     const className = $(el).attr('class');
     
+    // Extract primary image class for native Vue rendering
+    let imageClass = $(el).find('.infrastructure-img, .artifact, .planet-detail, .observatory, .satellite, .base').attr('class');
+    if (imageClass) imageClass = imageClass.trim();
+    
+    // Hide the original image from the raw HTML so we can render it ourselves!
+    const $body = cheerio.load(bodyHtml);
+    $body('.infrastructure-img, .artifact, .planet-detail').parent().hide();
+    const cleanedHtml = $body.html();
+
     if (title && bodyHtml) {
       infoboxes.push({
         title,
-        html: bodyHtml,
-        class: className
+        html: cleanedHtml,
+        class: className,
+        imageClass
       });
     }
   });
