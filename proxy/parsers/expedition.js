@@ -6,13 +6,10 @@ function parseExpedition(html) {
   const infoboxes = [];
   $('.infobox-standard').each((_, el) => {
     const title = $(el).find('.infobox-standard-title').text().trim();
-    // Chceme preskočiť herný chat (ako to bolo na dashboarde), ak sa tam nachádza
     if ($(el).hasClass('chat-box') || title.toLowerCase().includes('chat')) return;
     
-    // Potrebujeme vytiahnuť celý obsah
     const bodyHtml = $(el).find('.infobox-standard-body').html();
     
-    // Ponecháme to v surovom HTML
     if (title && bodyHtml) {
       infoboxes.push({
         title,
@@ -21,7 +18,23 @@ function parseExpedition(html) {
     }
   });
 
-  return { infoboxes };
+  // Skúsime nájsť hlásenia z notyf (error alebo success)
+  const messages = [];
+  $('script').each((_, el) => {
+    const scriptContent = $(el).html();
+    if (scriptContent && scriptContent.includes('notyf.')) {
+      const errorMatch = scriptContent.match(/notyf\.error\(['"]([^'"]+)['"]\)/);
+      if (errorMatch) {
+        messages.push({ type: 'error', text: errorMatch[1] });
+      }
+      const successMatch = scriptContent.match(/notyf\.success\(['"]([^'"]+)['"]\)/);
+      if (successMatch) {
+        messages.push({ type: 'success', text: successMatch[1] });
+      }
+    }
+  });
+
+  return { infoboxes, messages };
 }
 
 module.exports = { parseExpedition };

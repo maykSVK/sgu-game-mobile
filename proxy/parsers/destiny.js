@@ -1,23 +1,39 @@
-const cheerio = require("cheerio");
+const cheerio = require('cheerio');
 
 function parseDestiny(html) {
   const $ = cheerio.load(html);
-  const data = {
-    infoboxes: []
-  };
+  
+  const infoboxes = [];
+  $('.infobox-standard').each((_, el) => {
+    const title = $(el).find('.infobox-standard-title').text().trim();
+    if ($(el).hasClass('chat-box') || title.toLowerCase().includes('chat')) return;
+    
+    const bodyHtml = $(el).find('.infobox-standard-body').html();
+    
+    if (title && bodyHtml) {
+      infoboxes.push({
+        title,
+        html: bodyHtml
+      });
+    }
+  });
 
-  $(".infobox-standard").each((i, el) => {
-    const title = $(el).find(".infobox-standard-title").text().trim();
-    if (title && !title.includes("chat") && !title.includes("Chat")) {
-      let bodyHtml = $(el).find(".infobox-standard-body").html();
-      if (title && bodyHtml) {
-         data.infoboxes.push({ title, html: bodyHtml.trim() });
+  const messages = [];
+  $('script').each((_, el) => {
+    const scriptContent = $(el).html();
+    if (scriptContent && scriptContent.includes('notyf.')) {
+      const errorMatch = scriptContent.match(/notyf\.error\(['"]([^'"]+)['"]\)/);
+      if (errorMatch) {
+        messages.push({ type: 'error', text: errorMatch[1] });
+      }
+      const successMatch = scriptContent.match(/notyf\.success\(['"]([^'"]+)['"]\)/);
+      if (successMatch) {
+        messages.push({ type: 'success', text: successMatch[1] });
       }
     }
   });
 
-  return data;
+  return { infoboxes, messages };
 }
 
 module.exports = { parseDestiny };
-

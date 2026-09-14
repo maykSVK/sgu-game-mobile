@@ -156,3 +156,21 @@ a:hover { text-decoration: underline; }
   transition: background 0.12s;
 }
 .sgu-btn-logout:active { background: rgba(200,10,10,0.35); }
+
+/* ── Global Toast ── */
+.sgu-toast {
+  position: fixed; top: 60px; left: 50%; transform: translateX(-50%);
+  background: rgba(10,20,35,0.97); border: 1px solid #04befe;
+  padding: 12px 22px; border-radius: 4px; z-index: 200;
+  display: flex; align-items: center; gap: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.85);
+  font-family: Orbitron, sans-serif; font-size: 13px;
+  backdrop-filter: blur(6px); min-width: 260px; max-width: 90vw;
+  color: #fff; font-weight: bold;
+  animation: toastIn 0.25s ease;
+}
+.sgu-toast.success { border-color: #59d34c; }
+.sgu-toast.success i { color: #59d34c; }
+.sgu-toast.error { border-color: #ff3c3c; }
+.sgu-toast.error i { color: #ff3c3c; }
+@keyframes toastIn { from { opacity: 0; transform: translateX(-50%) translateY(-12px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }

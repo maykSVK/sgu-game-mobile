@@ -33,6 +33,12 @@
           <div class="dash-raw-html" v-html="tooltipModalHtml" @click="handleLinks" @submit.prevent="handleFormSubmit"></div>
         </div>
       </div>
+      
+      <!-- TOAST -->
+      <div v-if="toast.show" class="sgu-toast" :class="toast.type">
+        <i class="fas" :class="toast.type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'"></i>
+        {{ toast.message }}
+      </div>
 
     </div>
   </div>
@@ -52,12 +58,23 @@ const destinyData = ref(null)
 
 // Modal state pre tooltpy
 const tooltipModalHtml = ref(null)
+const toast = ref({ show: false, message: "", type: "success" })
+
+function showToast(msg, type = "success") {
+  toast.value = { show: true, message: msg, type }
+  setTimeout(() => toast.value.show = false, 3500)
+}
 
 async function loadData() {
   loading.value = true
   try {
     const res = await axios.get("/api/destiny")
-    destinyData.value = res.data.data
+    if (res.data.ok) {
+      destinyData.value = res.data.data
+      if (res.data.data.messages && res.data.data.messages.length > 0) {
+        showToast(res.data.data.messages[0].text, res.data.data.messages[0].type)
+      }
+    }
   } catch (e) {
     console.error(e)
   }
@@ -66,20 +83,34 @@ async function loadData() {
 
 function fixHtml(html) {
   if (!html) return ''
-  let res = html.replace(/src="\/?((?:img|images|css|js)\/[^"]+)"/g, 'src="https://sgu-game.cz/$1"')
-  res = res.replace(/url\(['"]?\/?(?:\.\.\/)?(img\/[^'"\)]+)['"]?\)/g, 'url(https://sgu-game.cz/$1)')
+  let res = html.replace(/src="([^"]+)"/g, (match, p1) => {
+    if (p1.startsWith("http")) return match
+    if (p1.startsWith("/")) return `src="https://sgu-game.cz${p1}"`
+    return `src="https://sgu-game.cz/${p1}"`
+  })
+  res = res.replace(/url\((['"]?)([^'")]+)(['"]?)\)/g, (match, q1, p2, q2) => {
+    if (p2.startsWith("http") || p2.startsWith("data:")) return match
+    if (p2.startsWith("../")) return `url(${q1}https://sgu-game.cz/${p2.substring(3)}${q2})`
+    if (p2.startsWith("/")) return `url(${q1}https://sgu-game.cz${p2}${q2})`
+    return `url(${q1}https://sgu-game.cz/${p2}${q2})`
+  })
   return res
 }
 
 async function submitDestinyAction(data) {
   loading.value = true
-  tooltipModalHtml.value = null // Close modal on action
+  tooltipModalHtml.value = null
   try {
     const res = await axios.post("/api/destiny", data)
-    destinyData.value = res.data.data
+    if (res.data.ok) {
+      destinyData.value = res.data.data
+      if (res.data.data.messages && res.data.data.messages.length > 0) {
+        showToast(res.data.data.messages[0].text, res.data.data.messages[0].type)
+      }
+    }
   } catch(e) {
     console.error(e)
-    alert("Nastala chyba při akci.")
+    showToast("Nastala chyba pri akcii.", "error")
   } finally {
     loading.value = false
   }

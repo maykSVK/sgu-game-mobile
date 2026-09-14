@@ -33,6 +33,12 @@
             <div class="dash-raw-html" v-html="tooltipModalHtml" @click="handleLinks" @submit.prevent="handleFormSubmit"></div>
           </div>
         </div>
+        
+        <!-- TOAST -->
+        <div v-if="toast.show" class="sgu-toast" :class="toast.type">
+          <i class="fas" :class="toast.type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'"></i>
+          {{ toast.message }}
+        </div>
 
       </div>
     </div>
@@ -53,12 +59,22 @@ const expeditionData = ref(null)
 // Modal state pre tooltpy
 const tooltipModalHtml = ref(null)
 
+const toast = ref({ show: false, message: "", type: "success" })
+
+function showToast(msg, type="success") {
+  toast.value = { show: true, message: msg, type }
+  setTimeout(() => toast.value.show = false, 3000)
+}
+
 async function loadData() {
   loading.value = true
   try {
     const res = await axios.get("/api/expedition")
     if (res.data.ok) {
       expeditionData.value = res.data.data
+      if (res.data.data.messages && res.data.data.messages.length > 0) {
+        showToast(res.data.data.messages[0].text, res.data.data.messages[0].type)
+      }
     } else {
       console.error(res.data.error)
     }
@@ -92,9 +108,12 @@ async function submitExpeditionAction(data) {
   try {
     const res = await axios.post("/api/expedition", data)
     expeditionData.value = res.data.data
+    if (res.data.data.messages && res.data.data.messages.length > 0) {
+      showToast(res.data.data.messages[0].text, res.data.data.messages[0].type)
+    }
   } catch(e) {
     console.error(e)
-    alert("Nastala chyba pri akci.")
+    showToast("Nastala chyba pri akci.", "error")
   } finally {
     loading.value = false
   }
