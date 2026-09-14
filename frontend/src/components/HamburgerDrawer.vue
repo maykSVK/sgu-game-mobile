@@ -17,16 +17,8 @@
       <!-- Header -->
       <div class="sgu-drawer-header">
         <button @click="$emit('close')" class="drawer-close-btn">✕</button>
-        <div style="text-align:center; margin-bottom:10px;">
+        <div style="text-align:center;">
           <img src="/src/assets/img/sgu-game.png" alt="SG:U" style="height:18px; filter:drop-shadow(0 0 5px rgba(4,190,254,0.5));" />
-        </div>
-        <div class="sgu-drawer-player">
-          <div class="sgu-drawer-avatar">👨‍🚀</div>
-          <div>
-            <div class="sgu-drawer-name">{{ playerName }}</div>
-            <div class="sgu-drawer-rank">{{ playerRank || 'Veliteľ' }}</div>
-            <div v-if="playerCredits" class="sgu-drawer-credits">💰 {{ playerCredits }} kreditov</div>
-          </div>
         </div>
       </div>
 
@@ -53,31 +45,20 @@
           <div>{{ item.label }}</div>
         </div>
       </div>
-
-      <!-- Logout -->
-      <div class="sgu-drawer-footer">
-        <button @click="doLogout" class="sgu-btn-logout">🚪 Odhlásiť sa</button>
-      </div>
-
     </nav>
   </transition>
 </template>
 
 <script setup>
 import { useRouter, useRoute } from 'vue-router'
-import { useAuthStore } from '../stores/auth'
 
 defineProps({
-  open:          { type: Boolean, default: false },
-  playerName:    { type: String,  default: 'Hráč' },
-  playerRank:    { type: String,  default: '' },
-  playerCredits: { type: [String, Number], default: '' },
+  open: { type: Boolean, default: false }
 })
 const emit = defineEmits(['close'])
 
 const router = useRouter()
 const route  = useRoute()
-const auth   = useAuthStore()
 
 const primary = [
   { to: '/',           icon: '🖥️',  label: 'Dashboard',       sub: 'Riadiaca miestnosť' },
@@ -103,11 +84,6 @@ function isActive(path) {
 function go(item) {
   router.push(item.to)
   emit('close')
-}
-async function doLogout() {
-  emit('close')
-  await auth.logout()
-  router.push('/login')
 }
 </script>
 

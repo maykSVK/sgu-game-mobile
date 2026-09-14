@@ -4,31 +4,17 @@
 
   <div class="dash-page">
 
-    <!-- ════ TOP BAR ════ -->
-    <header class="dash-topbar">
-      <div class="dash-topbar-left">
-        <img src="/src/assets/img/sgu-game.png" alt="SG:U" class="dash-logo" />
-        <div v-if="playerName" class="dash-player-badge">
-          <span class="dash-player-dot"></span>
-          {{ playerName }}
-        </div>
-      </div>
-      <div class="dash-topbar-right">
-        <button @click="refresh" class="dash-refresh" :class="{ spinning: loading }">↺</button>
-      </div>
-    </header>
-
     <!-- ════ LOADING ════ -->
-    <div v-if="loading && !data" class="dash-loading">
+    <div v-if="game.loading && !game.data" class="dash-loading">
       <div class="dash-loader"></div>
       <div class="dash-loading-text">Načítavam<span class="blink">_</span></div>
     </div>
 
     <!-- ════ ERROR ════ -->
-    <div v-else-if="error && !data" class="dash-error">
+    <div v-else-if="game.error && !game.data" class="dash-error">
       <div class="dash-error-title">⚠ Chyba pripojenia</div>
-      <div class="dash-error-msg">{{ error }}</div>
-      <button @click="refresh" class="dash-btn">↺ Skúsiť znova</button>
+      <div class="dash-error-msg">{{ game.error }}</div>
+      <button @click="game.fetchDashboard()" class="dash-btn">↺ Skúsiť znova</button>
     </div>
 
     <!-- ════ OBSAH ════ -->
@@ -148,17 +134,11 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import { useAuthStore } from '../stores/auth'
-import axios from 'axios'
+import { useGameStore } from '../stores/game'
 import StarField from '../components/StarField.vue'
 
-const auth    = useAuthStore()
-const data    = ref(null)
-const loading = ref(false)
-const error   = ref(null)
+const game = useGameStore()
 const showAll = ref(false)
-
-const playerName = computed(() => data.value?.player?.username || auth.playerName || '')
 
 // ─── Resource helpers ───────────────────────────────────────────
 const RES_META = {
@@ -191,7 +171,7 @@ function resValue(val) {
 const SKIP_KEYS = new Set(['renown','happiness','success','progress','progress-bar'])
 
 const resources = computed(() => {
-  const raw = data.value?.resources || {}
+  const raw = game.data?.resources || {}
   return Object.entries(raw)
     .filter(([k]) => !SKIP_KEYS.has(k))
     .map(([k, v]) => {
@@ -201,7 +181,7 @@ const resources = computed(() => {
 })
 
 const stats = computed(() => {
-  const raw = data.value?.stats || {}
+  const raw = game.data?.stats || {}
   return Object.entries(raw).map(([k, v]) => ({
     key: k,
     label: k.replace(/-/g, ' '),
@@ -209,35 +189,15 @@ const stats = computed(() => {
   }))
 })
 
-const alerts    = computed(() => data.value?.alerts || [])
-const quests    = computed(() => data.value?.quests || [])
-const infoboxes = computed(() => data.value?.infoboxes || [])
+const alerts    = computed(() => game.data?.alerts || [])
+const quests    = computed(() => game.data?.quests || [])
+const infoboxes = computed(() => game.data?.infoboxes || [])
 
-// ─── Fetch ──────────────────────────────────────────────────────
-async function refresh() {
-  loading.value = true
-  error.value   = null
-  try {
-    const res = await axios.get('/api/dashboard')
-    data.value = res.data.data
-    if (data.value?.player) {
-      auth.setPlayerProfile(
-        data.value.player.username,
-        data.value.player.rankClass?.replace('rank-standard','').replace(/-/g,' ').trim() || '',
-        data.value.resources?.kredity || data.value.resources?.credits || ''
-      )
-    }
-  } catch (e) {
-    error.value = e.response?.data?.error || 'Nepodarilo sa načítať dashboard'
-    if (!data.value) {
-      data.value = { player: { username: auth.playerName || '' }, resources: {}, stats: {}, alerts: [], quests: [], infoboxes: [] }
-    }
-  } finally {
-    loading.value = false
+onMounted(() => {
+  if (!game.data) {
+    game.fetchDashboard()
   }
-}
-
-onMounted(refresh)
+})
 </script>
 
 <style scoped>
@@ -248,59 +208,6 @@ onMounted(refresh)
   position: relative;
   z-index: 1;
 }
-
-/* ── Top bar ── */
-.dash-topbar {
-  position: sticky; top: 0; z-index: 30;
-  background: linear-gradient(to right, #3a3a3a, #000);
-  border-top: 1px solid #04befe;
-  border-bottom: 1px solid #04befe;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 12px;
-  height: 44px;
-}
-.dash-topbar-left { display: flex; align-items: center; gap: 10px; }
-.dash-topbar-right { display: flex; align-items: center; gap: 8px; }
-
-.dash-logo { height: 22px; filter: drop-shadow(0 0 6px rgba(4,190,254,0.5)); }
-
-.dash-player-badge {
-  display: flex; align-items: center; gap: 5px;
-  background: rgba(4,190,254,0.18);
-  border: 1px solid rgba(4,190,254,0.4);
-  border-radius: 2px;
-  padding: 3px 9px;
-  font-family: Verdana, sans-serif;
-  font-size: 12px;
-  font-weight: bold;
-  color: #fff;
-}
-.dash-player-dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: #04befe;
-  box-shadow: 0 0 6px #04befe;
-  flex-shrink: 0;
-  animation: dotPulse 2s ease-in-out infinite;
-}
-@keyframes dotPulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
-.dash-refresh {
-  width: 34px; height: 34px;
-  background: rgba(4,190,254,0.1);
-  border: 1px solid rgba(4,190,254,0.35);
-  border-radius: 2px;
-  color: #04befe;
-  font-size: 18px;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: background 0.15s;
-}
-.dash-refresh:active { background: rgba(4,190,254,0.3); }
-.dash-refresh.spinning { animation: spin 0.9s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
 
 /* ── Loading ── */
 .dash-loading {
@@ -319,6 +226,7 @@ onMounted(refresh)
   font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #04befe;
 }
 .blink { animation: blink 1s step-end infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
 /* ── Error ── */
@@ -412,6 +320,7 @@ onMounted(refresh)
   flex-shrink: 0;
   animation: dotPulse 2s ease-in-out infinite;
 }
+@keyframes dotPulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
 .dash-badge-count {
   margin-left: auto;
