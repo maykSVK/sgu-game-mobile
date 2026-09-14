@@ -9,7 +9,10 @@
       <!-- Globálny Topbar -->
       <header class="app-topbar">
         <div class="app-topbar-left" @click="leftDrawerOpen = true">
-          <span class="left-menu-icon">☰</span>
+          <div style="position: relative; display: inline-block;">
+            <span class="left-menu-icon">☰</span>
+            <span v-if="game.hasImportantAlerts" class="global-alert-badge sgu-badge-pulse"></span>
+          </div>
           <img src="/src/assets/img/sgu-game.png" alt="SG:U" class="app-logo" />
           <div v-if="auth.playerName" class="app-player-badge">
             <span class="app-player-dot"></span>
@@ -36,7 +39,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useAuthStore } from './stores/auth'
 import { useGameStore } from './stores/game'
@@ -52,6 +55,17 @@ const leftDrawerOpen  = ref(false)
 
 onMounted(() => {
   auth.setupInterceptor()
+  if (auth.token) {
+    game.startPolling()
+  }
+})
+
+watch(() => auth.token, (newVal) => {
+  if (newVal) {
+    game.startPolling()
+  } else {
+    game.stopPolling()
+  }
 })
 
 function refreshGlobal() {

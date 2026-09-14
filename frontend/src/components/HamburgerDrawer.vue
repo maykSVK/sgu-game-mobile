@@ -29,10 +29,11 @@
              class="sgu-drawer-item" :class="{ active: isActive(item.to) }"
              @click="go(item)">
           <span class="icon">{{ item.icon }}</span>
-          <div>
+          <div style="flex-grow: 1;">
             <div>{{ item.label }}</div>
             <div v-if="item.sub" class="sub">{{ item.sub }}</div>
           </div>
+          <span v-if="hasBadge(item)" class="nav-badge sgu-badge-pulse" :class="{ 'nav-badge-active': item.badge === 'activeExpedition' }"></span>
         </div>
 
         <div class="sgu-drawer-divider"></div>
@@ -42,7 +43,8 @@
              class="sgu-drawer-item" :class="{ active: isActive(item.to) }"
              @click="go(item)">
           <span class="icon">{{ item.icon }}</span>
-          <div>{{ item.label }}</div>
+          <div style="flex-grow: 1;">{{ item.label }}</div>
+          <span v-if="hasBadge(item)" class="nav-badge sgu-badge-pulse" :class="{ 'nav-badge-active': item.badge === 'activeExpedition' }"></span>
         </div>
       </div>
     </nav>
@@ -59,12 +61,15 @@ const emit = defineEmits(['close'])
 
 const router = useRouter()
 const route  = useRoute()
+import { useGameStore } from '../stores/game'
+
+const game = useGameStore()
 
 const primary = [
   { to: '/',           icon: '🖥️',  label: 'Dashboard',       sub: 'Riadiaca miestnosť' },
-  { to: '/universe',   icon: '🌌',  label: 'Vesmír',           sub: 'Galaxie & planéty'  },
+  { to: '/universe',   icon: '🌌',  label: 'Vesmír',           sub: 'Galaxie & planéty', badge: 'ftlExited'  },
   { to: '/stargate',   icon: '⭕',  label: 'Hvezdná brána',    sub: 'Stargate'            },
-  { to: '/expedition', icon: '🚀',  label: 'Expedícia',        sub: 'Prieskumné misie'   },
+  { to: '/expedition', icon: '🚀',  label: 'Expedícia',        sub: 'Prieskumné misie', badge: 'activeExpedition'   },
   { to: '/research',   icon: '🔬',  label: 'Výskum',           sub: 'Strom technológií'  },
   { to: '/upgrades',   icon: '⚙️',  label: 'Vylepšenia',       sub: 'Loď & vybavenie'    },
 ]
@@ -75,7 +80,7 @@ const secondary = [
   { to: '/market',    icon: '🏪',  label: 'Obchodná stanica'   },
   { to: '/lab',       icon: '🧪',  label: 'Laboratórium'       },
   { to: '/stats',     icon: '📊',  label: 'Štatistiky'         },
-  { to: '/reports',   icon: '📝',  label: 'Reporty'},
+  { to: '/reports',   icon: '📝',  label: 'Reporty',           badge: 'hasNewReport' },
 ]
 
 function isActive(path) {
@@ -84,6 +89,9 @@ function isActive(path) {
 function go(item) {
   router.push(item.to)
   emit('close')
+}
+function hasBadge(item) {
+  return item.badge && game[item.badge]
 }
 </script>
 
@@ -97,4 +105,17 @@ function go(item) {
   font-size: 13px; cursor: pointer;
 }
 .drawer-close-btn:active { background: rgba(4,190,254,0.25); }
+
+.nav-badge {
+  display: inline-block;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  margin-left: 10px;
+  background-color: #ff3c3c;
+  box-shadow: 0 0 6px #ff3c3c;
+}
+.nav-badge-active {
+  background-color: #59d34c;
+  box-shadow: 0 0 6px #59d34c;
+}
 </style>
