@@ -301,13 +301,37 @@ onMounted(() => {
 }
 .dash-raw-html :deep(input[type="text"]), .dash-raw-html :deep(select), .dash-raw-html :deep(input[type="number"]) {
   max-width: 100%;
-  width: auto;
-  background: rgba(0,0,0,0.5);
+  width: 100%;
+  background: rgba(4, 190, 254, 0.1);
   color: #fff;
   border: 1px solid rgba(4,190,254,0.5);
-  padding: 4px;
+  padding: 6px;
   box-sizing: border-box;
   border-radius: 3px;
+  margin-bottom: 5px;
+}
+.dash-raw-html :deep(input[type="checkbox"]) {
+  vertical-align: middle;
+}
+.dash-raw-html :deep(.infrastructure-img) {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 6px;
+  border: 1px solid rgba(4,190,254,0.3);
+  margin: 5px auto;
+}
+.dash-raw-html :deep(.planet-detail) {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(4,190,254,0.3);
+  margin: 10px auto;
 }
 .dash-raw-html :deep(tr:last-child td) {
   border-bottom: none;
