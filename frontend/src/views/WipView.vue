@@ -2,6 +2,7 @@
   <div class="wip-page">
     <StarField />
     <DashboardNav v-if="navGroup === 'dashboard'" />
+    <UniverseNav v-if="navGroup === 'universe'" />
     <div class="wip-content">
       <!-- Panel -->
       <div class="wip-panel">
@@ -23,6 +24,7 @@
 <script setup>
 import StarField from '../components/StarField.vue'
 import DashboardNav from '../components/DashboardNav.vue'
+import UniverseNav from '../components/UniverseNav.vue'
 
 defineProps({
   title: {

@@ -1,5 +1,6 @@
 <template>
   <div class="dash-page">
+    <UniverseNav />
     <div class="dash-content">
       
       <!-- ZOZNAM REPORTOV -->
@@ -81,6 +82,7 @@
 import { ref, onMounted } from "vue"
 import axios from "axios"
 import { useGameStore } from "../stores/game"
+import UniverseNav from "../components/UniverseNav.vue"
 
 const game = useGameStore()
 
