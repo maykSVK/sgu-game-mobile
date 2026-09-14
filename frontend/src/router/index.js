@@ -17,7 +17,7 @@ const routes = [
   { path: '/universe',   name: 'universe',   ...wip('Vesmír')            },
   { path: '/stargate',   name: 'stargate',   ...wip('Hvezdná brána')     },
   { path: '/expedition', name: 'expedition', ...wip('Expedícia')         },
-  { path: '/research',   name: 'research',   ...wip('Výskum')            },
+  { path: '/research',   name: 'research',   component: () => import('../views/ResearchView.vue') },
   { path: '/upgrades',   name: 'upgrades',   ...wip('Vylepšenia')        },
   { path: '/messages',   name: 'messages',   ...wip('Správy / Chat')     },
   { path: '/alliance',   name: 'alliance',   ...wip('Aliancia')          },
