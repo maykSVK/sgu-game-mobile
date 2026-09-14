@@ -1,8 +1,7 @@
 <template>
   <div class="wip-page">
     <StarField />
-    <div class="sgu-scanlines" />
-
+    <DashboardNav v-if="navGroup === 'dashboard'" />
     <div class="wip-content">
       <!-- Panel -->
       <div class="wip-panel">
@@ -23,9 +22,17 @@
 
 <script setup>
 import StarField from '../components/StarField.vue'
+import DashboardNav from '../components/DashboardNav.vue'
 
-const props = defineProps({
-  title: { type: String, default: 'Sekcia' },
+defineProps({
+  title: {
+    type: String,
+    default: 'Sekce ve vývoji'
+  },
+  navGroup: {
+    type: String,
+    default: null
+  }
 })
 </script>
 

@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
 
-const wip = (title) => ({
+const wip = (title, navGroup = null) => ({
   component: () => import('../views/WipView.vue'),
-  props: { title },
+  props: { title, navGroup },
 })
 
 const routes = [
@@ -27,10 +27,10 @@ const routes = [
   { path: '/reports',    name: 'reports',    component: () => import('../views/ReportsView.vue') },
   { path: '/destiny',    name: 'destiny',    component: () => import('../views/DestinyView.vue') },
   { path: '/arena',      name: 'arena',      ...wip('Aréna')            },
-  { path: '/crew',       name: 'crew',       ...wip('Posádka')           },
-  { path: '/checksums',  name: 'checksums',  ...wip('Historie přepočtů') },
-  { path: '/hero',       name: 'hero',       ...wip('Hrdinové')          },
-  { path: '/progress',   name: 'progress',   ...wip('Postup ve hře')     },
+  { path: '/crew',       name: 'crew',       ...wip('Posádka', 'dashboard')           },
+  { path: '/checksums',  name: 'checksums',  ...wip('Historie přepočtů', 'dashboard') },
+  { path: '/hero',       name: 'hero',       ...wip('Hrdinové', 'dashboard')          },
+  { path: '/progress',   name: 'progress',   ...wip('Postup ve hře', 'dashboard')     },
   { path: '/notes',      name: 'notes',      ...wip('Poznámky')          },
   { path: '/helpdesk',   name: 'helpdesk',   ...wip('Helpdesk')          },
   { path: '/help',       name: 'help',       ...wip('Nápověda')          },
