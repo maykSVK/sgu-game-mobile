@@ -4,8 +4,7 @@
     <!-- Login – bez navigácie a bez global topbaru -->
     <RouterView v-if="route.name === 'login'" />
 
-    <!-- Hlavný layout -->
-    <template v-else>
+      <template v-else>
       <!-- Globálny Topbar -->
       <header class="app-topbar">
         <div class="app-topbar-left" @click="leftDrawerOpen = true">
@@ -25,7 +24,7 @@
         </div>
       </header>
 
-      <RouterView />
+      <RouterView :key="$route.fullPath" />
       
       <BottomNav @open-drawer="rightDrawerOpen = true" />
       

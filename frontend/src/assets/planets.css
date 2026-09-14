@@ -1,0 +1,142 @@
+.planet-bg {
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 200px;
+    background-size: 100% 100%;
+    vertical-align: top;
+    margin: 5px;
+    display: inline-block;
+}
+.planet-detail {
+    background-repeat: no-repeat;
+    width: 216px;
+    height: 216px;
+    background-size: 100% 100%;
+    vertical-align: top;
+    margin: 5px;
+    display: inline-block;
+}
+.planet-ice {
+    background-image: url('https://sgu-game.cz/img/planet-ice.png');
+}
+.planet-desert {
+    background-image: url('https://sgu-game.cz/img/planet-desert.png');
+}
+.planet-water {
+    background-image: url('https://sgu-game.cz/img/planet-water.png');
+}
+.planet-earth {
+    background-image: url('https://sgu-game.cz/img/planet-earth.png');
+}
+.planet-toxic {
+    background-image: url('https://sgu-game.cz/img/planet-toxic.png');
+}
+.planet-volcanic {
+    background-image: url('https://sgu-game.cz/img/planet-volcanic.png');
+}
+.planet-asteroid {
+    background-image: url('https://sgu-game.cz/img/planet-asteroid.png');
+    width: 180px!important;
+    height: 152px!important;;
+}
+.planet-universe-preview {
+    background-repeat: no-repeat;
+    width: 180px;
+    height: 180px;
+    background-size: 100% 100%;
+    vertical-align: top;
+    margin: 5px;
+}
+.planet-type-water {
+    background-image: url('https://sgu-game.cz/img/planet-water.png');
+    background-repeat: no-repeat;
+    width: 15px;
+    height: 15px;
+    background-size: 100% 100%;
+}
+.planet-type-earth {
+    background-image: url('https://sgu-game.cz/img/planet-earth.png');
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    background-size: 100% 100%;
+}
+.planet-type-desert {
+    background-image: url('https://sgu-game.cz/img/planet-desert.png');
+    background-repeat: no-repeat;
+    width: 12px;
+    height: 12px;
+    background-size: 100% 100%;
+}
+.planet-type-ice {
+    background-image: url('https://sgu-game.cz/img/planet-ice.png');
+    background-repeat: no-repeat;
+    width: 14px;
+    height: 14px;
+    background-size: 100% 100%;
+}
+.planet-type-toxic {
+    background-image: url('https://sgu-game.cz/img/planet-toxic.png');
+    background-repeat: no-repeat;
+    width: 14px;
+    height: 14px;
+    background-size: 100% 100%;
+}
+.planet-type-volcanic {
+    background-image: url('https://sgu-game.cz/img/planet-volcanic.png');
+    background-repeat: no-repeat;
+    width: 10px;
+    height: 10px;
+    background-size: 100% 100%;
+}
+.planet-type-asteroid {
+    background-image: url('https://sgu-game.cz/img/asteroid.png');
+    background-repeat: no-repeat;
+    width: 14px;
+    height: 14px;
+    background-size: 100% 100%;
+}
+.artifact {
+    background-repeat: no-repeat;
+    width: 245px;
+    height: 148px;
+    background-size: 100% 100%;
+    margin: auto;
+}
+.artifact-sarkofag {
+    background-image: url('https://sgu-game.cz/img/sarkofag.jpg');
+}
+.artifact-crystal-skull {
+    background-image: url('https://sgu-game.cz/img/crystal-skull.jpg');
+}
+.artifact-library {
+    background-image: url('https://sgu-game.cz/img/four-races-lib.jpg');
+}
+.artifact-furling {
+    background-image: url('https://sgu-game.cz/img/furling-transporter.jpg');
+}
+.artifact-nakai {
+    background-image: url('https://sgu-game.cz/img/nakai-database.jpg');
+}
+.artifact-shield {
+    background-image: url('https://sgu-game.cz/img/personal-shield.png');
+}
+.artifact-tenaran {
+    background-image: url('https://sgu-game.cz/img/tenaran-archive.jpg');
+}
+.artifact-thor {
+    background-image: url('https://sgu-game.cz/img/thors-hammer.jpg');
+}
+.artifact-tiamat {
+    background-image: url('https://sgu-game.cz/img/tiamat-eye.jpg');
+}
+.artifact-touchstone {
+    background-image: url('https://sgu-game.cz/img/touchstone.JPG');
+}
+.infrastructure-img {
+    background-repeat: no-repeat;
+    width: 230px;
+    height: 125px;
+    background-size: 100% 100%;
+    margin: auto;
+}

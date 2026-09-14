@@ -1,8 +1,10 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import router from './router'
 import App from './App.vue'
+import router from './router'
 import './style.css'
+import './assets/tech.css'
+import './assets/planets.css'
 import axios from 'axios'
 
 // Nastavenie base URL. Ak bežíme lokálne, použije proxy vo vite, inak VITE_API_URL

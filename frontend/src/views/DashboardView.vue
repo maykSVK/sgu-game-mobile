@@ -111,6 +111,7 @@ function handleLinks(e) {
       else if (href.includes("universe.php")) router.push("/universe")
       else if (href.includes("upgrade.php")) router.push("/upgrades")
       else if (href.includes("destiny.php")) router.push("/destiny")
+      else if (href.includes("planet.php")) router.push(href.replace('.php', ''))
       else if (href.includes("dashboard.php")) router.push("/")
       else if (href.includes("crew.php")) router.push("/crew")
       else if (href.includes("checksums.php")) router.push("/checksums")

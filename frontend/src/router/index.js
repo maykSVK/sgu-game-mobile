@@ -25,6 +25,7 @@ const routes = [
   { path: '/lab',        name: 'lab',        ...wip('Laboratoř')      },
   { path: '/stats',      name: 'stats',      ...wip('Statistiky')        },
   { path: '/reports',    name: 'reports',    component: () => import('../views/ReportsView.vue') },
+  { path: '/planet',     name: 'planet',     component: () => import('../views/PlanetView.vue') },
   { path: '/destiny',    name: 'destiny',    component: () => import('../views/DestinyView.vue') },
   { path: '/arena',      name: 'arena',      ...wip('Aréna', 'universe')            },
   { path: '/planets',    name: 'planets',    ...wip('Planety & stavby', 'universe') },
