@@ -1,0 +1,77 @@
+{
+  "resources": {
+    "attack-power": "Útočná síla 24.2",
+    "shields": "Štíty 122%",
+    "speed": "Rychlost [?] 1 ly = 162s",
+    "science": "Výzkum 54%",
+    "progress": "54%",
+    "progress-bar": "54%",
+    "gates-in-range": "Posádka 113",
+    "food": "Jídlo 13.20/100",
+    "water": "Voda 43.80/100",
+    "limestone": "Vápenec 43.80/100",
+    "credits": "Kredity 703",
+    "research-points": "Výzkumné body 2.00",
+    "renown": "Sláva 748",
+    "fragments": "Fragmenty 0/10",
+    "happiness": "Spokojenost Kladná [?]",
+    "success": "Kladná [?]"
+  },
+  "stats": {
+    "attack-power": "Útočná síla 24.2",
+    "shields": "Štíty 122%",
+    "speed": "Rychlost [?] 1 ly = 162s",
+    "science": "Výzkum 54%",
+    "gates-in-range": "Brány v dosahu 0",
+    "crew": "Posádka 113"
+  },
+  "alerts": [
+    "14.09. 2026 09:59 Vyzkoumána nová technologie: Bar",
+    "14.09. 2026 06:15 Destiny se vrátila z expedice! Více informací v reportu bitvy.",
+    "14.09. 2026 00:00 Přepočet dokončen!",
+    "14.09. 2026 00:00 Lodi se snižují zásoby Jídla!",
+    "14.09. 2026 00:00 Přepočet spuštěn!",
+    "13.09. 2026 23:15 Destiny se vrátila z expedice! Více informací v reportu bitvy.",
+    "13.09. 2026 22:00 V dnešní Aréně jsme skončili na 3. místě!Naše odměna: +50 +1 +1 (odehrané bitvy) +0",
+    "13.09. 2026 17:40 Byli jsme napadeni v Aréně! Více informací v bitevním reportu.",
+    "13.09. 2026 15:15 Destiny se vrátila z expedice! Více informací v reportu bitvy.",
+    "13.09. 2026 14:17 Nasazeno vylepšení podsvětelných motorů!"
+  ],
+  "quests": [
+    "Quest Log [0/3]\n\n                                    \n                        Na některých planetách se nacházejí NPC postavy, které nabízejí Questy. Jejich plněním získáváte odměny!"
+  ],
+  "infoboxes": [
+    {
+      "title": "Rozkazy pro Destiny [?]",
+      "content": "Hlavní příkazy\n                    \n                    \n                        \n                            Autopilot [?]\n                        \n                        \n                                                            \n                                                        \n        "
+    },
+    {
+      "title": "Přehled denních příjmů a výdajů [?]",
+      "content": "Zdroj/surovina\n                        Typ\n                        Hodnota\n                    \n                    \n                         Energie\n                        [výdaje] [?]\n                        \n                        \n                            -5\n                        \n       "
+    },
+    {
+      "title": "Detaily denního příjmu kreditů",
+      "content": "338                        \n                    \n                    \n                        \n                            Hrdina: +10\n                            Posádka: 113 členů +113\n                            Satelity: +200\n                            Artefakty\n                                "
+    },
+    {
+      "title": "Detaily denního příjmu výzkumných bodů",
+      "content": "2                        \n                    \n                    \n                        \n                            Hrdina: +0\n                            Základ: +1\n                            Observatoře: +0\n                            Posádka (Vědci): +0\n                            Artefakty"
+    }
+  ],
+  "chat": [],
+  "player": {
+    "username": "Mayk",
+    "rankClass": "rank-standard second-lieutenant"
+  },
+  "hasNewReport": false,
+  "shipStatus": [
+    {
+      "text": "Loď vystoupila z FTL",
+      "countdown": null
+    },
+    {
+      "text": "Expedice:",
+      "countdown": "2026-09-14 11:17:52"
+    }
+  ]
+}

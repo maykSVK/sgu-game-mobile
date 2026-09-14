@@ -3,57 +3,87 @@
   <div class="sgu-scanlines" />
 
   <div class="dash-page">
+    
+    <!-- SUB-NAVIGATION -->
+    <div class="sub-nav">
+      <router-link to="/">Můstek</router-link> <span class="sep">|</span>
+      <router-link to="/destiny">Strojovna</router-link> <span class="sep">|</span>
+      <router-link to="/crew">Posádka</router-link> <span class="sep">|</span>
+      <router-link to="/checksums">Historie přepočtů</router-link> <span class="sep">|</span>
+      <router-link to="/hero">Hrdinové</router-link> <span class="sep">|</span>
+      <router-link to="/progress">Postup ve hře</router-link>
+    </div>
+
     <div class="dash-content">
       
-      <!-- ── VÝSTRAHY A HLÁŠENÍ ── -->
-      <section v-if="game.data?.alerts?.length" class="dash-section">
-        <div class="dash-panel">
-          <div class="dash-panel-head dash-panel-head-gold">
-            <span class="dash-panel-dot" style="background:gold;"></span>
-            Výstrahy a hlášení
-            <span class="dash-badge-count">{{ game.data.alerts.length }}</span>
-          </div>
-          <div>
-            <div v-for="(a, i) in game.data.alerts.slice(0, 5)" :key="i" class="dash-alert">
-              {{ a }}
-            </div>
-            <button v-if="game.data.alerts.length > 5" class="dash-more-btn" @click="$router.push('/reports')">
-              Zobrazit všechny reporty
-            </button>
-          </div>
-        </div>
-      </section>
+      <!-- LOADING STATE -->
+      <div v-if="loading" style="text-align:center; padding: 30px; color: #04befe;">
+        Načítám řídící místnost...
+      </div>
 
-      <!-- ── QUEST LOG ── -->
-      <section v-if="game.data?.quests?.length" class="dash-section">
-        <div class="dash-panel">
-          <div class="dash-panel-head dash-panel-head-blue">
-            <span class="dash-panel-dot" style="background:#4a7aff;"></span> Quest Log
-          </div>
-          <div class="dash-panel-body">
-            <div v-for="(q, i) in game.data.quests" :key="i" class="dash-quest-row" :class="{ active: i === 0 }">
-              <span class="dash-quest-icon">{{ i === 0 ? '►' : '·' }}</span>
-              <span>{{ q }}</span>
+      <!-- GRID PRO INFOBOXY -->
+      <div v-else class="dash-grid">
+        <section v-for="(box, i) in game.data?.infoboxes" :key="i" class="dash-section">
+          <div class="dash-panel">
+            <div class="dash-panel-head">
+              <span class="dash-panel-dot"></span> {{ box.title.replace("[x]", "").replace("[?]", "").trim() }}
+            </div>
+            <!-- Vložíme raw HTML s opravenými cestami -->
+            <div class="dash-panel-body dash-raw-html" v-html="fixHtml(box.html)" @click="handleLinks">
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
     </div>
   </div>
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
-import { useGameStore } from '../stores/game'
-import StarField from '../components/StarField.vue'
+import { onMounted, ref } from "vue"
+import { useRouter } from "vue-router"
+import { useGameStore } from "../stores/game"
+import StarField from "../components/StarField.vue"
 
 const game = useGameStore()
+const router = useRouter()
+const loading = ref(true)
+
+async function loadData() {
+  loading.value = true
+  await game.fetchDashboard()
+  loading.value = false
+}
+
+function fixHtml(html) {
+  if (!html) return ''
+  // Prepend https://sgu-game.cz to all relative images/urls
+  let res = html.replace(/src="\/?((?:img|images|css|js)\/[^"]+)"/g, 'src="https://sgu-game.cz/$1"')
+  res = res.replace(/url\(['"]?\/?(?:\.\.\/)?(img\/[^'"\)]+)['"]?\)/g, 'url(https://sgu-game.cz/$1)')
+  return res
+}
+
+// Intercept clicks on links inside raw HTML
+function handleLinks(e) {
+  const a = e.target.closest("a")
+  if (a) {
+    const href = a.getAttribute("href")
+    if (href && href.startsWith("/")) {
+      e.preventDefault()
+      
+      // Pokusíme sa namapovať staré linky na nové Vue cesty (ak ich máme)
+      if (href.includes("reports.php")) router.push("/reports")
+      else if (href.includes("research.php")) router.push("/research")
+      else if (href.includes("stargate.php")) router.push("/stargate")
+      else if (href.includes("universe.php")) router.push("/universe")
+      // Inak len ukážeme varovanie, alebo neurobíme nič
+      else alert("Tato sekce (" + href + ") je zatím pouze read-only a není implementována.")
+    }
+  }
+}
 
 onMounted(() => {
-  if (!game.data) {
-    game.fetchDashboard()
-  }
+  loadData()
 })
 </script>
 
@@ -64,104 +94,158 @@ onMounted(() => {
   position: relative;
   z-index: 1;
 }
-.dash-content { padding: 10px; }
 
-/* ── Section ── */
-.dash-section { margin-bottom: 10px; }
+/* ── SUB-NAV ── */
+.sub-nav {
+  background: rgba(0, 0, 0, 0.7);
+  border-bottom: 1px solid rgba(4,190,254,0.3);
+  text-align: center;
+  padding: 8px 5px;
+  font-family: Orbitron, sans-serif;
+  font-size: 11px;
+}
+.sub-nav a {
+  color: #04befe;
+  text-decoration: none;
+  padding: 0 4px;
+}
+.sub-nav a:hover, .sub-nav a.router-link-exact-active {
+  color: #fff;
+  text-shadow: 0 0 5px #04befe;
+}
+.sep { color: rgba(255,255,255,0.2); }
 
-/* ── Panel ── */
+
+.dash-content { padding: 15px; }
+
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 15px;
+  align-items: flex-start;
+}
+
+/* ── PANEL ── */
 .dash-panel {
-  background: rgba(4,190,254,0.09);
-  border: 1px solid rgba(4,190,254,0.4);
-  border-radius: 2px;
+  background: rgba(4,190,254,0.05);
+  border: 1px solid rgba(4,190,254,0.3);
+  border-radius: 4px;
   position: relative;
   overflow: hidden;
+  height: 100%;
 }
 .dash-panel::before {
-  content: '';
+  content: "";
   position: absolute; top: 0; left: 0;
-  width: 10px; height: 10px;
+  width: 15px; height: 15px;
   border-top: 2px solid #04befe;
   border-left: 2px solid #04befe;
   z-index: 1;
 }
 .dash-panel::after {
-  content: '';
+  content: "";
   position: absolute; bottom: 0; right: 0;
-  width: 10px; height: 10px;
+  width: 15px; height: 15px;
   border-bottom: 2px solid #04befe;
   border-right: 2px solid #04befe;
   z-index: 1;
 }
 
 .dash-panel-head {
-  background: rgba(4,190,254,0.22);
-  border-bottom: 1px solid rgba(4,190,254,0.35);
-  padding: 7px 10px;
-  font-family: Verdana, sans-serif;
-  font-size: 12px;
-  font-weight: bold;
+  background: rgba(4,190,254,0.15);
+  border-bottom: 1px solid rgba(4,190,254,0.3);
+  padding: 8px 12px;
+  font-family: Orbitron, sans-serif;
+  font-size: 13px;
   color: #fff;
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
+  text-align: center;
+  justify-content: center;
 }
-.dash-panel-head-gold { border-bottom-color: rgba(255,200,0,0.3); }
-.dash-panel-head-blue { background: rgba(40,80,200,0.2); border-bottom-color: rgba(50,100,255,0.3); }
-
 .dash-panel-dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
+  width: 6px; height: 6px;
   background: #04befe;
-  box-shadow: 0 0 6px #04befe;
-  flex-shrink: 0;
-  animation: dotPulse 2s ease-in-out infinite;
-}
-@keyframes dotPulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
-.dash-badge-count {
-  margin-left: auto;
-  background: rgba(255,200,0,0.1);
-  border: 1px solid rgba(255,200,0,0.35);
-  color: gold;
-  font-size: 10px;
-  border-radius: 2px;
-  padding: 1px 6px;
+  box-shadow: 0 0 5px #04befe;
+  transform: rotate(45deg);
 }
 
 .dash-panel-body {
-  padding: 9px 10px;
-  background: rgba(0,0,0,0.55);
+  padding: 12px;
+  background: rgba(0,0,0,0.4);
+  font-size: 12px;
+  color: #ddd;
 }
 
-/* ── Alerts ── */
-.dash-alert {
-  padding: 8px 10px;
-  background: rgba(100,90,90,0.22);
-  border-left: 2px solid #04befe;
-  border-bottom: 1px dotted rgba(4,190,254,0.1);
-  font-family: Verdana, sans-serif;
-  font-size: 12px;
-  line-height: 1.45;
-  color: rgba(255,255,255,0.9);
+/* ── STYLING RAW HTML IN DASHBOARD ── */
+/* The original game uses tables mostly */
+.dash-raw-html :deep(table) {
+  width: 100%;
+  border-collapse: collapse;
 }
-.dash-alert:hover { background: rgba(100,90,90,0.35); }
-.dash-more-btn {
-  width: 100%; padding: 8px; background: none; border: none;
-  border-top: 1px dotted rgba(4,190,254,0.15);
-  color: rgba(4,190,254,0.55); font-size: 11px; cursor: pointer; text-align: center;
+.dash-raw-html :deep(th) {
+  background: rgba(4,190,254,0.1);
+  color: #04befe;
+  padding: 6px;
+  border-bottom: 1px solid rgba(4,190,254,0.2);
+  text-align: center;
+  font-size: 11px;
 }
-.dash-more-btn:hover { color: #04befe; }
+.dash-raw-html :deep(td) {
+  padding: 6px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  vertical-align: middle;
+}
+.dash-raw-html :deep(tr:last-child td) {
+  border-bottom: none;
+}
+.dash-raw-html :deep(.success) { color: #59d34c; font-weight: bold; }
+.dash-raw-html :deep(.failed) { color: #ff3c3c; font-weight: bold; }
+.dash-raw-html :deep(.bold) { font-weight: bold; }
+.dash-raw-html :deep(a) {
+  color: #04befe;
+  text-decoration: none;
+}
+.dash-raw-html :deep(a:hover) {
+  text-decoration: underline;
+}
 
-/* ── Quests ── */
-.dash-quest-row {
-  display: flex; align-items: flex-start; gap: 8px;
-  padding: 4px 0;
-  font-family: Verdana, sans-serif;
-  font-size: 12px;
-  color: rgba(255,255,255,0.55);
+/* Buttony z povodnej hry (Rozkazy) */
+.dash-raw-html :deep(.btn-bevel), .dash-raw-html :deep(.btn-bevel-sm) {
+  background: rgba(4,190,254,0.15);
+  border: 1px solid #04befe;
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  border-radius: 2px;
+  width: 100%;
 }
-.dash-quest-row.active { font-weight: bold; color: rgba(255,255,255,0.95); }
-.dash-quest-icon { color: rgba(4,190,254,0.5); flex-shrink: 0; }
-.dash-quest-row.active .dash-quest-icon { color: #4a7aff; }
+.dash-raw-html :deep(.btn-bevel:hover) {
+  background: rgba(4,190,254,0.3);
+}
+
+/* Obrazky vo Vystrahach (crew-alert) */
+.dash-raw-html :deep(.crew-alert) {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(255,255,255,0.1);
+}
+.dash-raw-html :deep(.crew-alert-text) {
+  width: 32px; height: 32px;
+  background-size: cover;
+  border-radius: 4px;
+  border: 1px solid rgba(4,190,254,0.3);
+  flex-shrink: 0;
+}
+.dash-raw-html :deep(.crew-alert-date) {
+  color: rgba(255,255,255,0.4);
+  font-size: 10px;
+  width: 60px;
+  flex-shrink: 0;
+}
 </style>
+

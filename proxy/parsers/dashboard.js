@@ -81,10 +81,12 @@ function parseDashboard(html) {
   // Generic Infoboxes (Orders, Economy, etc.)
   $('.infobox-standard').each((i, el) => {
     const title = $(el).find('.infobox-standard-title').text().trim();
-    if (title && !title.includes('Výstrahy') && !title.includes('Notifikace') && !title.includes('chat')) {
-      const body = $(el).find('.infobox-standard-body').text().trim().replace(/\\s+/g, ' ');
-      if (title && body) {
-         data.infoboxes.push({ title, content: body.substring(0, 300) });
+    // Chceme získať aj 'Notifikace' a ostatné, takže to už nebudeme filtrovať tu, 
+    // okrem 'Chat' (ten má svoju vlastnú kategóriu alebo ho na dashboarde nechceme).
+    if (title && !title.includes('chat') && !title.includes('Chat')) {
+      let bodyHtml = $(el).find('.infobox-standard-body').html();
+      if (title && bodyHtml) {
+         data.infoboxes.push({ title, html: bodyHtml.trim() });
       }
     }
   });
