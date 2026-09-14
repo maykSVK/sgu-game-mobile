@@ -42,7 +42,8 @@ function parseReports(html) {
   // Ak je to detail reportu (otvorený konkrétny id)
   let reportDetail = null;
   const contentContainer = $(".content-container");
-  if (html.includes("Zpráva z bitvy") || contentContainer.find("table").eq(0).text().includes("Zpráva z bitvy")) {
+  if (html.includes("Zpráva z bitvy") || html.includes("Report bitvy") || html.includes("Report expedice") || html.includes("Report ")) {
+    contentContainer.find('.premium-shop, .facebook-badge, .discord-badge, footer, .footer, .chat-box').remove();
     reportDetail = {
       html: contentContainer.html() // For now just return the HTML to render safely, or we can parse it
     };
