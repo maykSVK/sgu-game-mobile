@@ -75,7 +75,7 @@ const secondary = [
   { to: '/market',    icon: '🏪',  label: 'Obchodná stanica'   },
   { to: '/lab',       icon: '🧪',  label: 'Laboratórium'       },
   { to: '/stats',     icon: '📊',  label: 'Štatistiky'         },
-  { to: '/reports',   icon: '📝',  label: 'Quest Log / Reporty'},
+  { to: '/reports',   icon: '📝',  label: 'Reporty'},
 ]
 
 function isActive(path) {
