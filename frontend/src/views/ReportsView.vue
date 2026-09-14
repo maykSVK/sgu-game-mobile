@@ -126,6 +126,8 @@ async function openReport(id) {
     if (res.data.data.reportDetail) {
       reportDetailHtml.value = res.data.data.reportDetail.html
     }
+    // Refresh stats (which includes the new report flag in the left menu)
+    game.fetchDashboard(true)
   } catch (e) {
     showToast("Nepodařilo se načíst detail reportu.", "error")
     selectedReport.value = null
@@ -140,7 +142,7 @@ async function markAllAsRead() {
     await axios.get("/api/reports?action=readAll")
     showToast("Všechny reporty byly označeny jako přečtené.")
     // Refresh stats (which includes the new report flag in the left menu)
-    await game.fetchDashboard()
+    await game.fetchDashboard(true)
     await refresh()
   } catch (e) {
     showToast("Chyba při označování.", "error")
