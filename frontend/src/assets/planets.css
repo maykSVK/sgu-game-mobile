@@ -163,28 +163,28 @@
     cursor: pointer;
 }
 .stargate-gate-off {
-    background-image: url('https://sgu-game.cz/img/stargate-off.png);
+    background-image: url('https://sgu-game.cz/img/stargate-off.png');
     background-repeat: no-repeat;
     width: 368px;
     height: 276px;
     background-size: 100% 100%;
 }
 .stargate-gate-action {
-    background-image: url('https://sgu-game.cz/img/stargate-active.png");
+    background-image: url('https://sgu-game.cz/img/stargate-active.png');
     background-repeat: no-repeat;
     width: 368px;
     height: 276px;
     background-size: 100% 100%;
 }
 .stargate-locker-off {
-    background-image: url('https://sgu-game.cz/img/stargate-locker-off.png");
+    background-image: url('https://sgu-game.cz/img/stargate-locker-off.png');
     background-repeat: no-repeat;
     width: 71px;
     height: 75px;
     background-size: 100% 100%;
 }
 .stargate-locker-on {
-    background-image: url('https://sgu-game.cz/img/stargate-locker-on.png");
+    background-image: url('https://sgu-game.cz/img/stargate-locker-on.png');
     background-repeat: no-repeat;
     width: 71px;
     height: 75px;
@@ -199,7 +199,7 @@
     margin: auto;
 }
 .stargate-stargate-horizon {
-    background-image: url('https://sgu-game.cz/img/stargate.gif");
+    background-image: url('https://sgu-game.cz/img/stargate.gif');
     background-repeat: no-repeat;
     width: 196px;
     height: 196px;
@@ -209,7 +209,7 @@
     top: 40px;
 }
 .stargate-stargate-open {
-    background-image: url('https://sgu-game.cz/img/stargate-open.gif");
+    background-image: url('https://sgu-game.cz/img/stargate-open.gif');
     ackground-repeat: no-repeat;
     width: 196px;
     height: 196px;
@@ -263,7 +263,7 @@
     border-radius: 6px;
 }
 .icon-geothermal_base {
-    background-image: url('https://sgu-game.cz/img/icon-geothermal.png");
+    background-image: url('https://sgu-game.cz/img/icon-geothermal.png');
     background-repeat: no-repeat;
     width: 32px;
     height: 32px;
@@ -272,7 +272,7 @@
     border-radius: 6px;
 }
 .icon-observatory {
-    background-image: url('https://sgu-game.cz/img/icon-observatory.png");
+    background-image: url('https://sgu-game.cz/img/icon-observatory.png');
     background-repeat: no-repeat;
     width: 32px;
     height: 32px;
@@ -411,24 +411,24 @@
     width: 213px;
     height: 130px;
 }
-.et-2  {background-image: url('https://sgu-game.cz/img/enemy_technology/001-database.png);}
-.et-4  {background-image: url('https://sgu-game.cz/img/enemy_technology/002-database.png);}
-.et-6  {background-image: url('https://sgu-game.cz/img/enemy_technology/006-database.png);}
-.et-9  {background-image: url('https://sgu-game.cz/img/enemy_technology/007-database.png);}
-.et-10 {background-image: url('https://sgu-game.cz/img/enemy_technology/008-database.png);}
-.et-11 {background-image: url('https://sgu-game.cz/img/enemy_technology/009-database.png);}
-.et-20 {background-image: url('https://sgu-game.cz/img/enemy_technology/018-database.png);}
-.et-21 {background-image: url('https://sgu-game.cz/img/enemy_technology/019-database.png);}
-.et-22 {background-image: url('https://sgu-game.cz/img/enemy_technology/020-database.png);}
-.et-24 {background-image: url('https://sgu-game.cz/img/enemy_technology/021-database.png);}
-.et-25 {background-image: url('https://sgu-game.cz/img/enemy_technology/022-database.png);}
-.et-26 {background-image: url('https://sgu-game.cz/img/enemy_technology/019-database.png);}
-.et-27 {background-image: url('https://sgu-game.cz/img/enemy_technology/020-database.png);}
-.et-29 {background-image: url('https://sgu-game.cz/img/enemy_technology/021-database.png);}
-.et-30 {background-image: url('https://sgu-game.cz/img/enemy_technology/022-database.png);}
-.et-32 {background-image: url('https://sgu-game.cz/img/enemy_technology/024-database.png);}
-.et-33 {background-image: url('https://sgu-game.cz/img/enemy_technology/027-database.png);}
-.et-35 {background-image: url('https://sgu-game.cz/img/enemy_technology/030-database.png);}
+.et-2  {background-image: url('https://sgu-game.cz/img/enemy_technology/001-database.png');}
+.et-4  {background-image: url('https://sgu-game.cz/img/enemy_technology/002-database.png');}
+.et-6  {background-image: url('https://sgu-game.cz/img/enemy_technology/006-database.png');}
+.et-9  {background-image: url('https://sgu-game.cz/img/enemy_technology/007-database.png');}
+.et-10 {background-image: url('https://sgu-game.cz/img/enemy_technology/008-database.png');}
+.et-11 {background-image: url('https://sgu-game.cz/img/enemy_technology/009-database.png');}
+.et-20 {background-image: url('https://sgu-game.cz/img/enemy_technology/018-database.png');}
+.et-21 {background-image: url('https://sgu-game.cz/img/enemy_technology/019-database.png');}
+.et-22 {background-image: url('https://sgu-game.cz/img/enemy_technology/020-database.png');}
+.et-24 {background-image: url('https://sgu-game.cz/img/enemy_technology/021-database.png');}
+.et-25 {background-image: url('https://sgu-game.cz/img/enemy_technology/022-database.png');}
+.et-26 {background-image: url('https://sgu-game.cz/img/enemy_technology/019-database.png');}
+.et-27 {background-image: url('https://sgu-game.cz/img/enemy_technology/020-database.png');}
+.et-29 {background-image: url('https://sgu-game.cz/img/enemy_technology/021-database.png');}
+.et-30 {background-image: url('https://sgu-game.cz/img/enemy_technology/022-database.png');}
+.et-32 {background-image: url('https://sgu-game.cz/img/enemy_technology/024-database.png');}
+.et-33 {background-image: url('https://sgu-game.cz/img/enemy_technology/027-database.png');}
+.et-35 {background-image: url('https://sgu-game.cz/img/enemy_technology/030-database.png');}
 .quest-task {
     display:block;
     padding-top: 5px;
