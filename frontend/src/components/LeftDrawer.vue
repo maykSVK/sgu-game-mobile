@@ -198,7 +198,7 @@ const stats = computed(() => {
 })
 
 const alerts = computed(() => {
-  return (game.data?.alerts || []).slice(0, 5) // max 5 alerts in menu
+  return (game.data?.shipStatus || []).slice(0, 5) // max 5 statuses
 })
 
 function go(path) {

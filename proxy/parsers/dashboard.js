@@ -61,7 +61,19 @@ function parseDashboard(html) {
   });
 
   // Check for new reports
-  data.hasNewReport = $('#newBattleReport').length > 0;
+  const reportEl = $('#newBattleReport');
+  data.hasNewReport = reportEl.length > 0 && !(reportEl.attr('style') || '').includes('visibility: hidden');
+  
+  // Ship status
+  data.shipStatus = [];
+  $('span.panel-heading:contains("Stav")').next('div').find('p').each((i, el) => {
+    const text = $(el).text().trim().replace(/\s+/g, ' ');
+    if (text) {
+        if (!text.includes('bitevn') || data.hasNewReport) {
+            data.shipStatus.push(text);
+        }
+    }
+  });
 
   // Generic Infoboxes (Orders, Economy, etc.)
   $('.infobox-standard').each((i, el) => {
