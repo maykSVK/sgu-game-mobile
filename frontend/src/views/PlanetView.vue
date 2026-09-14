@@ -274,7 +274,9 @@ onMounted(() => {
 /* The original game uses tables mostly */
 .dash-raw-html :deep(table) {
   width: 100%;
+  max-width: 100%;
   border-collapse: collapse;
+  table-layout: auto;
 }
 .dash-raw-html :deep(th) {
   background: rgba(4,190,254,0.1);
@@ -288,6 +290,24 @@ onMounted(() => {
   padding: 6px;
   border-bottom: 1px solid rgba(255,255,255,0.05);
   vertical-align: middle;
+  word-wrap: break-word;
+  white-space: normal;
+}
+/* Override hardcoded inline widths from original game */
+.dash-raw-html :deep(.inline) {
+  width: 100% !important;
+  display: block !important;
+  margin-bottom: 10px;
+}
+.dash-raw-html :deep(input[type="text"]), .dash-raw-html :deep(select), .dash-raw-html :deep(input[type="number"]) {
+  max-width: 100%;
+  width: auto;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: 1px solid rgba(4,190,254,0.5);
+  padding: 4px;
+  box-sizing: border-box;
+  border-radius: 3px;
 }
 .dash-raw-html :deep(tr:last-child td) {
   border-bottom: none;
@@ -425,13 +445,6 @@ onMounted(() => {
   box-shadow: 0 0 20px rgba(4,190,254,0.5);
   margin: 10px auto;
 }
-
-/* Map specific classes to sgu-game.cz */
-.dash-raw-html :deep(.planet-desert) { background-image: url('https://sgu-game.cz/img/planet-desert.png'); }
-.dash-raw-html :deep(.satellite) { background-image: url('https://sgu-game.cz/img/buildings/satellite.png'); }
-.dash-raw-html :deep(.observatory) { background-image: url('https://sgu-game.cz/img/buildings/observatory.png'); }
-.dash-raw-html :deep(.base) { background-image: url('https://sgu-game.cz/img/buildings/base.png'); }
-.dash-raw-html :deep(.stargate) { background-image: url('https://sgu-game.cz/img/buildings/stargate.png'); }
 
 </style>
 
