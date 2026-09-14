@@ -97,13 +97,24 @@ function handleLinks(e) {
     if (href && href.startsWith("/")) {
       e.preventDefault()
       
-      // Pokusíme sa namapovať staré linky na nové Vue cesty (ak ich máme)
       if (href.includes("reports.php")) router.push("/reports")
       else if (href.includes("research.php")) router.push("/research")
       else if (href.includes("stargate.php")) router.push("/stargate")
       else if (href.includes("universe.php")) router.push("/universe")
-      // Inak len ukážeme varovanie, alebo neurobíme nič
-      else alert("Tato sekce (" + href + ") je zatím pouze read-only a není implementována.")
+      else if (href.includes("upgrade.php")) router.push("/upgrades")
+      else if (href.includes("destiny.php")) router.push("/destiny")
+      else if (href.includes("dashboard.php")) router.push("/")
+      else if (href.includes("crew.php")) router.push("/crew")
+      else if (href.includes("checksums.php")) router.push("/checksums")
+      else if (href.includes("hero.php")) router.push("/hero")
+      else if (href.includes("progress.php")) router.push("/progress")
+      else if (href.includes("note.php")) router.push("/notes")
+      else if (href.includes("helpdesk.php")) router.push("/helpdesk")
+      else if (href.includes("help.php")) router.push("/help")
+      else if (href.includes("settings.php")) router.push("/settings")
+      else if (href.includes("stats.php")) router.push("/stats")
+      // Inak prejdeme priamo tam (a fallbackne to na router/home ak to neexistuje)
+      else router.push(href)
     }
   }
 }
