@@ -15,27 +15,27 @@
           <div class="dash-panel-body" style="padding: 0;">
             <div v-if="loading && !data" class="loading-box">Načítám výzkumy...</div>
             <div v-else class="res-tree-container">
-              
-              <svg class="res-lines">
-                <line v-for="l in lines" :key="l.key"
-                      :x1="l.x1" :y1="l.y1" :x2="l.x2" :y2="l.y2"
-                      class="res-line" />
-              </svg>
+              <div class="res-tree-inner">
+                <svg class="res-lines">
+                  <line v-for="l in lines" :key="l.key"
+                        :x1="l.x1" :y1="l.y1" :x2="l.x2" :y2="l.y2"
+                        class="res-line" />
+                </svg>
 
-              <div v-for="(n, key) in nodesMap" :key="key"
-                   class="res-node"
-                   :class="nodeStatusClass(key)"
-                   :style="{ left: getNodeX(key) + 'px', top: getNodeY(key) + 'px' }"
-                   @click="selectNode(key)">
-                <!-- Zobrazi ikonu podľa statusu alebo písmeno -->
-                <span class="res-icon" v-if="nodeStatusClass(key) === 'status-researched'">✓</span>
-                <span class="res-icon" v-else-if="nodeStatusClass(key) === 'status-researching'">⌛</span>
-                <span class="res-icon" v-else-if="nodeStatusClass(key) === 'status-locked'">🔒</span>
-                <span class="res-icon" v-else>💡</span>
-                
-                <div class="res-node-label">{{ n.name }}</div>
+                <div v-for="(n, key) in nodesMap" :key="key"
+                     class="res-node"
+                     :class="nodeStatusClass(key)"
+                     :style="{ left: getNodeX(key) + 'px', top: getNodeY(key) + 'px' }"
+                     @click="selectNode(key)">
+                  <!-- Zobrazi ikonu podla statusu alebo pismeno -->
+                  <span class="res-icon" v-if="nodeStatusClass(key) === 'status-researched'">✓</span>
+                  <span class="res-icon" v-else-if="nodeStatusClass(key) === 'status-researching'">⏳</span>
+                  <span class="res-icon" v-else-if="nodeStatusClass(key) === 'status-locked'">🔒</span>
+                  <span class="res-icon" v-else>💡</span>
+                  
+                  <div class="res-node-label">{{ n.name }}</div>
+                </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -309,6 +309,13 @@ onMounted(refresh)
   overflow-x: auto;
   overflow-y: auto;
   background: rgba(0,0,0,0.4);
+}
+
+.res-tree-inner {
+  position: relative;
+  width: 340px; /* Base width from (5-1)*65 + 35 + 38 = 333 */
+  height: 720px; /* Base height from (9-1)*80 + 35 + 38 = 713 */
+  margin: 0 auto;
 }
 
 .res-lines {
