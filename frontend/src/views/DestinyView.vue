@@ -31,7 +31,7 @@
               <span class="dash-panel-dot"></span> {{ box.title }}
             </div>
             <!-- Vložíme raw HTML s opravenými cestami -->
-            <div class="dash-panel-body dash-raw-html" v-html="fixHtml(box.html)" @click="handleLinks">
+            <div class="dash-panel-body dash-raw-html" v-html="fixHtml(box.html)" @click="handleLinks" @submit.prevent="handleFormSubmit">
             </div>
           </div>
         </section>
@@ -41,7 +41,7 @@
       <div v-if="tooltipModalHtml" class="sgu-modal-overlay" @click.self="tooltipModalHtml = null">
         <div class="sgu-modal">
           <div class="sgu-modal-close" @click="tooltipModalHtml = null"><i class="fas fa-times"></i></div>
-          <div class="dash-raw-html" v-html="tooltipModalHtml" @click="handleLinks"></div>
+          <div class="dash-raw-html" v-html="tooltipModalHtml" @click="handleLinks" @submit.prevent="handleFormSubmit"></div>
         </div>
       </div>
 
@@ -96,20 +96,25 @@ async function submitDestinyAction(data) {
 }
 
 // Intercept clicks on links and forms inside raw HTML
-function handleLinks(e) {
-  // Handle forms (Opravit, Odmontovat)
-  const form = e.target.closest("form")
-  if (form && (e.target.type === "submit" || e.target.tagName === "BUTTON" || e.target.tagName === "INPUT")) {
-    e.preventDefault()
-    const formData = new FormData(form)
-    if (e.target.name) formData.append(e.target.name, e.target.value)
-
-    const obj = {}
-    formData.forEach((value, key) => obj[key] = value)
-    submitDestinyAction(obj)
-    return
+function handleFormSubmit(e) {
+  const form = e.target
+  const formData = new FormData(form)
+  // Because submit event doesn't tell us WHICH submit button was clicked natively if we just use FormData,
+  // we actually need the submitter. But modern browsers support e.submitter!
+  if (e.submitter && e.submitter.name) {
+    formData.append(e.submitter.name, e.submitter.value)
+  } else if (form.querySelector('input[type="submit"]')) {
+    // Fallback if e.submitter is missing
+    const btn = form.querySelector('input[type="submit"]')
+    if (btn.name) formData.append(btn.name, btn.value)
   }
 
+  const obj = {}
+  formData.forEach((value, key) => obj[key] = value)
+  submitDestinyAction(obj)
+}
+
+function handleLinks(e) {
   // Handle sgu-tooltip clicks (on mobile, we show them as modal)
   const tooltipElement = e.target.closest(".sgu-tooltip")
   if (tooltipElement && tooltipElement.dataset.sguTooltip) {

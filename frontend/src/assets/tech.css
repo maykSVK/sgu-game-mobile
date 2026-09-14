@@ -1,8 +1,8 @@
 
-.enemy-tech.et-electronics { background-image: url('https://sgu-game.cz/img/techs/electronics.png'); }
-.enemy-tech.et-crystal { background-image: url('https://sgu-game.cz/img/techs/crystal.png'); }
-.enemy-tech.et-laser { background-image: url('https://sgu-game.cz/img/techs/laser.png'); }
-.enemy-tech.et-plasma { background-image: url('https://sgu-game.cz/img/techs/plasma.png'); }
+.enemy-tech.et-electronics { border: 2px solid #117a8b; }
+.enemy-tech.et-crystal { border: 2px solid #ffee23; }
+.enemy-tech.et-laser { border: 2px solid #8b0d7e; }
+.enemy-tech.et-plasma { border: 2px solid #ff000a; }
 .enemy-tech.et-1  {background-image: url('https://sgu-game.cz/img/enemy_technology/001-coding.png');}
 .enemy-tech.et-2  {background-image: url('https://sgu-game.cz/img/enemy_technology/001-database.png');}
 .enemy-tech.et-3  {background-image: url('https://sgu-game.cz/img/enemy_technology/002-brain.png');}

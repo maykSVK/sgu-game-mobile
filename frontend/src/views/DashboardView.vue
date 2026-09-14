@@ -89,7 +89,25 @@ function fixHtml(html) {
   return res
 }
 
-// Intercept clicks on links inside raw HTML
+// Intercept clicks on links and forms inside raw HTML
+function handleFormSubmit(e) {
+  const form = e.target
+  const formData = new FormData(form)
+  if (e.submitter && e.submitter.name) {
+    formData.append(e.submitter.name, e.submitter.value)
+  } else if (form.querySelector('input[type="submit"]')) {
+    const btn = form.querySelector('input[type="submit"]')
+    if (btn.name) formData.append(btn.name, btn.value)
+  }
+
+  const obj = {}
+  formData.forEach((value, key) => obj[key] = value)
+  // For dashboard we might not have submitDashboardAction yet
+  // but if there's any form, we should probably handle it or prevent it.
+  // Actually, dashboard forms (Rozkazy) post to /ajax or /dashboard.
+  console.log("Form submit intercepted", obj)
+}
+
 function handleLinks(e) {
   const a = e.target.closest("a")
   if (a) {
