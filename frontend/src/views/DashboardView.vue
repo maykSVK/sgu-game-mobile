@@ -27,6 +27,14 @@
           <div class="dash-panel">
             <div class="dash-panel-head">
               <span class="dash-panel-dot"></span> {{ box.title.replace("[x]", "").replace("[?]", "").trim() }}
+              
+              <!-- Tlačítko na vymazanie výstrah -->
+              <span v-if="box.title.includes('Výstrahy a hlášení')" 
+                    class="dash-panel-action" 
+                    @click="deleteAlerts" 
+                    title="Odstranit všechny výstrahy">
+                [x]
+              </span>
             </div>
             <!-- Vložíme raw HTML s opravenými cestami -->
             <div class="dash-panel-body dash-raw-html" v-html="fixHtml(box.html)" @click="handleLinks">
@@ -42,6 +50,7 @@
 <script setup>
 import { onMounted, ref } from "vue"
 import { useRouter } from "vue-router"
+import axios from "axios"
 import { useGameStore } from "../stores/game"
 import StarField from "../components/StarField.vue"
 
@@ -53,6 +62,21 @@ async function loadData() {
   loading.value = true
   await game.fetchDashboard()
   loading.value = false
+}
+
+async function deleteAlerts() {
+  if (confirm("Opravdu chcete odstranit všechny výstrahy?")) {
+    loading.value = true
+    try {
+      await axios.post("/api/ajax", { method: "deleteAlerts" })
+      await game.fetchDashboard()
+    } catch (e) {
+      console.error(e)
+      alert("Nepodařilo se smazat výstrahy.")
+    } finally {
+      loading.value = false
+    }
+  }
 }
 
 function fixHtml(html) {
@@ -170,12 +194,24 @@ onMounted(() => {
   box-shadow: 0 0 5px #04befe;
   transform: rotate(45deg);
 }
+.dash-panel-action {
+  margin-left: auto;
+  color: #ff3c3c;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+.dash-panel-action:hover {
+  text-shadow: 0 0 8px #ff3c3c;
+}
 
 .dash-panel-body {
   padding: 12px;
   background: rgba(0,0,0,0.4);
   font-size: 12px;
   color: #ddd;
+  height: 250px;
+  overflow-y: auto;
 }
 
 /* ── STYLING RAW HTML IN DASHBOARD ── */
