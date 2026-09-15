@@ -52,6 +52,17 @@ router.get('/', async (req, res) => {
         data.destiny.y = parseFloat(yMatch[1]);
       }
 
+      
+      // Extract Target position if Destiny is flying
+      const targetRegex = /\$\('\.target-point'\)\.offset\(\{left: universe\.left \+ \(([^)]+)\),top: universe\.top \+ 1000 - \(([^)]+)\)\}\)/;
+      const targetMatch = scriptContent.match(targetRegex);
+      if (targetMatch) {
+        data.destiny.target = {
+          x: parseFloat(targetMatch[1]) + 12,
+          y: parseFloat(targetMatch[2]) - 24
+        };
+      }
+
       // Extract offsets
       const offsetRegex = /\$\('#([^']+)'\)\.offset\(\{left: universe\.left \+ \(([^)]+)\),top: universe\.top \+ 1000 - \(([^)]+)\)\}/g;
       let match;
