@@ -292,10 +292,15 @@ onMounted(() => {
         ></div>
 
         
-          <!-- ACTIVE FLIGHT TARGET POINT -->
+          <!-- ACTIVE FLIGHT ORIGIN AND TARGET POINTS -->
+          <div v-if="universeData.destiny.origin"
+            class="origin-point space-object"
+            style="transform: translate(-12px, -24px); z-index: 10; width: 24px; height: 24px; background-repeat: no-repeat;"
+            :style="{ left: universeData.destiny.origin.x + 'px', top: (1000 - universeData.destiny.origin.y) + 'px' }"
+          ></div>
           <div v-if="universeData.destiny.target"
             class="target-point space-object"
-            style="transform: translate(-12px, -24px); z-index: 10; width: 24px; height: 24px; background-size: cover; background-repeat: no-repeat;"
+            style="transform: translate(-12px, -24px); z-index: 10; width: 24px; height: 24px; background-repeat: no-repeat;"
             :style="{ left: universeData.destiny.target.x + 'px', top: (1000 - universeData.destiny.target.y) + 'px' }"
           ></div>
 
@@ -334,10 +339,10 @@ onMounted(() => {
           </g>
         
           <!-- ACTIVE FLIGHT LINE -->
-          <g v-if="universeData.destiny.target">
+          <g v-if="universeData.destiny.target && universeData.destiny.origin">
             <line 
-              :x1="universeData.destiny.x + 8" 
-              :y1="(1000 - universeData.destiny.y) + 3" 
+              :x1="universeData.destiny.origin.x" 
+              :y1="(1000 - universeData.destiny.origin.y)" 
               :x2="universeData.destiny.target.x" 
               :y2="(1000 - universeData.destiny.target.y)" 
               stroke="#2660A2" 
@@ -467,6 +472,7 @@ onMounted(() => {
 .space-object-seed-ship { width: 45px; height: 26px; background-image: url('/sgu-game-mobile/img/seed-ship.png'); background-size: 100% 100%; }
 
 .target-point { width: 24px; height: 24px; background-image: url('/sgu-game-mobile/img/target-point.png'); background-repeat: no-repeat; }
+.origin-point { width: 24px; height: 24px; background-image: url('/sgu-game-mobile/img/origin-point.png'); background-repeat: no-repeat; }
 
 .occupier-icon { color: white; display: inline-block; background: rgba(0,0,0,0.5); border-radius: 3px; padding: 2px; }
 
