@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted, nextTick } from 'vue';
 import axios from 'axios';
 import Panzoom from '@panzoom/panzoom';
+import UniverseNav from '../components/UniverseNav.vue';
 
 const universeData = ref(null);
 const loading = ref(true);
@@ -96,8 +97,8 @@ const handleMapClick = (e) => {
   // Nas transform-origin je 50% 50% = stred = 500, 500
   // Lepsie je ziskat suradnice priamo z DOM bez Panzoom scale takto:
   
-  const clickX = (screenX - 500) / scale + 500 - boundedPan.x;
-  const clickY = (screenY - 500) / scale + 500 - boundedPan.y;
+  const clickX = screenX / scale;
+    const clickY = screenY / scale;
   
   // V mape mame origin posunuty o 8px
   const mapX = clickX - 8;
@@ -265,6 +266,7 @@ onMounted(() => {
 
 <template>
   <div class="universe-page">
+    <UniverseNav />
     <div v-if="loading" class="text-center p-3">
       <div class="spinner"></div> Načítavam vesmír...
     </div>
@@ -380,11 +382,9 @@ onMounted(() => {
 .universe-page {
   width: 100%;
   height: calc(100vh - 60px); /* Odpocitame vysku navbaru */
-  background-color: #0b1319;
-  background-image: url('/img/bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background-color: rgba(11, 19, 25, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   overflow: hidden;
 }
 
