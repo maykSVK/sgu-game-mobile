@@ -70,6 +70,47 @@ const zoomOut = () => { if (panzoomInstance) panzoomInstance.zoomOut(); };
 
 const isGalaxyModalOpen = ref(false);
 const tooltipPos = ref({ left: '0px', top: '0px' });
+  const isDragging = ref(false);
+  const dragOffset = ref({ x: 0, y: 0 });
+  const currentPos = ref({ x: 0, y: 0 });
+  const currentTransform = ref('');
+
+  const startDrag = (e) => {
+    if (e.target.closest('.distance-info') || e.target.closest('th')) {
+      isDragging.value = true;
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      dragOffset.value = {
+        x: clientX - currentPos.value.x,
+        y: clientY - currentPos.value.y
+      };
+      
+      document.addEventListener('mousemove', onDrag);
+      document.addEventListener('mouseup', stopDrag);
+      document.addEventListener('touchmove', onDrag, { passive: false });
+      document.addEventListener('touchend', stopDrag);
+    }
+  };
+
+  const onDrag = (e) => {
+    if (!isDragging.value) return;
+    e.preventDefault();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    currentPos.value = {
+      x: clientX - dragOffset.value.x,
+      y: clientY - dragOffset.value.y
+    };
+  };
+
+  const stopDrag = () => {
+    isDragging.value = false;
+    document.removeEventListener('mousemove', onDrag);
+    document.removeEventListener('mouseup', stopDrag);
+    document.removeEventListener('touchmove', onDrag);
+    document.removeEventListener('touchend', stopDrag);
+  };
+
 
 const closeModal = () => {
   isModalOpen.value = false;
