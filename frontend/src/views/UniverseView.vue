@@ -321,6 +321,10 @@ onMounted(() => {
 <template>
   <div class="universe-page">
     <UniverseNav />
+      <button v-if="universeData" class="galaxy-indicator" @click="openGalaxyInfo" :class="{'clickable': universeData.galaxyInfo}">
+        <i class="fas fa-map-marked-alt"></i> Mapa vesmíru (Galaxia: {{ universeData.currentGalaxyName || 'Neznáma' }})
+        <i v-if="universeData.galaxyInfo" class="fas fa-info-circle info-icon"></i>
+      </button>
     <div v-if="loading" class="text-center p-3">
       <div class="spinner"></div> Načítavam vesmír...
     </div>
@@ -331,10 +335,6 @@ onMounted(() => {
 
     <div v-else-if="universeData" class="universe-scroll-container">
 <!-- Galaxy Indicator / Button -->
-      <button v-if="universeData" class="galaxy-indicator" @click="openGalaxyInfo" :class="{'clickable': universeData.galaxyInfo}">
-        <i class="fas fa-map-marked-alt"></i> Mapa vesmíru (Galaxia: {{ universeData.currentGalaxyName || 'Neznáma' }})
-        <i v-if="universeData.galaxyInfo" class="fas fa-info-circle info-icon"></i>
-      </button>
       <!-- Priesvitny overlay na zatvorenie popoveru mimo mapy -->
       <div v-if="isModalOpen" class="popover-overlay" @click="closeModal"></div>
 
