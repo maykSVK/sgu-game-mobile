@@ -121,6 +121,23 @@ async function fetchPage(path, options = {}) {
   return res.text();
 }
 
+async function fetchPageWithUrl(path, options = {}) {
+  const cookieString = await getCookiesForUrl(BASE_URL);
+  if (!cookieString) throw new Error('No session available');
+
+  const res = await fetch(`${BASE_URL}${path}`, {
+    ...options,
+    headers: {
+      'Cookie': cookieString,
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      'Referer': `${BASE_URL}/dashboard.php`,
+      ...options.headers
+    },
+    redirect: options.redirect || 'follow',
+  });
+  return { html: await res.text(), url: res.url };
+}
+
 async function postPage(path, data = {}) {
   const cookieString = await getCookiesForUrl(BASE_URL);
   if (!cookieString) throw new Error('No session available');
@@ -150,4 +167,4 @@ function isLoggedIn() {
 }
 function username() { return currentUser; }
 
-module.exports = { login, logout, fetchPage, postPage, isLoggedIn, username };
+module.exports = { login, logout, fetchPage, fetchPageWithUrl, postPage, isLoggedIn, username };

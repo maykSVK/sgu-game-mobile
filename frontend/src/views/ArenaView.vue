@@ -170,8 +170,10 @@ import axios from 'axios'
 import StarField from '../components/StarField.vue'
 import UniverseNav from '../components/UniverseNav.vue'
 import { useAuthStore } from '../stores/auth'
+import { useRouter } from 'vue-router'
 
 const auth = useAuthStore()
+const router = useRouter()
 const loading = ref(true)
 const arenaData = ref(null)
 const toast = ref({ show: false, message: "", type: "success" })
@@ -234,9 +236,18 @@ async function loadData(params = {}) {
     }
     const res = await axios.get(url)
     if (res.data.ok) {
-      arenaData.value = res.data.data
-      handleMessages(res.data.data.messages)
-    }
+        if (res.data.redirectedToReport && res.data.url) {
+           const reportId = res.data.url.split('id=')[1];
+           if (reportId) {
+             router.push({ path: '/reports', query: { id: reportId } });
+             return;
+           }
+        }
+        arenaData.value = res.data.data;
+        if (res.data.data && res.data.data.messages) {
+           handleMessages(res.data.data.messages);
+        }
+      }
   } catch (e) {
     console.error(e)
     showToast("Nepodařilo se načíst Arénu", "error")
@@ -250,8 +261,17 @@ async function applyForArena() {
   try {
     const res = await axios.post("/api/arena/action", { get_into_arena: 'get_into_arena' })
     if (res.data.ok) {
-      arenaData.value = res.data.data
-      handleMessages(res.data.data.messages)
+        if (res.data.redirectedToReport && res.data.url) {
+           const reportId = res.data.url.split('id=')[1];
+           if (reportId) {
+             router.push({ path: '/reports', query: { id: reportId } });
+             return;
+           }
+        }
+        arenaData.value = res.data.data;
+        if (res.data.data && res.data.data.messages) {
+           handleMessages(res.data.data.messages);
+        }
       }
   } catch (e) {
     showToast("Chyba při přihlašování", "error")
@@ -269,8 +289,17 @@ async function attackPlayer(userId) {
       set_arena_battle: 'set_arena_battle' 
     })
     if (res.data.ok) {
-      arenaData.value = res.data.data
-      handleMessages(res.data.data.messages)
+        if (res.data.redirectedToReport && res.data.url) {
+           const reportId = res.data.url.split('id=')[1];
+           if (reportId) {
+             router.push({ path: '/reports', query: { id: reportId } });
+             return;
+           }
+        }
+        arenaData.value = res.data.data;
+        if (res.data.data && res.data.data.messages) {
+           handleMessages(res.data.data.messages);
+        }
       }
   } catch (e) {
     showToast("Chyba při útoku", "error")

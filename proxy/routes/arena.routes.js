@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { fetchPage, postPage, isLoggedIn } = require('../auth');
+const { fetchPage, fetchPageWithUrl, postPage, isLoggedIn } = require('../auth');
 const { parseArena } = require('../parsers/arena');
 
 router.use((req, res, next) => {
@@ -28,11 +28,16 @@ router.get('/', async (req, res) => {
 router.post('/action', async (req, res) => {
   try {
     // Akcie: get_into_arena, set_arena_battle
-    const html = await fetchPage('/arena.php', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(req.body).toString()
-    });
+    const { html, url } = await fetchPageWithUrl('/arena.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(req.body).toString()
+      });
+
+      if (url.includes('report.php')) {
+        // Redirection to battle report detected
+        return res.json({ ok: true, redirectedToReport: true, url: url });
+      }
     const data = parseArena(html);
     res.json({ ok: true, data });
   } catch (error) {

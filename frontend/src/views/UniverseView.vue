@@ -730,5 +730,25 @@ onMounted(() => {
   width: 100%;
   margin-top: 5px;
 }
+
+@media (max-width: 768px) {
+  .popover-tooltip {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 90vw !important;
+    max-width: 400px !important;
+    z-index: 9999 !important;
+  }
+  .popover-tooltip::after, .popover-tooltip::before {
+    display: none !important;
+  }
+  .popover-overlay {
+    position: fixed !important;
+    background: rgba(0,0,0,0.6);
+  }
+}
 </style>
+
 \n.tooltip-content { padding: 10px; }\n

@@ -80,11 +80,13 @@
 
 <script setup>
 import { ref, onMounted } from "vue"
+import { useRoute } from "vue-router"
 import axios from "axios"
 import { useGameStore } from "../stores/game"
 import UniverseNav from "../components/UniverseNav.vue"
 
 const game = useGameStore()
+const route = useRoute()
 
 const reports = ref([])
 const loading = ref(false)
@@ -152,7 +154,11 @@ async function markAllAsRead() {
 }
 
 onMounted(() => {
-  refresh()
+  if (route.query.id) {
+    openReport(route.query.id);
+  } else {
+    refresh();
+  }
 })
 </script>
 
