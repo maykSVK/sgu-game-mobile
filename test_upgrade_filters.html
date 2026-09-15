@@ -1,0 +1,440 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="author" content="Patrik Skřivánek e-mail: kriegsmarine1995@gmail.com">
+    <meta name="copyright" content="Patrik Skřivánek">
+    <meta name="description" content="Prohlížečová hra na motiv seriálu Stargate Universe.">
+    <meta name="keywords" content="SGU-Game,Stargate,Stargate Universe,SGU,Hvězdná brána,Hvězdná brána: hluboký vesmír,Destiny,online hra">
+    <meta name="robots" content="index,follow">
+    <title>SGU-Game</title>
+
+    <link rel="shortcut icon" type="img/png" href="/img/favicon.png"/>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/css/lightbox.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/tipped.css"/>
+    <link rel="stylesheet" type="text/css" href="css/countrySelect.css">
+    <link rel="stylesheet" type="text/css" href="css/notyf.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/2019.css?1789467404">
+    <link rel="stylesheet" type="text/css" href="css/compact.css?1789467404">
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/js/lightbox.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/notyf.min.js"></script>
+
+    <script type="text/javascript" src="js/charts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <script type="text/javascript" src="js/three.min.js"></script>
+    <script type="text/javascript" src="js/countrySelect.js"></script>
+</head>
+
+<body class="pref-bg-8">
+
+<header class="text-center">
+    <div class="left-side pl-3">
+        <a href="/" class="logo"><img src="img/sgu-game.png" width="250px"></a>
+        <a href="/dashboard.php" class="btn-bevel">Řídící místnost</a>
+
+        <a href="#" id="universe-menu" class="btn-bevel menu-universe">Vesmír</a>
+        <div class="universe-submenu display-none">
+            <div class="submenu-item"><a href="/universe.php">Mapa vesmíru</a></div>
+            <div class="submenu-item"><a href="/arena.php">Aréna</a></div>
+            <div class="submenu-item"><a href="/expedition.php">Expedice</a></div>
+            <div class="submenu-item"><a href="/buildings.php">Planety & stavby</a></div>
+            <div class="submenu-item"><a href="/artifacts.php">Naše artefakty</a></div>
+            <div class="submenu-item"><a href="/reports.php">Bitevní reporty</a></div>
+            <div class="submenu-item"><a href="/quests.php">Kvízy</a></div>
+            <div class="submenu-item"><a href="/referendum.php">Referendum</div>
+            <div class="submenu-item"><a href="/sgc.php?subview=sgc" style="color: yellow;">=SGC=</div>
+            <div class="submenu-item"><a href="/atlantis.php?subview=city" style="color: aqua;">=Atlantis=</div>
+            <div class="submenu-item"><a href="#" style="color: #ff0000;">=Legacy of Alterans=</div>
+        </div>
+
+        <a href="/stargate.php" class="btn-bevel">Hvězdná brána</a>
+
+        <a href="#" class="btn-bevel menu-station">Obchodní stanice</a>
+        <div class="station-submenu display-none">
+            <div class="submenu-item"><a href="/market.php">Suroviny - nákup & prodej</a></div>
+            <div class="submenu-item"><a href="/technologies.php">Technologie</a></div>
+            <div class="submenu-item"><a href="/specials.php" style="color: gold;"><i class="fas fa-star"></i> Speciální technologie</a></div>
+            <div class="submenu-item"><a href="/store.php" style="color: #ff07e0;"><i class="fas fa-gem"></i> Prémiový obchod</a></div>
+        </div>
+
+        <a href="/research.php" class="btn-bevel">Výzkum</a>
+
+        <a href="#" class="btn-bevel menu-upgrade">Vylepšení</a>
+        <div class="upgrade-submenu display-none">
+            <div class="submenu-item"><a href="/upgrade.php?subview=weapon_system">Zbraňové systémy</a></div>
+            <div class="submenu-item"><a href="/upgrade.php?subview=neural_armchair">Neurální rozhraní</a></div>
+            <div class="submenu-item"><a href="/upgrade.php?subview=filters">Filtry CO<sub>2</sub></div>
+            <div class="submenu-item"><a href="/upgrade.php?subview=ftl">FTL pohon</a></div>
+            <div class="submenu-item"><a href="/upgrade.php?subview=resources">Sklady</a></div>
+            <div class="submenu-item"><a href="/upgrade.php?subview=shields">Štíty</a></div>
+            <div class="submenu-item"><a href="/upgrade.php?subview=chambers">Stázové komory</a></div>
+            <div class="submenu-item"><a href="/upgrade.php?subview=sublight">Podsvětelné motory</a></div>
+        </div>
+
+        <a href="/lab.php" class="btn-bevel">Laboratoř</a>
+
+        <a href="#" class="btn-bevel menu-communication">Komunikace</a>
+        <div class="communication-submenu display-none">
+            <div class="submenu-item"><a href="/messages.php">Zprávy</a></div>
+            <div class="submenu-item"><a href="/forums.php?forum=1">Oznámení administrátorů</a></div>
+            <div class="submenu-item"><a href="/forums.php?forum=2">Diskuzní fórum</a></div>
+            <div class="submenu-item"><a href="/forums.php?forum=4">Systémové fórum</a></div>
+            <div class="submenu-item"><a href="/forums.php?forum=3">Obchodní fórum</a></div>
+                    </div>
+
+
+                    <a href="/alliance.php" class="btn-bevel menu-alliance">Aliance</a>
+                </div>
+</header>
+
+<div class="main-container">
+<div class="side-menu">
+    <div class="scrollbar">
+        <section>
+
+            
+            <div class="rank-standard second-lieutenant sgu-tooltip inline v-a-m" data-sgu-tooltip="<table><tbody><tr><th colspan='2'>Second Lieutenant</th></tr><tr><td width='60%'>Zkušenosti (celkem)</td><td width='40%'>299</td></tr><tr><td colspan='2'><div class='progress'><div class='progress-bar' role='progressbar' style='width: 76.666666666667%;' aria-valuenow='69' aria-valuemin='0' aria-valuemax='100'>69/90</div></div></td></tr><tr><td colspan='2'>Do další hodnosti zbývá <span class='bold'>21</span> zkušeností</td></tr><tr><td colspan='2'>Zkušenosti lze získat za:<br>úspěšně dokončený Kvíz <span class='success'>+10</span><br>úspěšný útok v Aréně <span class='success'>+1</span><br>úspěšně dokončenou Expedici <span class='success'>+3</span><br>vyzkoumanou technologii <span class='success'>+8</span><br>vylepšení lodi <span class='success'>+8</span></td></tr></tbody></table>"></div>
+                        <span class="text-white bold">
+                <a href="/stats.php?subview=profile&playerName=Mayk">
+                    <span class="cursor-pointer">Mayk</span>
+                </a>
+            </span>
+
+            
+            <p>
+                <span id="panelShowPlayer" class="cursor-pointer"><i class="far fa-list-alt"></i> Destiny</span> | <span id="panelShowQuestLog" class="cursor-pointer"><i class="fas fa-exclamation-circle quests-icon"></i> Quest Log</span>
+            </p>
+
+        </section>
+
+                <div id="panelTabPlayer">
+            <section>
+                <div class="pt-2 pb-2">
+                    <img src="img/divider.png">
+                </div>
+
+                <span class="panel-heading">Destiny</span>
+                <div class="panel-resources">
+                    <div class="attack-power">
+                        <span class="resource-key"><i class="fas fa-crosshairs"></i> Útočná síla</span>
+                        <span class="resource-value">27.2</span>
+                    </div>
+                    <div class="shields">
+                        <span class="resource-key"><i class="fas fa-shield-alt"></i> Štíty</span>
+                        <span class="resource-value">122%</span>
+                    </div>
+                    <div class="speed">
+                        <span class="resource-key"><i class="fas fa-tachometer-alt"></i> Rychlost <span class="sgu-tooltip" data-sgu-tooltip="Destiny uletí 1 světelný rok za 162 sekund. Rychlost lodě je možné zvyšovat výzkumy, vylepšenímy a vývojem motorových technologií. Jednotka ly znamená světelný rok.">[?]</span></span>
+                        <span class="resource-value">1 ly = 162s</span>
+                    </div>
+                    <div class="science">
+                        <span class="resource-key"><i class="fas fa-search"></i> <a href="/research.php">Výzkum</a></span>
+                        <span class="resource-value w-50">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 54%;" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100">54%</div>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="gates-in-range">
+                        <span class="resource-key"><i class="far fa-circle"></i> <a href="/stargate.php">Brány v dosahu</a></span>
+                        <span class="resource-value">0</span>
+                    </div>
+                    <div class="gates-in-range">
+                        <span class="resource-key"><i class="fas fa-user-friends"></i> <a href="/crew.php">Posádka</a></span>
+                        <span class="resource-value">116</span>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="pt-2 pb-2">
+                    <img src="img/divider.png">
+                </div>
+
+                <span class="panel-heading">Zdroje</span>
+                <div class="panel-resources">
+                    <div>
+                        <span class="resource-key"><i class="fas fa-bolt energy"></i> Energie</span>
+                        <span class="resource-value">
+                            85/100                        </span>
+                    </div>
+                    <div class="food">
+                        <span class="resource-key"><i class="fas fa-drumstick-bite food"></i> Jídlo</span>
+                        <span class="resource-value">0.00/100</span>
+                    </div>
+                    <div class="water">
+                        <span class="resource-key"><i class="fas fa-tint water"></i> Voda</span>
+                        <span class="resource-value">20.60/100</span>
+                    </div>
+                    <div class="limestone">
+                        <span class="resource-key"><i class="fas fa-cookie limestone"></i> Vápenec</span>
+                        <span class="resource-value">26.60/100</span>
+                    </div>
+                    <div class="credits">
+                        <span class="resource-key"><i class="fas fa-money-bill-wave credits"></i> Kredity</span>
+                        <span class="resource-value">1 214</span>
+                    </div>
+                    <div class="research-points">
+                        <span class="resource-key"><i class="fas fa-flask research-points"></i> Výzkumné body</span>
+                        <span class="resource-value">5.00</span>
+                    </div>
+                    <div class="renown">
+                        <span class="resource-key"><i class="fas fa-crown renown"></i> Sláva</span>
+                        <span class="resource-value">748</span>
+                    </div>
+                    <div class="fragments">
+                        <span class="resource-key"><i class="fas fa-atom"></i> Fragmenty</span>
+                        <span class="resource-value">
+                            1/10                        </span>
+                    </div>
+                    <div class="happiness">
+                        <span class="resource-key"><i class="fas fa-grin-alt happiness"></i> Spokojenost</span>
+                        <span class="resource-value">
+                            <div>Neutrální <span class="sgu-tooltip" data-sgu-tooltip="<div>Nedostatek <span class='food'>Jídlo</span> <span class='failed'>-10</span></div><div>Ošetřovna <span class='success'>+5</span></div><div>Bar <span class='success'>+5</span></div><div>Spokojenost na Destiny = 0</div>">[?]</span></div>                        </span>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="pt-2 pb-2">
+                    <img src="img/divider.png">
+                </div>
+
+                <span class="panel-heading">Stav</span>
+                <div>
+                    <p><a href="/universe.php">Loď vystoupila z FTL</a></p>
+
+                    <p><a href="/universe.php?planetId=37">Průzkum planety: dlouhý (<span data-countdown="2026-09-15 13:44:58"></span>)</a></p>                </div>
+            </section>
+
+            <section>
+                <div class="pt-2 pb-2">
+                    <img src="img/divider.png">
+                </div>
+                <span class="panel-heading">Ostatní</span>
+                <div>
+                    <p><i class="far fa-file"></i> <a href="/note.php">Poznámky</a></p>
+                    <p>
+                        <i class="fas fa-life-ring"></i> <a href="/helpdesk.php">Helpdesk</a>
+                                            </p>
+                    <p><i class="fas fa-chart-bar"></i> <a href="/stats.php">Statistiky</a></p>
+                    <p><i class="fas fa-question-circle"></i> <a href="/help.php">Nápověda</a></p>
+                    <p><i class="fas fa-tools"></i> <a href="/settings.php">Nastavení</a></p>
+                                        <p><i class="fas fa-sign-out-alt"></i> <a href="/logout.php">Odhlásit</a></p>
+                </div>
+            </section>
+        </div>
+
+        <div id="panelTabQuestLog" style="display: none;">
+            <section>
+                <div class="pt-2 pb-2">
+                    <img src="img/divider.png">
+                </div>
+
+                                <span class="panel-heading">Quest Log <span class="small">[0/3]</span></span>
+
+                                    <p class="font-italic">
+                        Na některých planetách se nacházejí NPC postavy, které nabízejí Questy. Jejich plněním získáváte odměny!
+                    </p>
+                    
+            </section>
+        </div>
+    </div>
+</div>
+
+<div class="content-container">
+
+<table class="content-margin">
+    <tbody>
+    <tr>
+        <th>
+            Vylepšení Destiny        </th>
+    </tr>
+    </tbody>
+</table>
+
+<div class="infobox-standard">
+    <div class="infobox-standard-title">
+        Filtry CO<sub>2</sub>    </div>
+    <div class="infobox-standard-body">
+        <table>
+            <tbody>
+            <tr>
+                <td>
+                    <div class="upgrade-img upgrade-filters"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    současná úroveň: <span class="heading">výchozí</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="infobox-standard x2">
+    <div class="infobox-standard-title">
+        Vylepšení
+    </div>
+    <div class="infobox-standard-body">
+        <table>
+            <tbody>
+            <tr>
+                <th width="10%">Úroveň</th>
+                <th width="35%">Požadovaná technologie</th>
+                <th width="15%">Cena [kredity]</th>
+                <th width="25%">Efekt</th>
+                <th width="15%">Možnosti</th>
+            </tr>
+
+            <tr>
+                <td width="10%">level 1</td>
+                <td width="35%">žádná</td>
+                <td width="15%"><i class="fas fa-money-bill-wave credits"></i> 100</td>
+                <td width="25%">-1 spotřeba <span class="limestone">Vápence</span></td>
+                <td width="15%">
+                                            <form method="post">
+                            <input type="submit" class="btn-bevel btn-bevel-sm table-button-resizer" name="upgrade_filters" value="Vylepšit">
+                        </form>
+                                        </td>
+            </tr>
+            <tr>
+                <td width="10%">level 2</td>
+                <td width="35%">žádná</td>
+                <td width="15%"><i class="fas fa-money-bill-wave credits"></i> 200</td>
+                <td width="25%">-2 spotřeba <span class="limestone">Vápence</span></td>
+                <td width="15%">
+                                    </td>
+            </tr>
+            <tr>
+                <td width="10%">level 3</td>
+                <td width="35%">žádná</td>
+                <td width="15%"><i class="fas fa-money-bill-wave credits"></i> 300</td>
+                <td width="25%">-3 spotřeba <span class="limestone">Vápence</span></td>
+                <td width="15%">
+                                    </td>
+            </tr>
+            <tr>
+                <td width="10%">level 4</td>
+                <td width="35%">žádná</td>
+                <td width="15%"><i class="fas fa-money-bill-wave credits"></i> 400</td>
+                <td width="25%">-4 spotřeba <span class="limestone">Vápence</span></td>
+                <td width="15%">
+                                    </td>
+            </tr>
+            <tr>
+                <td width="10%">level 5</td>
+                <td width="35%">žádná</td>
+                <td width="15%"><i class="fas fa-money-bill-wave credits"></i> 500</td>
+                <td width="25%">-5 spotřeba <span class="limestone">Vápence</span></td>
+                <td width="15%">
+                                    </td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    Filtry CO<sub>2</sub> jsou hlavním motorem systému podpory života na lodi. Tyto filtry jsou poháněny vápancem. Na planetách, které navštěvujeme můžeme nalézt vépanec, který se najčastěji a ve velkém množstní vyzkytuje na pouštních planetách.<br>Filtry jsme v seriálu Stargate Universe mohli vidět hned v pilotním trojdílu Air (Vzduch).                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div><a href="/store.php">
+    <div class="premium-shop">
+        <i class="fas fa-gem mr-2"></i> Prémiový obchod
+    </div>
+</a>
+
+<a href="https://www.facebook.com/sgugame/" target="_blank">
+    <div class="facebook-badge">
+        <i class="fab fa-facebook-square mr-2"></i> Facebook
+    </div>
+</a>
+
+<a href="/discord.php">
+    <div class="discord-badge">
+        <i class="fab fa-discord mr-2"></i> Discord
+    </div>
+</a>
+
+<div class="infobox-standard chat-box active">
+    <div class="infobox-standard-title">
+        <div class="cursor-pointer">
+            Herní chat
+            <i id="chat-chevron-open" class="fas fa-chevron-up open-chat-icon" style="display: none;"></i>
+            <i id="chat-chevron-close" class="fas fa-chevron-down close-chat-icon"></i>
+        </div>
+    </div>
+    <div class="infobox-standard-body">
+        <div id="chat-messages-container" class="scrollbar" style="height: 213px;margin-bottom: 5px;">
+
+        </div>
+        <div>
+            <textarea  name="" value="" placeholder="Napište zprávu... max 255 znaků [odeslat=enter]" class="chat-input" maxlength="255"></textarea>
+            <span id="chat-smiles-open">
+                <i class="far fa-smile-wink fa-2x" style="color: white;cursor: pointer;"></i>
+            </span>
+            <div id="chat-smiles-window">
+                Smajlíci
+                <div style="margin-top: 3px;">
+                    <div class="inline cursor-pointer sgu-tooltip" data-sgu-tooltip=":-)"><img src="/img/smiles/happy.png" data-smile-code=":-)" width="20"></div>
+                    <div class="inline cursor-pointer sgu-tooltip" data-sgu-tooltip=":-D"><img src="/img/smiles/happy-1.png" data-smile-code=":-D" width="20"></div>
+                    <div class="inline cursor-pointer sgu-tooltip" data-sgu-tooltip=";-)"><img src="/img/smiles/suspicious.png" data-smile-code=";-)" width="20"></div>
+                    <div class="inline cursor-pointer sgu-tooltip" data-sgu-tooltip=":-P"><img src="/img/smiles/tongue-out.png" data-smile-code=":-P" width="20"></div>
+                    <div class="inline cursor-pointer sgu-tooltip" data-sgu-tooltip=":-("><img src="/img/smiles/unhappy.png" data-smile-code=":-(" width="20"></div>
+                    <div class="inline cursor-pointer sgu-tooltip" data-sgu-tooltip=":-O"><img src="/img/smiles/surprised-1.png" data-smile-code=":-O" width="20"></div>
+                    <div class="inline cursor-pointer sgu-tooltip" data-sgu-tooltip=":-/"><img src="/img/smiles/confused.png" data-smile-code=":-/" width="20"></div>
+                    <div class="inline cursor-pointer sgu-tooltip" data-sgu-tooltip=":-*"><img src="/img/smiles/kissing.png" data-smile-code=":-*" width="20"></div>
+                    <div class="inline cursor-pointer sgu-tooltip" data-sgu-tooltip=":-$"><img src="/img/smiles/confused-1.png" data-smile-code=":-$" width="20"></div>
+                    <div class="inline cursor-pointer sgu-tooltip" data-sgu-tooltip=":-X"><img src="/img/smiles/quiet.png" data-smile-code=":-X" width="20"></div>
+                </div>
+
+                Hrdinové
+                <div style="margin-top: 3px;">
+                    <div class="inline cursor-pointer sgu-tooltip" data-sgu-tooltip="Jack O'Neill"><img src="/img/smiles/hero_oneill_1.gif" data-smile-code=":oneill_1:" width="23" height="20"></div>
+                    <div class="inline cursor-pointer sgu-tooltip" data-sgu-tooltip="Samantha Carter"><img src="/img/smiles/hero_carter_1.gif" data-smile-code=":carter_1:" width="23" height="20"></div>
+                    <div class="inline cursor-pointer sgu-tooltip" data-sgu-tooltip="Daniel Jackson"><img src="/img/smiles/hero_jackson_1.gif" data-smile-code=":jackson_1:" width="22" height="20"></div>
+                    <div class="inline cursor-pointer sgu-tooltip" data-sgu-tooltip="Teal'c"><img src="/img/smiles/hero_tealc_1.gif" data-smile-code=":tealc_1:" width="17" height="20"></div>
+                    <div class="inline cursor-pointer sgu-tooltip" data-sgu-tooltip="George Hammond"><img src="/img/smiles/hero_hammond_1.gif" data-smile-code=":hammond_1:" width="20" height="20"></div>
+                    <div class="inline cursor-pointer sgu-tooltip" data-sgu-tooltip="John Sheppard"><img src="/img/smiles/hero_sheppard_1.gif" data-smile-code=":sheppard_1:" width="25" height="20"></div>
+                    <div class="inline cursor-pointer sgu-tooltip" data-sgu-tooltip="Bra'tac"><img src="/img/smiles/hero_bratac.gif" data-smile-code=":bratac:" width="17" height="20"></div>
+                    <div class="inline cursor-pointer sgu-tooltip" data-sgu-tooltip="Baal"><img src="/img/smiles/hero_baal.gif" data-smile-code=":baal:" width="18" height="20"></div>
+                    <div class="inline cursor-pointer sgu-tooltip" data-sgu-tooltip="Thor"><img src="/img/smiles/hero_thor.gif" data-smile-code=":thor:" width="24" height="20"></div>
+                    <div class="inline cursor-pointer sgu-tooltip" data-sgu-tooltip="Rodney McKay"><img src="/img/smiles/hero_mckay.gif" data-smile-code=":mckay:" width="19" height="20"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+</div>
+
+
+<script>
+    var owner = 140,
+        wsUrl = "wss://sgu-game.cz:9090";
+</script>
+
+<script type="text/javascript" src="js/jquery.blink.js"></script>
+<script type="text/javascript" src="js/tipped.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquery.line.js"></script>
+<script type="text/javascript" src="js/rotate.js"></script>
+<script type="text/javascript" src="js/jquery.countdown.js"></script>
+
+<script type="text/javascript" src="js/sgu-game.js?1789467404"></script>
+<script type="text/javascript" src="js/chat.js?1789467404"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

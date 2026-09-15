@@ -45,8 +45,10 @@ a:hover { text-decoration: underline; }
   position: fixed;
   bottom: 0; left: 0; right: 0;
   z-index: 50;
-  background: linear-gradient(to right, #3a3a3a, #000);
-  border-top: 1px solid #04befe;
+  background: rgba(4, 9, 20, 0.95);
+  border-top: 1px solid rgba(4,190,254,0.4);
+  box-shadow: 0 -4px 15px rgba(0,0,0,0.8);
+  backdrop-filter: blur(5px);
   display: flex;
   height: 56px;
   padding-bottom: env(safe-area-inset-bottom, 0px);
@@ -56,17 +58,26 @@ a:hover { text-decoration: underline; }
   flex: 1;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  gap: 3px;
+  gap: 4px;
   font-family: Verdana, sans-serif;
-  font-size: 8px; font-weight: bold;
-  letter-spacing: 0.5px; text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
+  font-size: 9px; font-weight: bold;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: rgba(4,190,254,0.4); /* Outlines modrou, tlmené */
   cursor: pointer; border: none; background: none; padding: 0;
   position: relative;
-  transition: color 0.15s;
+  transition: all 0.2s;
 }
-.sgu-nav-tab .nav-icon { font-size: 16px; line-height: 1; }
-.sgu-nav-tab.active { color: #04befe; text-shadow: 0 0 8px rgba(4,190,254,0.5); }
+.sgu-nav-tab .nav-icon { 
+  font-size: 18px; 
+  line-height: 1;
+}
+.sgu-nav-tab.active { 
+  color: #04befe; 
+  text-shadow: 0 0 10px rgba(4,190,254,0.8); 
+}
+.sgu-nav-tab.active .nav-icon {
+  filter: drop-shadow(0 0 5px rgba(4,190,254,0.8));
+}
 .sgu-nav-tab.active::after {
   content: '';
   position: absolute; bottom: 0; left: 15%; right: 15%;
@@ -135,9 +146,17 @@ a:hover { text-decoration: underline; }
 }
 .sgu-drawer-item:active,
 .sgu-drawer-item:hover { background: rgba(4,190,254,0.1); color: #fff; }
-.sgu-drawer-item .icon { font-size: 16px; width: 22px; text-align: center; }
+.sgu-drawer-item .icon { 
+  font-size: 16px; width: 22px; text-align: center; 
+  color: rgba(4,190,254,0.5); /* SGU modrá pre ikony */
+  transition: all 0.2s;
+}
 .sgu-drawer-item .sub  { font-size: 10px; color: rgba(255,255,255,0.3); margin-top: 1px; }
 .sgu-drawer-item.active { color: #04befe; background: rgba(4,190,254,0.07); }
+.sgu-drawer-item.active .icon { 
+  color: #04befe; 
+  filter: drop-shadow(0 0 5px rgba(4,190,254,0.8));
+}
 
 .sgu-drawer-divider { height: 1px; background: rgba(4,190,254,0.1); margin: 6px 14px; }
 

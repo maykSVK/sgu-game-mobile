@@ -16,19 +16,20 @@
 
       <!-- Header -->
       <div class="sgu-drawer-header">
-        <button @click="$emit('close')" class="drawer-close-btn">✕</button>
-        <div style="text-align:center;">
-          <img src="/src/assets/img/sgu-game.png" alt="SG:U" style="height:18px; filter:drop-shadow(0 0 5px rgba(4,190,254,0.5));" />
+        <button @click="$emit('close')" class="drawer-close-btn"><i class="fas fa-times"></i></button>
+        <div style="text-align:center; flex-grow: 1; color: rgba(4,190,254,0.6); font-weight: bold; font-size: 14px; letter-spacing: 1px;">
+          MENU
         </div>
+        <div style="width: 28px;"></div> <!-- Spacer pre vycentrovanie textu -->
       </div>
 
       <!-- Menu -->
       <div class="sgu-drawer-menu">
-        <div class="sgu-drawer-section">Hlavná navigácia</div>
+        <div class="sgu-drawer-section">HLAVNÁ NAVIGÁCIA</div>
         <div v-for="item in primary" :key="item.to"
              class="sgu-drawer-item" :class="{ active: isActive(item.to) }"
              @click="go(item)">
-          <span class="icon">{{ item.icon }}</span>
+          <i class="icon" :class="item.icon"></i>
           <div style="flex-grow: 1;">
             <div>{{ item.label }}</div>
             <div v-if="item.sub" class="sub">{{ item.sub }}</div>
@@ -38,11 +39,11 @@
 
         <div class="sgu-drawer-divider"></div>
 
-        <div class="sgu-drawer-section">Ostatné</div>
+        <div class="sgu-drawer-section">OSTATNÉ</div>
         <div v-for="item in secondary" :key="item.to"
              class="sgu-drawer-item" :class="{ active: isActive(item.to) }"
              @click="go(item)">
-          <span class="icon">{{ item.icon }}</span>
+          <i class="icon" :class="item.icon"></i>
           <div style="flex-grow: 1;">{{ item.label }}</div>
           <span v-if="hasBadge(item)" class="nav-badge sgu-badge-pulse" :class="{ 'nav-badge-active': item.badge === 'activeExpedition' }"></span>
         </div>
@@ -66,22 +67,23 @@ import { useGameStore } from '../stores/game'
 const game = useGameStore()
 
 const primary = [
-  { to: '/',           icon: '🖥️',  label: 'Dashboard',       sub: 'Riadiaca miestnosť' },
-  { to: '/universe',   icon: '🌌',  label: 'Vesmír',           sub: 'Galaxie & planéty', badge: 'ftlExited'  },
-  { to: '/stargate',   icon: '⭕',  label: 'Hvezdná brána',    sub: 'Stargate'            },
-  { to: '/expedition', icon: '🚀',  label: 'Expedícia',        sub: 'Prieskumné misie', badge: 'activeExpedition'   },
-  { to: '/arena',      icon: '⚔️',  label: 'Aréna',            sub: 'Bojový simulátor'   },
-  { to: '/research',   icon: '🔬',  label: 'Výskum',           sub: 'Strom technológií'  },
-  { to: '/upgrades',   icon: '⚙️',  label: 'Vylepšenia',       sub: 'Loď & vybavenie'    },
+  { to: '/',           icon: 'far fa-clipboard',   label: 'Dashboard',       sub: 'Riadiaca miestnosť' },
+  { to: '/universe',   icon: 'fas fa-project-diagram',label: 'Vesmír',           sub: 'Galaxie & planéty', badge: 'ftlExited'  },
+  { to: '/stargate',   icon: 'fas fa-circle-notch',label: 'Hviezdna brána',    sub: 'Stargate'            },
+  { to: '/expedition', icon: 'fas fa-rocket',      label: 'Expedícia',        sub: 'Prieskumné misie', badge: 'activeExpedition'   },
+  { to: '/planets',    icon: 'fas fa-city',        label: 'Planéty a stavby', sub: 'Prehľad impéria' },
+  { to: '/arena',      icon: 'fas fa-crosshairs',  label: 'Aréna',            sub: 'Bojový simulátor'   },
+  { to: '/research',   icon: 'fas fa-flask',       label: 'Výskum',           sub: 'Strom technológií'  },
+  { to: '/upgrades',   icon: 'fas fa-cogs',        label: 'Vylepšenia',       sub: 'Loď & vybavenie'    },
 ]
 
 const secondary = [
-  { to: '/messages',  icon: '💬',  label: 'Správy / Chat'      },
-  { to: '/alliance',  icon: '🤝',  label: 'Aliancia'           },
-  { to: '/market',    icon: '🏪',  label: 'Obchodná stanica'   },
-  { to: '/lab',       icon: '🧪',  label: 'Laboratórium'       },
-  { to: '/stats',     icon: '📊',  label: 'Štatistiky'         },
-  { to: '/reports',   icon: '📝',  label: 'Reporty',           badge: 'hasNewReport' },
+  { to: '/messages',  icon: 'far fa-envelope', label: 'Správy / Chat'      },
+  { to: '/alliance',  icon: 'far fa-handshake',label: 'Aliancia'           },
+  { to: '/market',    icon: 'fas fa-store',    label: 'Obchodná stanica'   },
+  { to: '/lab',       icon: 'fas fa-vial',     label: 'Laboratórium'       },
+  { to: '/stats',     icon: 'far fa-chart-bar',label: 'Štatistiky'         },
+  { to: '/reports',   icon: 'far fa-file-alt', label: 'Reporty',           badge: 'hasNewReport' },
 ]
 
 function isActive(path) {

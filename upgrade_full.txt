@@ -1,0 +1,64 @@
+
+        <table>
+            <tbody>
+            <tr>
+                <th width="10%">Úroveň</th>
+                <th width="35%">Požadovaná technologie</th>
+                <th width="15%">Cena [kredity]</th>
+                <th width="25%">Efekt</th>
+                <th width="15%">Možnosti</th>
+            </tr>
+
+            <tr>
+                <td width="10%">level 1</td>
+                <td width="35%">žádná</td>
+                <td width="15%"><i class="fas fa-money-bill-wave credits"></i> 100</td>
+                <td width="25%">Síla lodi +1</td>
+                <td width="15%">
+                                    </td>
+            </tr>
+            <tr>
+                <td width="10%">level 2</td>
+                <td width="35%">Zbraňové systémy</td>
+                <td width="15%"><i class="fas fa-money-bill-wave credits"></i> 200</td>
+                <td width="25%">Síla lodi +2</td>
+                <td width="15%">
+                                    </td>
+            </tr>
+            <tr>
+                <td width="10%">level 3</td>
+                <td width="35%">Zbraňové systémy</td>
+                <td width="15%"><i class="fas fa-money-bill-wave credits"></i> 300</td>
+                <td width="25%">Síla lodi +3</td>
+                <td width="15%">
+                                    </td>
+            </tr>
+            <tr>
+                <td width="10%">level 4</td>
+                <td width="35%">Hlavní dělo Destiny</td>
+                <td width="15%"><i class="fas fa-money-bill-wave credits"></i> 400</td>
+                <td width="25%">Síla lodi +4</td>
+                <td width="15%">
+                                            <form method="post">
+                            <input type="submit" class="btn-bevel btn-bevel-sm table-button-resizer" name="upgrade_weapons" value="Vylepšit">
+                        </form>
+                                        </td>
+            </tr>
+            <tr>
+                <td width="10%">level 5</td>
+                <td width="35%">Hlavní dělo Destiny</td>
+                <td width="15%"><i class="fas fa-money-bill-wave credits"></i> 500</td>
+                <td width="25%">Síla lodi +5</td>
+                <td width="15%">
+                                    </td>
+            </tr>
+
+            <tr>
+                <td colspan="5">
+                    <div>
+                        Arsenal Destiny se skládá z velkého počtu dvouhlavňových a tříhlavňových střeleckých věží, rozmístěných po celém trupu lodi. Tyto zbraně slouží spíše k obraně. <br>Největší útočnou zbraní Destiny je hlavní kanon, který se vysunuje z přední spodní části lodě. Nicméně Destiny byla Antiky navržena jako výzkumná a kolonizační loď. Hlavní zbraní je samozřejmě hvězdná brána.                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    

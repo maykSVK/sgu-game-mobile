@@ -16,15 +16,12 @@
           
           <!-- Logo funguje ako odkaz domov -->
           <img src="/src/assets/img/sgu-game.png" alt="SG:U" class="app-logo" @click="router.push('/')" style="cursor: pointer;" />
-          
-          <div v-if="auth.playerName" class="app-player-badge">
-            <span class="app-player-dot"></span>
-            {{ auth.playerName }}
-          </div>
         </div>
         <div class="app-topbar-right">
           <!-- Refresh button that works universally (e.g. emits or calls game store) -->
-          <button @click="refreshGlobal" class="app-refresh" :class="{ spinning: game.loading }">↺</button>
+          <button @click="refreshGlobal" class="app-refresh" :class="{ spinning: game.loading }">
+            <i class="fas fa-sync-alt"></i>
+          </button>
         </div>
       </header>
 
@@ -108,9 +105,11 @@ function refreshGlobal() {
 
 .app-topbar {
   position: sticky; top: 0; z-index: 30;
-  background: linear-gradient(to right, #3a3a3a, #000);
+  background: rgba(4, 9, 20, 0.95);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+  backdrop-filter: blur(5px);
   border-top: 1px solid #04befe;
-  border-bottom: 1px solid #04befe;
+  border-bottom: 1px solid rgba(4,190,254,0.4);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -157,16 +156,17 @@ function refreshGlobal() {
 
 .app-refresh {
   width: 34px; height: 34px;
-  background: rgba(4,190,254,0.1);
-  border: 1px solid rgba(4,190,254,0.35);
-  border-radius: 2px;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
   color: #04befe;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
-  transition: background 0.15s;
+  transition: all 0.2s;
+  text-shadow: 0 0 5px rgba(4,190,254,0.5);
 }
-.app-refresh:active { background: rgba(4,190,254,0.3); }
-.app-refresh.spinning { animation: spin 0.9s linear infinite; }
+.app-refresh:active { color: #fff; text-shadow: 0 0 10px rgba(4,190,254,1); transform: scale(0.9); }
+.app-refresh.spinning { animation: spin 1s cubic-bezier(0.4, 0, 0.2, 1) infinite; color: #fff; text-shadow: 0 0 12px rgba(4,190,254,1); }
 @keyframes spin { to { transform: rotate(360deg); } }
 </style>

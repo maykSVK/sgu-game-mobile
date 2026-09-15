@@ -40,6 +40,9 @@ app.use('/api/planet', planetRoutes);
 app.use('/api/checksums', checksumsRoutes);
 app.use('/api/hero', heroRoutes);
 app.use('/api/progress', progressRoutes);
+app.use('/api/buildings', require('./routes/buildings.routes'));
+app.use('/api/artifacts', require('./routes/artifacts.routes'));
+app.use('/api/upgrades', require('./routes/upgrades.routes'));
 
 // Health check
 app.get('/api/health', (req, res) => {
