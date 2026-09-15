@@ -15,8 +15,19 @@ router.get('/', async (req, res) => {
     const data = {
       destiny: { x: 0, y: 0, radius: 100 },
       objects: [],
-      galaxyInfo: null
+      galaxyInfo: null,
+      currentGalaxyName: null
     };
+
+    
+    // Extract current galaxy name from "Mapa vesmiru (Galaxie: Air)"
+    $('th').each((i, el) => {
+      const text = $(el).text();
+      const m = text.match(/Mapa vesm..ru \(Galaxie:\s*(.*?)\)/i);
+      if (m) {
+        data.currentGalaxyName = m[1].trim();
+      }
+    });
 
     // 1. Get galaxy info block
     const galaxyInfoBox = $('.infobox-standard.x2').first();

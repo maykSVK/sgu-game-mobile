@@ -429,14 +429,17 @@ onMounted(() => {
       </div>
     </div>
 
-    <!-- Tlacidlo na zobrazenie informacii o galaxiach -->
-    <button v-if="universeData && universeData.galaxyInfo" class="galaxy-info-btn" @click="openGalaxyInfo">
-      <i class="fas fa-info-circle"></i> Galaxie
-    </button>
+    
 
     
     
-    <!-- Modal pre Galaxie -->
+          <!-- Galaxy Indicator / Button -->
+      <button v-if="universeData" class="galaxy-indicator" @click="openGalaxyInfo" :class="{'clickable': universeData.galaxyInfo}">
+        <i class="fas fa-map-marked-alt"></i> Mapa vesmíru (Galaxia: {{ universeData.currentGalaxyName || 'Neznáma' }})
+        <i v-if="universeData.galaxyInfo" class="fas fa-info-circle info-icon"></i>
+      </button>
+
+      <!-- Modal pre Galaxie -->
     <div v-if="isGalaxyModalOpen" class="modal-overlay" @click.self="closeModal">
       <div class="modal-content dash-raw-html">
         <button class="modal-close" @click="closeModal"><i class="fas fa-times"></i></button>
@@ -812,5 +815,35 @@ onMounted(() => {
 :deep(.mwt th:active), :deep(.mwp th:active), :deep(.pl-infra table th:active), .distance-info:active {
   cursor: grabbing;
 }
+
+.galaxy-indicator {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(11, 19, 25, 0.85);
+  border: 1px solid #1c3547;
+  padding: 8px 15px;
+  border-radius: 4px;
+  color: #00c3ff;
+  font-size: 0.95rem;
+  z-index: 100;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  pointer-events: auto;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.galaxy-indicator:hover {
+  background: rgba(18, 40, 60, 0.95);
+  border-color: #2a5372;
+}
+.galaxy-indicator .info-icon {
+  color: #a3c2db;
+  margin-left: 5px;
+}
+
 </style>
 
