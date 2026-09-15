@@ -295,7 +295,7 @@ onMounted(() => {
           <!-- ACTIVE FLIGHT TARGET POINT -->
           <div v-if="universeData.destiny.target"
             class="target-point space-object"
-            style="transform: translate(-12px, -24px); z-index: 10;"
+            style="transform: translate(-12px, -24px); z-index: 10; width: 24px; height: 24px; background-size: cover; background-repeat: no-repeat;"
             :style="{ left: universeData.destiny.target.x + 'px', top: (1000 - universeData.destiny.target.y) + 'px' }"
           ></div>
 
@@ -340,8 +340,8 @@ onMounted(() => {
               :y1="(1000 - universeData.destiny.y) + 3" 
               :x2="universeData.destiny.target.x" 
               :y2="(1000 - universeData.destiny.target.y)" 
-              stroke="#00c3ff" 
-              stroke-width="1.5" 
+              stroke="#2660A2" 
+              stroke-width="1" 
               stroke-dasharray="4,4" 
             />
           </g>
@@ -466,7 +466,7 @@ onMounted(() => {
 .space-object-debris { width: 40px; height: 32px; background-image: url('/sgu-game-mobile/img/debris.png'); background-size: 100% 100%; }
 .space-object-seed-ship { width: 45px; height: 26px; background-image: url('/sgu-game-mobile/img/seed-ship.png'); background-size: 100% 100%; }
 
-.target-point { width: 25px; height: 38px; background-image: url('/sgu-game-mobile/img/target-point.png'); background-size: 100% 100%; }
+.target-point { width: 24px; height: 24px; background-image: url('/sgu-game-mobile/img/target-point.png'); background-repeat: no-repeat; }
 
 .occupier-icon { color: white; display: inline-block; background: rgba(0,0,0,0.5); border-radius: 3px; padding: 2px; }
 
