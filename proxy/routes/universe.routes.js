@@ -45,11 +45,11 @@ router.get('/', async (req, res) => {
       const scriptContent = scriptMatch[1];
 
       // Extract Destiny's position (x = 123; y = 456;)
-      const xMatch = scriptContent.match(/x\s*=\s*(\d+);/);
-      const yMatch = scriptContent.match(/y\s*=\s*(\d+);/);
+      const xMatch = scriptContent.match(/x\s*=\s*(-?\d+(?:\.\d+)?);/);
+      const yMatch = scriptContent.match(/y\s*=\s*(-?\d+(?:\.\d+)?);/);
       if (xMatch && yMatch) {
-        data.destiny.x = parseInt(xMatch[1], 10);
-        data.destiny.y = parseInt(yMatch[1], 10);
+        data.destiny.x = parseFloat(xMatch[1]);
+        data.destiny.y = parseFloat(yMatch[1]);
       }
 
       // Extract offsets

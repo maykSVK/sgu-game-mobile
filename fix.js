@@ -1,15 +1,8 @@
 const fs = require('fs');
-const path = 'c:/GitHub/sgu-game-mobile/frontend/src/views/DestinyView.vue';
+const path = 'c:/GitHub/sgu-game-mobile/proxy/routes/universe.routes.js';
 let content = fs.readFileSync(path, 'utf8');
 
-content = content.replace(/https:\/\/sgu-game\.cz\//g, '/sgu-game-mobile/');
-content = content.replace(/https:\/\/sgu-game\.cz/g, '/sgu-game-mobile');
-
-content = content.replace('import DashboardNav from "../components/DashboardNav.vue"', 'import DashboardNav from "../components/DashboardNav.vue"\nimport "../assets/tech.css"');
-
-content = content.replace(/\/\* Obrazky pre originalne tech triedy[\s\S]*?\.dash-raw-html :deep\(\.et-electronics\) \{[\s\S]*?\}/g, '');
-content = content.replace(/\.dash-raw-html :deep\(\.et-electronics\) \{[\s\S]*?\}/g, '');
-
-content = content.replace(/\/\* ¦¦ TECH SLOTS \([\s\S]*?\.dash-raw-html :deep\(\.tech-slot-empty:hover\) \{[\s\S]*?\}/g, '');
+content = content.replace('const xMatch = scriptContent.match(/x\\\\s*=\\\\s*(-?\\\\d+(?:\\\\.\\\\d+)?);/);', 'const xMatch = scriptContent.match(/x\\s*=\\s*(-?\\d+(?:\\.\\d+)?);/);');
+content = content.replace('const yMatch = scriptContent.match(/y\\\\s*=\\\\s*(-?\\\\d+(?:\\\\.\\\\d+)?);/);', 'const yMatch = scriptContent.match(/y\\s*=\\s*(-?\\d+(?:\\.\\d+)?);/);');
 
 fs.writeFileSync(path, content);

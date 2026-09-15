@@ -359,10 +359,7 @@ onMounted(() => {
       <i class="fas fa-info-circle"></i> Galaxie
     </button>
 
-    <div v-if="universeData" class="zoom-controls">
-      <button @click="zoomIn"><i class="fas fa-plus"></i></button>
-      <button @click="zoomOut"><i class="fas fa-minus"></i></button>
-    </div>
+    
     
     <!-- Modal pre Galaxie -->
     <div v-if="isGalaxyModalOpen" class="modal-overlay" @click.self="closeModal">
