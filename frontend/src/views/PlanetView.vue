@@ -276,16 +276,16 @@ onMounted(() => {
 
 /* ── NATIVE VUE IMAGES ── */
 .native-card-image {
-  width: 100%;
-  height: 180px;
-  background-size: cover;
+  width: 100% !important;
+  height: 180px !important;
+  background-size: cover !important;
   background-position: center;
   border-bottom: 2px solid rgba(4,190,254,0.4);
   box-shadow: inset 0 -20px 20px -20px rgba(0,0,0,0.8);
 }
 .native-card-image.planet-detail {
-  height: 220px;
-  background-size: contain;
+  height: 220px !important;
+  background-size: contain !important;
   background-repeat: no-repeat;
   background-color: #040914; /* Tmavé vesmírne pozadie */
 }
