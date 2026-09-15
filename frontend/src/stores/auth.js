@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
+import router from '../router'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -21,7 +22,7 @@ export const useAuthStore = defineStore('auth', {
           if (error.response && error.response.status === 401) {
             console.log('Session vypršala na serveri, odpájam klienta.');
             this.clearLocalSession();
-            window.location.href = '/login';
+            router.push({ name: 'login' });
           }
           return Promise.reject(error);
         }
