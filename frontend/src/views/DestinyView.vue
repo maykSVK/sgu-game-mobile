@@ -194,11 +194,13 @@ onMounted(() => {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 15px;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 /* ── PANEL ── */
 .dash-panel {
+  display: flex;
+  flex-direction: column;
   background: rgba(4,190,254,0.05);
   border: 1px solid rgba(4,190,254,0.3);
   border-radius: 4px;
@@ -258,7 +260,8 @@ onMounted(() => {
   background: rgba(0,0,0,0.4);
   font-size: 12px;
   color: #ddd;
-  height: 250px;
+  flex: 1;
+  height: auto;
   overflow-y: auto;
 }
 

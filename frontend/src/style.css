@@ -227,3 +227,20 @@ a:hover { text-decoration: underline; }
     min-height: 150px;
   }
 }
+
+
+/* Globalne pravidlo pre PC: prisposobenie vysok panelov podla obsahu */
+@media (min-width: 769px) {
+  .dash-grid {
+    align-items: stretch !important;
+  }
+  .dash-panel {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+  }
+  .dash-panel-body {
+    flex: 1 !important;
+    height: auto !important;
+  }
+}

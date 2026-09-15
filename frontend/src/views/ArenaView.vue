@@ -252,8 +252,7 @@ async function applyForArena() {
     if (res.data.ok) {
       arenaData.value = res.data.data
       handleMessages(res.data.data.messages)
-      showToast("Přihláška odeslána", "success")
-    }
+      }
   } catch (e) {
     showToast("Chyba při přihlašování", "error")
   } finally {
@@ -272,8 +271,7 @@ async function attackPlayer(userId) {
     if (res.data.ok) {
       arenaData.value = res.data.data
       handleMessages(res.data.data.messages)
-      showToast("Útok byl proveden!", "success")
-    }
+      }
   } catch (e) {
     showToast("Chyba při útoku", "error")
   } finally {

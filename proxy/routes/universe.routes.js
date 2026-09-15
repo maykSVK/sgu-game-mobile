@@ -58,10 +58,14 @@ router.get('/', async (req, res) => {
       const lineRegex = /\$\("#universe"\)\.line\(universe\.left \+ ([-\d.]+),\s*1120 - ([-\d.]+),\s*universe\.left \+ ([-\d.]+),\s*1120 - ([-\d.]+)/;
       const lineMatch = scriptContent.match(lineRegex);
       if (lineMatch) {
-        data.destiny.target = {
-          x: parseFloat(lineMatch[3]),
-          y: parseFloat(lineMatch[4])
-        };
+        data.destiny.origin = {
+            x: parseFloat(lineMatch[1]),
+            y: parseFloat(lineMatch[2])
+          };
+          data.destiny.target = {
+            x: parseFloat(lineMatch[3]),
+            y: parseFloat(lineMatch[4])
+          };
       }
 // Extract offsets
       const offsetRegex = /\$\('#([^']+)'\)\.offset\(\{left: universe\.left \+ \(([^)]+)\),top: universe\.top \+ 1000 - \(([^)]+)\)\}/g;

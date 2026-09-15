@@ -471,8 +471,8 @@ onMounted(() => {
 .space-object-debris { width: 40px; height: 32px; background-image: url('/sgu-game-mobile/img/debris.png'); background-size: 100% 100%; }
 .space-object-seed-ship { width: 45px; height: 26px; background-image: url('/sgu-game-mobile/img/seed-ship.png'); background-size: 100% 100%; }
 
-.target-point { width: 24px; height: 24px; background-image: url('/sgu-game-mobile/img/target-point.png'); background-repeat: no-repeat; }
-.origin-point { width: 24px; height: 24px; background-image: url('/sgu-game-mobile/img/origin-point.png'); background-repeat: no-repeat; }
+.target-point { width: 24px; height: 24px; background-image: url('/sgu-game-mobile/img/target-point.png'); background-repeat: no-repeat; background-size: 100% 100%; }
+.origin-point { width: 24px; height: 24px; background-image: url('/sgu-game-mobile/img/origin-point.png'); background-repeat: no-repeat; background-size: 100% 100%; }
 
 .occupier-icon { color: white; display: inline-block; background: rgba(0,0,0,0.5); border-radius: 3px; padding: 2px; }
 
@@ -659,33 +659,38 @@ onMounted(() => {
 }
 
 .distance-info {
-  background: linear-gradient(to bottom, #16405f, #0d2840);
+  background: transparent;
+  border-bottom: 1px solid #1c3547;
   color: #00c3ff;
   font-size: 0.85rem;
   padding: 8px;
   text-align: center;
+  color: #a3c2db;
   border-bottom: 1px solid #1c3547;
 }
 
-:deep(.mwt) {
+:deep(.mwt), :deep(.mwp), :deep(.pl-infra table) {
   width: 100%;
+  min-width: 260px;
   border-collapse: collapse;
 }
 
-:deep(.mwt th) {
+:deep(.mwt th), :deep(.mwp th), :deep(.pl-infra table th) {
   background: linear-gradient(to bottom, #16405f, #0d2840);
   padding: 8px;
   font-size: 0.95rem;
   border-bottom: 1px solid #1c3547;
   color: white;
   text-align: center;
+  color: #a3c2db;
 }
 
-:deep(.mwt td) {
+:deep(.mwt td), :deep(.mwp td), :deep(.pl-infra table td) {
   padding: 8px;
   background: #0b1319;
   border-bottom: 1px solid #111a22;
   text-align: center;
+  color: #a3c2db;
 }
 
 :deep(.gate-address) {
@@ -726,3 +731,4 @@ onMounted(() => {
   margin-top: 5px;
 }
 </style>
+\n.tooltip-content { padding: 10px; }\n
