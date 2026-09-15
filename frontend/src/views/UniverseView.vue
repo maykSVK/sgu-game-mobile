@@ -458,6 +458,7 @@ onMounted(() => {
 
 <style scoped>
 .universe-page {
+  position: relative;
   width: 100%;
   height: calc(100vh - 60px); /* Odpocitame vysku navbaru */
   background-color: rgba(11, 19, 25, 0.6);
@@ -848,5 +849,10 @@ onMounted(() => {
   margin-left: 5px;
 }
 
-</style>
 
+@media (min-width: 900px) {
+  .galaxy-indicator {
+    top: 65px;
+  }
+}
+</style>
