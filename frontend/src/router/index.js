@@ -14,7 +14,7 @@ const routes = [
   { path: '/', name: 'dashboard', component: () => import('../views/DashboardView.vue') },
 
   // ── V príprave ────────────────────────────────────────────────
-  { path: '/universe',   name: 'universe',   ...wip('Mapa vesmíru', 'universe')            },
+  { path: '/universe',   name: 'universe',   component: () => import('../views/UniverseView.vue') },
   { path: '/stargate',   name: 'stargate',   ...wip('Hvězdná brána')     },
   { path: '/expedition', name: 'expedition', component: () => import('../views/ExpeditionView.vue') },
   { path: '/research',   name: 'research',   component: () => import('../views/ResearchView.vue') },
@@ -34,7 +34,7 @@ const routes = [
   { path: '/quizzes',    name: 'quizzes',    ...wip('Kvízy', 'universe')            },
   { path: '/referendum', name: 'referendum', ...wip('Referendum', 'universe')       },
   { path: '/checksums',  name: 'checksums',  component: () => import('../views/ChecksumsView.vue') },
-  { path: '/upgrades/neural', name: 'upgrades-neural', ...wip('Neurální rozhraní', 'upgrades') },
+  { path: '/upgrades/neural', name: 'upgrades-neural', component: () => import('../views/NeuralView.vue') },
   { path: '/upgrades/:subview', name: 'upgrade', component: () => import('../views/UpgradeView.vue') },
   { path: '/hero',       name: 'hero',       component: () => import('../views/HeroView.vue') },
   { path: '/progress',   name: 'progress',   component: () => import('../views/ProgressView.vue') },

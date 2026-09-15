@@ -6,11 +6,11 @@
     <div class="dash-content">
       
 <!-- VUE TEMPLATE -->
-      <!-- ── HLAVNÁ SEKCIÁ: STROM VÝSKUMU ── -->
+      <!--  HLAVNÁ SEKCIA: STROM VÝSKUMU  -->
       <section class="dash-section">
-        <div class="dash-panel">
-          <div class="dash-panel-head">
-            <span class="dash-panel-dot"></span> Strom výzkumu
+        <div class="dash-panel" style="background: transparent; border: none; box-shadow: none;">
+          <div class="page-main-title" style="margin-top:0;">
+            <span class="title-dot"></span> Strom výzkumu
           </div>
           <div class="dash-panel-body" style="padding: 0;">
             <div v-if="loading && !data" class="loading-box">Načítám výzkumy...</div>
@@ -280,23 +280,26 @@ onMounted(refresh)
   position: relative;
   overflow: hidden;
 }
-.dash-panel-head {
-  background: rgba(4,190,254,0.22);
-  border-bottom: 1px solid rgba(4,190,254,0.35);
-  padding: 7px 10px;
-  font-family: Verdana, sans-serif;
-  font-size: 12px;
-  font-weight: bold;
+.page-main-title {
+  background: rgba(4,190,254,0.15);
+  border: 1px solid rgba(4,190,254,0.3);
+  border-radius: 6px;
+  padding: 12px 15px;
+  font-family: Orbitron, sans-serif;
+  font-size: 14px;
   color: #fff;
   display: flex;
   align-items: center;
-  gap: 7px;
+  justify-content: center;
+  gap: 8px;
+  margin: 15px;
+  text-transform: uppercase;
 }
-.dash-panel-dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
+.title-dot {
+  width: 8px; height: 8px;
   background: #04befe;
-  box-shadow: 0 0 6px #04befe;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #04befe;
   animation: dotPulse 2s ease-in-out infinite;
 }
 @keyframes dotPulse { 0%,100%{opacity:1} 50%{opacity:0.3} }

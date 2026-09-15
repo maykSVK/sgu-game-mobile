@@ -14,7 +14,7 @@
 
       <!-- GRID PRO INFOBOXY -->
       <div v-else class="dash-grid">
-        <section v-for="(box, i) in game.data?.infoboxes" :key="i" class="dash-section">
+        <section v-for="(box, i) in game.data?.infoboxes" :key="i" class="dash-section" v-show="!isBoxEmpty(box)">
           <div class="dash-panel">
             <div class="dash-panel-head">
               <span class="dash-panel-dot"></span> {{ box.title.replace("[x]", "").replace("[?]", "").trim() }}
@@ -49,6 +49,18 @@ import DashboardNav from "../components/DashboardNav.vue"
 const game = useGameStore()
 const router = useRouter()
 const loading = ref(true)
+
+const isBoxEmpty = (box) => {
+  // Check if it's the alerts box (Výstrahy a hlášení)
+  const lowerTitle = box.title.toLowerCase()
+  if (lowerTitle.includes('strahy') || lowerTitle.includes('hlás') || lowerTitle.includes('hláš')) {
+    // If it doesn't contain any alert elements, consider it empty
+    if (!box.html.includes('crew-alert')) {
+      return true
+    }
+  }
+  return false
+}
 
 async function loadData() {
   loading.value = true

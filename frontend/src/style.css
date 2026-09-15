@@ -194,7 +194,11 @@ a:hover { text-decoration: underline; }
 .sgu-toast.error i { color: #ff3c3c; }
 @keyframes toastIn { from { opacity: 0; transform: translateX(-50%) translateY(-12px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
 
-/* ── Global Badges ── */
+/*  Global Text Colors & Badges  */
+.success { color: #59d34c !important; }
+.failed, .error { color: #ff3c3c !important; }
+.heading { font-weight: bold; }
+.small { font-size: 0.85em; opacity: 0.8; }
 .global-alert-badge {
   position: absolute;
   top: 0px; right: -4px;

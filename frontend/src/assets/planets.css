@@ -210,7 +210,7 @@
 }
 .stargate-stargate-open {
     background-image: url('/img/stargate-open.gif');
-    ackground-repeat: no-repeat;
+    background-repeat: no-repeat;
     width: 196px;
     height: 196px;
     background-size: 100% 100%;
@@ -446,3 +446,8 @@
     font-style: italic;
     font-size: 10px;
 }
+.star-g { background-image: url('/img/star-g.png'); background-repeat: no-repeat; width: 40px; height: 40px; background-size: 100% 100%; position: absolute; }
+.star-k { background-image: url('/img/star-k.png'); background-repeat: no-repeat; width: 30px; height: 30px; background-size: 100% 100%; position: absolute; }
+.star-o { background-image: url('/img/star-o.png'); background-repeat: no-repeat; width: 55px; height: 55px; background-size: 100% 100%; position: absolute; }
+.star-m { background-image: url('/img/star-k.png'); background-repeat: no-repeat; width: 30px; height: 30px; background-size: 100% 100%; position: absolute; }
+

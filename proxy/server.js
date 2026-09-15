@@ -43,6 +43,7 @@ app.use('/api/progress', progressRoutes);
 app.use('/api/buildings', require('./routes/buildings.routes'));
 app.use('/api/artifacts', require('./routes/artifacts.routes'));
 app.use('/api/upgrades', require('./routes/upgrades.routes'));
+app.use('/api/neural', require('./routes/neural.routes'));
 
 // Health check
 app.get('/api/health', (req, res) => {

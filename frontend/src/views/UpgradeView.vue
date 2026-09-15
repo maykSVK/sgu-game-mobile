@@ -155,11 +155,19 @@ async function handleAction(e) {
     const subview = SUBVIEW_MAP[viewId] || viewId
     
     try {
+      const oldLevel = upgradeData.value.currentLevel
+
       const res = await axios.post(`/api/upgrades/${subview}`, obj)
       upgradeData.value = res.data.data
       
       if (res.data.data.messages && res.data.data.messages.length > 0) {
         showToast(res.data.data.messages[0].text, res.data.data.messages[0].type)
+      } else {
+        if (upgradeData.value.currentLevel === oldLevel) {
+          showToast('Vylepšenie zlyhalo. Chýbajú kredity alebo požadovaná technológia.', 'error')
+        } else {
+          showToast('Vylepšenie úspešné!', 'success')
+        }
       }
     } catch (err) {
       console.error(err)
@@ -187,25 +195,28 @@ onMounted(() => loadData())
   gap: 20px;
 }
 
-/* === Hlavička ako všade inde === */
+/* === Hlavicka ako vsade inde === */
 .page-main-title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  background: rgba(4,190,254,0.15);
+  border: 1px solid rgba(4,190,254,0.3);
+  border-radius: 6px;
+  padding: 12px 15px;
   font-family: Orbitron, sans-serif;
   font-size: 14px;
   color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 15px;
   text-transform: uppercase;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding: 0 10px;
 }
+
 .title-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+  width: 8px; height: 8px;
   background: #04befe;
-  box-shadow: 0 0 10px #04befe;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #04befe;
 }
 
 /* === Hlavný kontajner (ako planéty) === */
