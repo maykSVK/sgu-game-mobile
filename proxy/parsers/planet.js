@@ -16,9 +16,13 @@ function parsePlanet(html) {
     if (imageClass) imageClass = imageClass.trim();
     
     // Hide the original image from the raw HTML so we can render it ourselves!
-    const $body = cheerio.load(bodyHtml);
-    $body('.infrastructure-img, .artifact, .planet-detail').parent().hide();
-    const cleanedHtml = $body.html();
+    let cleanedHtml = '';
+    if (bodyHtml) {
+      const $body = cheerio.load(bodyHtml);
+      // Cheerio doesn't have .hide(), use .remove() or .css('display', 'none')
+      $body('.infrastructure-img, .artifact, .planet-detail').parent().css('display', 'none');
+      cleanedHtml = $body.html();
+    }
 
     if (title && bodyHtml) {
       infoboxes.push({
