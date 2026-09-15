@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
     // Extract current galaxy name from "Mapa vesmiru (Galaxie: Air)"
     $('th').each((i, el) => {
       const text = $(el).text();
-      const m = text.match(/Mapa vesm..ru \(Galaxie:\s*(.*?)\)/i);
+      const m = text.match(/\(Galaxie:\s*(.*?)\)/i);
       if (m) {
         data.currentGalaxyName = m[1].trim();
       }
