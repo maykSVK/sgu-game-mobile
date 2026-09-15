@@ -305,6 +305,14 @@ const switchGalaxy = (galaxy) => {
   fetchUniverse(galaxy);
 };
 
+
+onUnmounted(() => {
+  if (panzoomInstance) {
+    panzoomInstance.destroy();
+    panzoomInstance = null;
+  }
+});
+
 onMounted(() => {
   fetchUniverse();
 });
