@@ -749,6 +749,13 @@ onMounted(() => {
     background: rgba(0,0,0,0.6);
   }
 }
+
+.tooltip-content {
+  padding: 10px;
+  max-height: 60vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 </style>
 
-\n.tooltip-content { padding: 10px; }\n
