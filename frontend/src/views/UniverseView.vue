@@ -366,7 +366,9 @@ onMounted(() => {
         v-if="isModalOpen" 
         class="popover-tooltip dash-raw-html"
         :class="{ 'popover-bottom': tooltipPos.isBottom }"
-        :style="{ left: tooltipPos.left, top: tooltipPos.top }"
+        :style="{ left: currentPos.x + 'px', top: currentPos.y + 'px', transform: currentTransform }"
+          @mousedown="startDrag"
+          @touchstart="startDrag"
         @click.stop
       >
         <button class="modal-close" @click="closeModal"><i class="fas fa-times"></i></button>
@@ -592,7 +594,7 @@ onMounted(() => {
 
 .popover-tooltip {
   position: absolute;
-  transform: translate(-50%, calc(-100% - 20px));
+  
   background: #0b1319;
   border: 1px solid #1c3547;
   border-radius: 4px;
@@ -606,7 +608,7 @@ onMounted(() => {
 }
 
 .popover-tooltip.popover-bottom {
-  transform: translate(-50%, 20px);
+  
 }
 
 .popover-tooltip::after {
@@ -734,9 +736,9 @@ onMounted(() => {
 @media (max-width: 768px) {
   .popover-tooltip {
     position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
+    
+    
+    
     width: 90vw !important;
     max-width: 400px !important;
     z-index: 9999 !important;
@@ -757,5 +759,12 @@ onMounted(() => {
   overflow-x: hidden;
 }
 
+
+:deep(.mwt th), :deep(.mwp th), :deep(.pl-infra table th), .distance-info {
+  cursor: grab;
+}
+:deep(.mwt th:active), :deep(.mwp th:active), :deep(.pl-infra table th:active), .distance-info:active {
+  cursor: grabbing;
+}
 </style>
 
