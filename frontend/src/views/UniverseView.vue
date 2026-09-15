@@ -291,7 +291,15 @@ onMounted(() => {
           v-html="obj.innerHtml"
         ></div>
 
-        <!-- SVG Linia drahy a Radiusy -->
+        
+          <!-- ACTIVE FLIGHT TARGET POINT -->
+          <div v-if="universeData.destiny.target"
+            class="target-point space-object"
+            style="transform: translate(-12px, -24px); z-index: 10;"
+            :style="{ left: universeData.destiny.target.x + 'px', top: (1000 - universeData.destiny.target.y) + 'px' }"
+          ></div>
+
+          <!-- SVG Linia drahy a Radiusy -->
         <svg v-if="universeData.destiny" class="flight-path-svg" width="1000" height="1000">
           <!-- Destiny Radius (White circle) -->
           <circle 
@@ -324,7 +332,21 @@ onMounted(() => {
               stroke-dasharray="4,4" 
             />
           </g>
-        </svg>
+        
+          <!-- ACTIVE FLIGHT LINE -->
+          <g v-if="universeData.destiny.target">
+            <line 
+              :x1="universeData.destiny.x + 8" 
+              :y1="(1000 - universeData.destiny.y) + 3" 
+              :x2="universeData.destiny.target.x" 
+              :y2="(1000 - universeData.destiny.target.y)" 
+              stroke="#00c3ff" 
+              stroke-width="1.5" 
+              stroke-dasharray="4,4" 
+            />
+          </g>
+
+          </svg>
 
         <!-- Destiny -->
         <div 
@@ -397,7 +419,7 @@ onMounted(() => {
   width: 1000px;
   height: 1000px;
   position: relative;
-  background: radial-gradient(circle, rgba(11, 19, 25, 0.95) 0%, rgba(11, 19, 25, 0.6) 60%, rgba(11, 19, 25, 0) 100%);
+  /* Removed radial background */
 }
 
 /* Objekty na mape */
