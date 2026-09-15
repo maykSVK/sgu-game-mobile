@@ -6,24 +6,8 @@ const BASE_URL = 'https://www.sgu-game.cz';
 let cookieJar = new CookieJar();
 let currentUser = null;
 
-const SESSION_FILE = __dirname + '/session.json';
-if (fs.existsSync(SESSION_FILE)) {
-  try {
-    const data = JSON.parse(fs.readFileSync(SESSION_FILE, 'utf8'));
-    cookieJar = CookieJar.fromJSON(data.jar);
-    currentUser = data.user;
-  } catch (e) {
-    console.error('Nepodarilo sa načítať session.json');
-  }
-}
-
 function saveSession() {
-  try {
-    fs.writeFileSync(SESSION_FILE, JSON.stringify({
-       user: currentUser,
-       jar: cookieJar.toJSON()
-    }));
-  } catch(e) {}
+  // Vypnute: server si nebude pamatat session do suboru (ponechane na klienta)
 }
 
 async function getCookiesForUrl(url) {
