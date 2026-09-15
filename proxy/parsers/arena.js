@@ -7,6 +7,14 @@ function parseArena(html) {
   $('.flash.success').each((i, el) => messages.push({ type: 'success', text: $(el).text().trim() }));
   $('.flash.error').each((i, el) => messages.push({ type: 'error', text: $(el).text().trim() }));
 
+  // Notyf script parsing (used in newer SGU versions for flash messages)
+  const successMatch = html.match(/notyf\.success\('((?:\\'|[^'])+)'\)/);
+  if (successMatch) messages.push({ type: 'success', text: successMatch[1].replace(/\\'/g, "'") });
+
+  const errorMatch = html.match(/notyf\.error\('((?:\\'|[^'])+)'\)/);
+  if (errorMatch) messages.push({ type: 'error', text: errorMatch[1].replace(/\\'/g, "'") });
+
+
   let statusHtml = '';
   let onlineWarriors = '';
   let stateHtml = '';
