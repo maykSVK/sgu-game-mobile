@@ -277,17 +277,25 @@ onMounted(() => {
 /* ── NATIVE VUE IMAGES ── */
 .native-card-image {
   width: 100% !important;
-  height: 180px !important;
+  height: 140px !important;
   background-size: cover !important;
-  background-position: center;
-  border-bottom: 2px solid rgba(4,190,254,0.4);
-  box-shadow: inset 0 -20px 20px -20px rgba(0,0,0,0.8);
+  background-position: center !important;
+  border-bottom: 1px solid rgba(4,190,254,0.3);
+  box-shadow: inset 0 -30px 30px -30px rgba(0,0,0,0.9);
+  border-radius: 4px 4px 0 0;
+  margin-bottom: 10px;
 }
 .native-card-image.planet-detail {
-  height: 220px !important;
+  width: 160px !important;
+  height: 160px !important;
   background-size: contain !important;
-  background-repeat: no-repeat;
-  background-color: #040914; /* Tmavé vesmírne pozadie */
+  background-repeat: no-repeat !important;
+  background-color: transparent !important;
+  border-bottom: none !important;
+  box-shadow: 0 0 40px rgba(4,190,254, 0.4), inset 0 0 20px rgba(0,0,0,0.8);
+  border-radius: 50%;
+  margin: 20px auto 30px auto;
+  display: block;
 }
 
 /* ── STYLING RAW HTML IN DASHBOARD ── */
