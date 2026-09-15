@@ -182,11 +182,16 @@ const updateTooltipPosition = () => {
   
   const isBottom = screenY < 350; // Zobrazit pod planetou ak nie je dost miesta hore
   
-  tooltipPos.value = {
-    left: screenX + 'px',
-    top: screenY + 'px',
-    isBottom
-  };
+      const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      currentPos.value = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+      currentTransform.value = 'translate(-50%, -50%)';
+      tooltipPos.value = { isBottom: false };
+    } else {
+      currentPos.value = { x: screenX, y: screenY };
+      currentTransform.value = isBottom ? 'translate(-50%, 20px)' : 'translate(-50%, calc(-100% - 20px))';
+      tooltipPos.value = { isBottom };
+    }
 };
 
 const openObject = (obj, event) => {
