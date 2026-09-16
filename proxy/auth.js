@@ -81,6 +81,10 @@ function getSessionCookie() {
   return store ? store.token : null;
 }
 
+function isLoggedIn() {
+  return !!getSessionCookie();
+}
+
 async function fetchPage(path, options = {}) {
   const cookieString = getSessionCookie();
   if (!cookieString) throw new Error('No session available (401)');
@@ -145,4 +149,4 @@ async function postPage(path, data = {}) {
   };
 }
 
-module.exports = { login, logout, fetchPage, fetchPageWithUrl, postPage, asyncLocalStorage };
+module.exports = { login, logout, fetchPage, fetchPageWithUrl, postPage, asyncLocalStorage, isLoggedIn };
