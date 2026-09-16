@@ -160,7 +160,33 @@ function handleLinks(e) {
       else if (href.includes("helpdesk.php")) router.push("/helpdesk")
       else if (href.includes("help.php")) router.push("/help")
       else if (href.includes("settings.php")) router.push("/settings")
-      else if (href.includes("stats.php")) router.push("/stats")
+      else if (href.includes("stats.php")) {
+        if (href.includes("subview=profile")) {
+           const urlParams = new URLSearchParams(href.split('?')[1]);
+           const playerName = urlParams.get('playerName');
+           if (playerName) {
+             router.push({ path: '/stats/profile', query: { playerName } });
+           } else {
+             router.push('/stats/profile');
+           }
+        } else {
+           router.push('/stats');
+        }
+      }
+      else if (href.includes("messages.php")) {
+        const urlParams = new URLSearchParams(href.split('?')[1]);
+        const contactId = urlParams.get('contact');
+        if (contactId) {
+           router.push({ path: '/communication/messages', query: { contact: contactId } });
+        } else {
+           router.push('/communication/messages');
+        }
+      }
+      else if (href.includes("forums.php")) {
+        const urlParams = new URLSearchParams(href.split('?')[1]);
+        const fId = urlParams.get('forum');
+        router.push(`/communication/forum/${fId || 2}`);
+      }
       // Inak prejdeme priamo tam (a fallbackne to na router/home ak to neexistuje)
       else router.push(href)
     }

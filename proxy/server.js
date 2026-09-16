@@ -54,6 +54,8 @@ app.use('/api/artifacts', require('./routes/artifacts.routes'));
 app.use('/api/upgrades', require('./routes/upgrades.routes'));
 app.use('/api/neural', require('./routes/neural.routes'));
 app.use('/api/stargate', require('./routes/stargate.routes'));
+app.use('/api/forums', require('./routes/forums.routes'));
+app.use('/api/messages', require('./routes/messages.routes'));
 
 // Health check
 app.get('/api/health', (req, res) => {

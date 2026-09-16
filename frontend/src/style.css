@@ -244,3 +244,14 @@ a:hover { text-decoration: underline; }
     height: auto !important;
   }
 }
+
+/* Status colors */
+.admin { color: #209cff !important; }
+.teacher { color: rgb(255, 154, 0) !important; }
+.player { color: #fff; }
+
+
+.admin a { color: #209cff !important; }
+.teacher a { color: rgb(255, 154, 0) !important; }
+.player a { color: #fff !important; }
+

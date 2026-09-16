@@ -19,11 +19,17 @@ const routes = [
   { path: '/expedition', name: 'expedition', component: () => import('../views/ExpeditionView.vue') },
   { path: '/research',   name: 'research',   component: () => import('../views/ResearchView.vue') },
   { path: '/upgrades',   name: 'upgrades',   ...wip('Vylepšení')        },
-  { path: '/messages',   name: 'messages',   ...wip('Zprávy / Chat')     },
+  { path: '/communication', name: 'communication', component: () => import('../views/CommunicationView.vue'), redirect: '/communication/forum/2', children: [
+      { path: 'messages', name: 'comm-messages', component: () => import('../views/MessagesView.vue') },
+      { path: 'forum/:id', name: 'comm-forum', component: () => import('../views/ForumView.vue') }
+  ]},
   { path: '/alliance',   name: 'alliance',   ...wip('Aliance')          },
   { path: '/market',     name: 'market',     ...wip('Obchodní stanice')  },
   { path: '/lab',        name: 'lab',        ...wip('Laboratoř')      },
-  { path: '/stats',      name: 'stats',      ...wip('Statistiky')        },
+  { path: '/stats', name: 'stats', component: () => import('../views/StatsView.vue'), children: [
+      { path: '', name: 'stats-hub', component: () => import('../views/StatsHubView.vue') },
+      { path: 'profile', name: 'stats-profile', component: () => import('../views/ProfileSubView.vue') }
+  ]},
   { path: '/crew',       name: 'crew',       component: () => import('../views/CrewView.vue') },
   { path: '/reports',    name: 'reports',    component: () => import('../views/ReportsView.vue') },
   { path: '/planet',     name: 'planet',     component: () => import('../views/PlanetView.vue') },

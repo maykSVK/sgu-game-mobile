@@ -16,8 +16,8 @@
 
       <!-- Header: Player name + links -->
       <div class="left-header">
-        <button @click="$emit('close')" class="drawer-close-btn">✕</button>
-        <div class="left-header-name">
+        <button @click="$emit('close')" class="drawer-close-btn">×</button>
+        <div class="left-header-name" @click="goToMyProfile" style="cursor: pointer;" title="Môj profil">
           <span class="rank-strip"></span>
           {{ auth.playerName || 'Velitel' }}
         </div>
@@ -96,6 +96,14 @@ const emit = defineEmits(['close'])
 const router = useRouter()
 const auth   = useAuthStore()
 const game   = useGameStore()
+
+function goToMyProfile() {
+  const username = auth.playerName || game.data?.player?.username;
+  if (username) {
+     router.push({ path: '/stats/profile', query: { playerName: username } });
+  }
+  emit('close');
+}
 
 // Fetch data when opened if not loaded
 watch(() => props.open, (isOpen) => {

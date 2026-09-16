@@ -1,88 +1,55 @@
 <template>
   <div>
-    <!-- DESKTOP TOP NAV (skryto na mobilech) -->
+    <!-- DESKTOP TOP NAV (skrytá na mobile) -->
     <div class="sub-nav-wrapper desktop-only">
       <div class="sub-nav-scroll">
-        <router-link to="/universe" class="sub-nav-btn" :class="{ active: $route.path === '/universe' }">
-          <i class="fas fa-map"></i> Mapa vesmíru
-          <span v-if="game.ftlExited" class="nav-badge sgu-badge-pulse"></span>
-        </router-link>
-        <router-link to="/arena" class="sub-nav-btn"><i class="fas fa-crosshairs"></i> Aréna</router-link>
-        <router-link to="/expedition" class="sub-nav-btn">
-          <i class="fas fa-rocket"></i> Expedice
-          <span v-if="game.activeExpedition" class="nav-badge nav-badge-active"></span>
-        </router-link>
-        <router-link to="/planets" class="sub-nav-btn"><i class="fas fa-city"></i> Planety & stavby</router-link>
-        <router-link to="/artifacts" class="sub-nav-btn"><i class="fas fa-gem"></i> Naše artefakty</router-link>
-        <router-link to="/reports" class="sub-nav-btn">
-          <i class="fas fa-file-alt"></i> Bitevní reporty
-          <span v-if="game.hasNewReport" class="nav-badge sgu-badge-pulse"></span>
-        </router-link>
-        <router-link to="/quizzes" class="sub-nav-btn"><i class="fas fa-question-circle"></i> Kvízy</router-link>
-        <router-link to="/referendum" class="sub-nav-btn"><i class="fas fa-poll"></i> Referendum</router-link>
+        <router-link to="/communication/messages" class="sub-nav-btn" active-class="active"><i class="fas fa-envelope"></i> Zprávy</router-link>
+        <router-link to="/communication/forum/1" class="sub-nav-btn" active-class="active"><i class="fas fa-bullhorn"></i> Oznámení</router-link>
+        <router-link to="/communication/forum/2" class="sub-nav-btn" active-class="active"><i class="fas fa-comments"></i> Diskuzní</router-link>
+        <router-link to="/communication/forum/4" class="sub-nav-btn" active-class="active"><i class="fas fa-server"></i> Systémové</router-link>
+        <router-link to="/communication/forum/3" class="sub-nav-btn" active-class="active"><i class="fas fa-store"></i> Obchodní</router-link>
+        <router-link to="/communication/forum/5" class="sub-nav-btn" active-class="active"><i class="fas fa-handshake"></i> Alianční</router-link>
       </div>
     </div>
 
-    <!-- MOBILE FAB NAV (skryto na desktopech) -->
+    <!-- MOBILE FAB NAV (skrytá na desktope) -->
     <div class="mobile-only fab-container">
-      <!-- Pozadí při otevřeném menu na kliknutí mimo -->
       <div v-if="isFabOpen" class="fab-overlay" @click="isFabOpen = false"></div>
 
-      <!-- Menu položky, vysouvají se nahoru -->
       <transition name="slide-up">
         <div v-if="isFabOpen" class="fab-menu">
-          <router-link to="/universe" class="fab-item" :class="{ active: $route.path === '/universe' }" @click="isFabOpen = false">
-            <span class="fab-label">Mapa vesmíru</span>
-            <div class="fab-icon-box">
-              <i class="fas fa-map"></i>
-              <span v-if="game.ftlExited" class="nav-badge sgu-badge-pulse fab-badge"></span>
-            </div>
-          </router-link>
-          
-          <router-link to="/arena" class="fab-item" @click="isFabOpen = false">
-            <span class="fab-label">Aréna</span>
-            <div class="fab-icon-box"><i class="fas fa-crosshairs"></i></div>
+          <router-link to="/communication/messages" class="fab-item" active-class="active" @click="isFabOpen = false">
+            <span class="fab-label">Zprávy</span>
+            <div class="fab-icon-box"><i class="fas fa-envelope"></i></div>
           </router-link>
 
-          <router-link to="/expedition" class="fab-item" @click="isFabOpen = false">
-            <span class="fab-label">Expedice</span>
-            <div class="fab-icon-box">
-              <i class="fas fa-rocket"></i>
-              <span v-if="game.activeExpedition" class="nav-badge nav-badge-active fab-badge"></span>
-            </div>
+          <router-link to="/communication/forum/1" class="fab-item" active-class="active" @click="isFabOpen = false">
+            <span class="fab-label">Oznámení administrátorů</span>
+            <div class="fab-icon-box"><i class="fas fa-bullhorn"></i></div>
           </router-link>
 
-          <router-link to="/planets" class="fab-item" @click="isFabOpen = false">
-            <span class="fab-label">Planety & stavby</span>
-            <div class="fab-icon-box"><i class="fas fa-city"></i></div>
+          <router-link to="/communication/forum/2" class="fab-item" active-class="active" @click="isFabOpen = false">
+            <span class="fab-label">Diskuzní fórum</span>
+            <div class="fab-icon-box"><i class="fas fa-comments"></i></div>
           </router-link>
 
-          <router-link to="/artifacts" class="fab-item" @click="isFabOpen = false">
-            <span class="fab-label">Naše artefakty</span>
-            <div class="fab-icon-box"><i class="fas fa-gem"></i></div>
+          <router-link to="/communication/forum/4" class="fab-item" active-class="active" @click="isFabOpen = false">
+            <span class="fab-label">Systémové fórum</span>
+            <div class="fab-icon-box"><i class="fas fa-server"></i></div>
           </router-link>
 
-          <router-link to="/reports" class="fab-item" @click="isFabOpen = false">
-            <span class="fab-label">Bitevní reporty</span>
-            <div class="fab-icon-box">
-              <i class="fas fa-file-alt"></i>
-              <span v-if="game.hasNewReport" class="nav-badge sgu-badge-pulse fab-badge"></span>
-            </div>
+          <router-link to="/communication/forum/3" class="fab-item" active-class="active" @click="isFabOpen = false">
+            <span class="fab-label">Obchodní fórum</span>
+            <div class="fab-icon-box"><i class="fas fa-store"></i></div>
           </router-link>
 
-          <router-link to="/quizzes" class="fab-item" @click="isFabOpen = false">
-            <span class="fab-label">Kvízy</span>
-            <div class="fab-icon-box"><i class="fas fa-question-circle"></i></div>
-          </router-link>
-
-          <router-link to="/referendum" class="fab-item" @click="isFabOpen = false">
-            <span class="fab-label">Referendum</span>
-            <div class="fab-icon-box"><i class="fas fa-poll"></i></div>
+          <router-link to="/communication/forum/5" class="fab-item" active-class="active" @click="isFabOpen = false">
+            <span class="fab-label">Alianční fórum</span>
+            <div class="fab-icon-box"><i class="fas fa-handshake"></i></div>
           </router-link>
         </div>
       </transition>
 
-      <!-- Hlavní FAB tlačítko -->
       <button class="fab-main-btn" :class="{ 'fab-open': isFabOpen }" @click="isFabOpen = !isFabOpen">
         <i class="fas" :class="isFabOpen ? 'fa-times' : 'fa-list-ul'"></i>
       </button>
@@ -92,28 +59,11 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useGameStore } from '../stores/game'
-import { useRoute } from 'vue-router'
 
-const game = useGameStore()
 const isFabOpen = ref(false)
 </script>
 
 <style scoped>
-/* Spoločné badge štýly */
-.nav-badge {
-  display: inline-block;
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  margin-left: 6px;
-  background-color: #ff3c3c;
-  box-shadow: 0 0 4px #ff3c3c;
-}
-.nav-badge-active {
-  background-color: #59d34c;
-  box-shadow: 0 0 4px #59d34c;
-}
-
 /* === DESKTOP NAV === */
 .sub-nav-wrapper {
   background: rgba(0, 0, 0, 0.6);
@@ -173,7 +123,7 @@ const isFabOpen = ref(false)
 /* === MOBILE FAB NAV === */
 .fab-container {
   position: fixed;
-  bottom: 80px; /* nad hlavným dolným menu */
+  bottom: 80px;
   right: 20px;
   z-index: 1000;
   display: flex;
@@ -251,13 +201,6 @@ const isFabOpen = ref(false)
   box-shadow: 0 0 15px rgba(4,190,254,0.6);
 }
 
-.fab-badge {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 0;
-}
-
 .fab-main-btn {
   width: 54px;
   height: 54px;
@@ -282,7 +225,6 @@ const isFabOpen = ref(false)
   box-shadow: 0 4px 15px rgba(255,60,60,0.5);
 }
 
-/* Animácia otvárania menu dohora */
 .slide-up-enter-active,
 .slide-up-leave-active {
   transition: all 0.3s ease;
@@ -294,11 +236,10 @@ const isFabOpen = ref(false)
   transform: translateY(20px) scale(0.9);
 }
 
-/* === RESPONSIVE TOGGLES === */
 .desktop-only { display: none; }
 .mobile-only { display: block; }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .desktop-only { display: block; }
   .mobile-only { display: none; }
 }

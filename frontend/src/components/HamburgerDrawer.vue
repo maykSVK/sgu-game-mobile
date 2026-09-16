@@ -20,12 +20,20 @@
         <div style="text-align:center; flex-grow: 1; color: rgba(4,190,254,0.6); font-weight: bold; font-size: 14px; letter-spacing: 1px;">
           MENU
         </div>
-        <div style="width: 28px;"></div> <!-- Spacer pre vycentrovanie textu -->
+        <div style="width: 28px;"></div> <!-- Spacer pro vycentrování textu -->
       </div>
 
       <!-- Menu -->
       <div class="sgu-drawer-menu">
-        <div class="sgu-drawer-section">HLAVNÁ NAVIGÁCIA</div>
+        <div class="sgu-drawer-section">HLAVNÍ NAVIGACE</div>
+        <div class="sgu-drawer-item" @click="goToMyProfile">
+          <i class="icon fas fa-user-circle"></i>
+          <div style="flex-grow: 1;">
+            <div>Můj profil</div>
+            <div class="sub text-muted" style="font-size: 0.7rem;">{{ game.data?.player?.username || 'Načítá se...' }}</div>
+          </div>
+        </div>
+
         <div v-for="item in primary" :key="item.to"
              class="sgu-drawer-item" :class="{ active: isActive(item.to) }"
              @click="go(item)">
@@ -39,7 +47,7 @@
 
         <div class="sgu-drawer-divider"></div>
 
-        <div class="sgu-drawer-section">OSTATNÉ</div>
+        <div class="sgu-drawer-section">OSTATNÍ</div>
         <div v-for="item in secondary" :key="item.to"
              class="sgu-drawer-item" :class="{ active: isActive(item.to) }"
              @click="go(item)">
@@ -67,22 +75,22 @@ import { useGameStore } from '../stores/game'
 const game = useGameStore()
 
 const primary = [
-  { to: '/',           icon: 'far fa-clipboard',   label: 'Dashboard',       sub: 'Riadiaca miestnosť' },
-  { to: '/universe',   icon: 'fas fa-project-diagram',label: 'Vesmír',           sub: 'Galaxie & planéty', badge: 'ftlExited'  },
-  { to: '/stargate',   icon: 'fas fa-circle-notch',label: 'Hviezdna brána',    sub: 'Stargate'            },
-  { to: '/expedition', icon: 'fas fa-rocket',      label: 'Expedícia',        sub: 'Prieskumné misie', badge: 'activeExpedition'   },
-  { to: '/planets',    icon: 'fas fa-city',        label: 'Planéty a stavby', sub: 'Prehľad impéria' },
+  { to: '/',           icon: 'far fa-clipboard',   label: 'Dashboard',       sub: 'Řídící místnost' },
+  { to: '/universe',   icon: 'fas fa-project-diagram',label: 'Vesmír',           sub: 'Galaxie & planety', badge: 'ftlExited'  },
+  { to: '/stargate',   icon: 'fas fa-circle-notch',label: 'Hvězdná brána',    sub: 'Stargate'            },
+  { to: '/expedition', icon: 'fas fa-rocket',      label: 'Expedice',        sub: 'Průzkumné mise', badge: 'activeExpedition'   },
+  { to: '/planets',    icon: 'fas fa-city',        label: 'Planety a stavby', sub: 'Přehled impéria' },
   { to: '/arena',      icon: 'fas fa-crosshairs',  label: 'Aréna',            sub: 'Bojový simulátor'   },
-  { to: '/research',   icon: 'fas fa-flask',       label: 'Výskum',           sub: 'Strom technológií'  },
-  { to: '/upgrades',   icon: 'fas fa-cogs',        label: 'Vylepšenia',       sub: 'Loď & vybavenie'    },
+  { to: '/research',   icon: 'fas fa-flask',       label: 'Výzkum',           sub: 'Strom technologií'  },
+  { to: '/upgrades',   icon: 'fas fa-cogs',        label: 'Vylepšení',       sub: 'Loď & vybavení'    },
 ]
 
 const secondary = [
-  { to: '/messages',  icon: 'far fa-envelope', label: 'Správy / Chat'      },
-  { to: '/alliance',  icon: 'far fa-handshake',label: 'Aliancia'           },
-  { to: '/market',    icon: 'fas fa-store',    label: 'Obchodná stanica'   },
-  { to: '/lab',       icon: 'fas fa-vial',     label: 'Laboratórium'       },
-  { to: '/stats',     icon: 'far fa-chart-bar',label: 'Štatistiky'         },
+  { to: '/communication', icon: 'far fa-envelope', label: 'Komunikace'         },
+  { to: '/alliance',  icon: 'far fa-handshake',label: 'Aliance'           },
+  { to: '/market',    icon: 'fas fa-store',    label: 'Obchodní stanice'   },
+  { to: '/lab',       icon: 'fas fa-vial',     label: 'Laboratoř'       },
+  { to: '/stats',     icon: 'far fa-chart-bar',label: 'Statistiky'         },
   { to: '/reports',   icon: 'far fa-file-alt', label: 'Reporty',           badge: 'hasNewReport' },
 ]
 
@@ -91,6 +99,13 @@ function isActive(path) {
 }
 function go(item) {
   router.push(item.to)
+  emit('close')
+}
+function goToMyProfile() {
+  const username = game.data?.player?.username;
+  if (username) {
+     router.push({ path: '/stats/profile', query: { playerName: username } });
+  }
   emit('close')
 }
 function hasBadge(item) {

@@ -1,0 +1,29 @@
+      const tLower = title.toLowerCase();
+      console.log("Found infobox with title:", title, "tLower:", tLower);
+      if (tLower.startsWith('hr') || i === 0) {
+        data.found = true;
+        // Avatar
+        let avatar = body.find('.forums-avatar').attr('src');
+        if (avatar && avatar.startsWith('/')) {
+           avatar = 'https://www.sgu-game.cz' + avatar;
+        } else if (!avatar) {
+           avatar = 'https://www.sgu-game.cz/img/default-contact.jpg';
+        }
+        data.user.avatar = avatar;
+
+        // Country
+        let country = body.find('.country-flag img').attr('src');
+        if (country) {
+            data.user.countryFlag = 'https://www.sgu-game.cz' + country;
+        }
+
+        // Vip
+        data.user.isVip = body.find('.vip-table').length > 0;
+        
+        // Status & Name
+        const nameLink = body.find('a[href*="playerName="]');
+        data.user.username = nameLink.text().trim();
+        data.user.statusClass = nameLink.parent().attr('class') || 'player';
+        
+        console.log("Parsed User:", data.user);
+      }

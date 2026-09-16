@@ -357,33 +357,55 @@ const translatedPlanetType = (type) => {
   flex-direction: column;
   background: rgba(4,190,254,0.05);
   border: 1px solid rgba(4,190,254,0.3);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
   height: 100%;
 }
+.dash-panel::before {
+  content: "";
+  position: absolute; top: 0; left: 0;
+  width: 15px; height: 15px;
+  border-top: 2px solid #04befe;
+  border-left: 2px solid #04befe;
+  z-index: 1;
+}
+.dash-panel::after {
+  content: "";
+  position: absolute; bottom: 0; right: 0;
+  width: 15px; height: 15px;
+  border-bottom: 2px solid #04befe;
+  border-right: 2px solid #04befe;
+  z-index: 1;
+}
 .dash-panel-head {
-  display: flex;
-  align-items: center;
-  padding: 10px;
   background: rgba(4,190,254,0.15);
   border-bottom: 1px solid rgba(4,190,254,0.3);
+  padding: 8px 12px;
+  font-family: Orbitron, sans-serif;
+  font-size: 13px;
   color: #fff;
-  font-weight: bold;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
   text-transform: uppercase;
-  font-size: 0.9rem;
   letter-spacing: 1px;
 }
 .dash-panel-dot {
-  display: inline-block;
-  width: 6px; 
-  height: 6px;
+  width: 6px; height: 6px;
   background: #04befe;
+  box-shadow: 0 0 5px #04befe;
   transform: rotate(45deg);
   margin-right: 10px;
-  box-shadow: 0 0 5px #04befe;
 }
 .dash-panel-body {
   padding: 12px;
   background: rgba(0,0,0,0.4);
-  flex-grow: 1;
+  font-size: 12px;
+  color: #ddd;
+  flex: 1;
+  height: auto;
 }
 
 /* SGU Tables */
