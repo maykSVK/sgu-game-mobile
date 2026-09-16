@@ -1,0 +1,1 @@
+import{_ as s,o as e,c,e as a,b as n,E as r}from"./index-BLoPvgat.js";const _={},d={class:"dash-page"},i={class:"dash-content p-3"};function l(o,p){const t=r("router-view");return e(),c("div",d,[a("div",i,[(e(),n(t,{key:o.$route.fullPath}))])])}const u=s(_,[["render",l],["__scopeId","data-v-c9403909"]]);export{u as default};
