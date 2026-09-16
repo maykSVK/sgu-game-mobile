@@ -15,6 +15,7 @@ const planetRoutes = require('./routes/planet.routes');
 const checksumsRoutes = require('./routes/checksums.routes');
 const heroRoutes = require('./routes/hero.routes');
 const progressRoutes = require('./routes/progress.routes');
+const { asyncLocalStorage } = require('./auth');
 
 const app = express();
 const PORT = 3000;
@@ -23,6 +24,14 @@ const PORT = 3000;
 app.use(cors({ origin: '*' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// AsyncLocalStorage Middleware pre Session (Stateless proxy)
+app.use((req, res, next) => {
+  const token = req.headers['x-sgu-session'] || null;
+  asyncLocalStorage.run({ token }, () => {
+    next();
+  });
+});
 
 // Routes
 app.use('/api/auth', authRoutes);
@@ -47,12 +56,9 @@ app.use('/api/neural', require('./routes/neural.routes'));
 
 // Health check
 app.get('/api/health', (req, res) => {
-  const { isLoggedIn, username } = require('./auth');
-  res.json({ ok: true, loggedIn: isLoggedIn(), username: username() });
+  res.json({ ok: true });
 });
 
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`\n🚀 SGU-Mobile proxy beží na http://localhost:${PORT}`);
-  console.log(`📱 Z mobilu (WiFi): http://<tvoja-IP>:${PORT}`);
-  console.log(`   Zisti IP: ipconfig | findstr IPv4\n`);
+  console.log('🚀 SGU-Mobile proxy bezi na http://localhost:' + PORT);
 });

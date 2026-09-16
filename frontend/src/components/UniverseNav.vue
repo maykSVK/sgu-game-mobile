@@ -298,7 +298,7 @@ const isFabOpen = ref(false)
 .desktop-only { display: none; }
 .mobile-only { display: block; }
 
-@media (min-width: 900px) {
+@media (min-width: 768px) {
   .desktop-only { display: block; }
   .mobile-only { display: none; }
 }

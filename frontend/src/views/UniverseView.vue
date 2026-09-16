@@ -589,8 +589,8 @@ onMounted(() => {
 
 .zoom-controls {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 80px;
+  left: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;

@@ -1,5 +1,5 @@
 const express = require('express');
-const { login, logout, isLoggedIn, username } = require('../auth');
+const { login, logout } = require('../auth');
 const router = express.Router();
 
 // POST /api/auth/login
@@ -29,7 +29,8 @@ router.post('/logout', async (req, res) => {
 
 // GET /api/auth/status
 router.get('/status', (req, res) => {
-  res.json({ loggedIn: isLoggedIn(), username: username() });
+  const token = req.headers['x-sgu-session'];
+  res.json({ loggedIn: !!token });
 });
 
 module.exports = router;
